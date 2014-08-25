@@ -9,7 +9,7 @@ title: 前端笔记
 
 ## 前端笔记
 - js模块化
-    - [AMD和CommonJS](js模块化/AMD和CommonJS.md) (Blink)
+    - [AMD和CommonJS](js模块化/AMD和CommonJS.md) 
 
 
 
