@@ -1,9 +1,11 @@
 ---
 layout: default
-title: 前段笔记
+title: 前端笔记
 ---
-
+<!--
 <h2>{{ page.title }}</h2>
+-->
+
 
 ## 前端笔记
 - js模块化
@@ -11,7 +13,7 @@ title: 前段笔记
 
 
 
-
+<!--
 <p>最新文章</p>
 
 <ul>
@@ -19,3 +21,4 @@ title: 前段笔记
       <li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
     {% endfor %}
 </ul>
+-->
