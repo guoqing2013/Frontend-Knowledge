@@ -17,7 +17,7 @@ CommonJS规范，针对模块的同步加载，主要用于服务器端，即nod
 AMD使用了define方法，用来定义一个模块并导出对象。使用AMD，我们可以引用任何依赖。
 
 ```
-define([‘alpha’], function (alpha) {
+define(['alpha'], function (alpha) {
   return {
     verb: function () {
       return alpha.verb() + 2;
