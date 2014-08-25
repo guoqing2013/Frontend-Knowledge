@@ -9,8 +9,8 @@
 AMD模块规范，针对模块的异步加载，主要用于浏览器端；
 CommonJS规范，针对模块的同步加载，主要用于服务器端，即node.js环境。
 
-- [**browserify**](https://www.npmjs.org/package/browserify)以commonjs模块开发规范来约束前端模块开发,最后上线时提供命令行生成合并文件
 - [**requirejs**](http://requirejs.org/)以amd模块开发规范来约束前端模块开发,最后上线的时候提供r.js命令行工具来生成合并压缩文件
+- [**browserify**](https://www.npmjs.org/package/browserify)以commonjs模块开发规范来约束前端模块开发,最后上线时提供命令行生成合并文件
 
 ### AMD  
 
