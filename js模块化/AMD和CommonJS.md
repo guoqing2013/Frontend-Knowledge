@@ -31,7 +31,7 @@ define(['alpha'], function (alpha) {
 
 ### CommonJS
 
-NodeJS使用了CommonJS，通过一个esports对象来定义一个模块的内容
+NodeJS使用了CommonJS，通过一个esports对象或module.exports来定义一个模块的内容
 ```
 // someModule.js
 exports.someModule = function () {
