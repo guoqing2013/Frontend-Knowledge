@@ -52,7 +52,7 @@ function Human(sgender) {
 
 
 ##### 2. AMD规范：
-**(1) define(id?, dependencies?, factory)**
+** define(id?, dependencies?, factory)**
 定义一个模块。它包含三个参数，前两个参数都是可选的。
 一个完整的模块定义包含模块名称，模块的依赖和回调函数
 
@@ -106,13 +106,7 @@ defind(function(require) {
 });
 ```
 
-**(2) require() 调用模块**
-```
-require(["aModule", "bModule"], function(myFunctionA, myFunctionB) {
-    myFunctionA();  // 使用aModule.js中的函数 myFunctionA
-    myFunctionB();  // 使用bModule.js中的函数 myFunctionB
-});
-```
+
 
 ### 三、requireJS的使用
 ##### 1.
@@ -148,8 +142,7 @@ RequireJS 会自动把模块ID翻译成一个路径（path），我们也可以�
 
 
 
-##### 4.
-```
+##### 4. 加载模块
 requirejs.config({
     //默认从 js/lib 中加载模块
     baseUrl : 'js/lib',
@@ -163,9 +156,9 @@ requirejs.config({
 ```
 
 ```
-requirejs(['jquery', 'canvas', 'app/sub'],
-    function ($, canvas, sub) {
-        //jQuery, canvas 和 app/sub 模块都加载完毕后，会执行这个函数
+requirejs(['jquery', 'aModule', 'bModule'],
+    function ($, myFunctionA, myFunctionB) {
+        //jQuery, aModule 和 bModule 模块都加载完毕后，会执行这个函数
 
         //TODO
     }
@@ -176,14 +169,14 @@ requirejs(['jquery', 'canvas', 'app/sub'],
 RequireJS 要求一个js文件只定义一个模块。
 每加载一个模块，就会产生一个HTTP请求，RequireJS 提供了一个优化工具（r.js）
 
-定义一个只有键值对，没有任何依赖的模块
+* 定义一个只有键值对，没有任何依赖的模块
 ```
 define({
     color: 'black',
     size: 'M'
 });
 ```
-定义一个函数，没有依赖
+* 定义一个函数，没有依赖
 ```
 define(function() {
     //TODO
