@@ -143,6 +143,7 @@ RequireJS 会自动把模块ID翻译成一个路径（path），我们也可以�
 
 
 ##### 4. 加载模块
+```
 requirejs.config({
     //默认从 js/lib 中加载模块
     baseUrl : 'js/lib',
@@ -169,14 +170,14 @@ requirejs(['jquery', 'aModule', 'bModule'],
 RequireJS 要求一个js文件只定义一个模块。
 每加载一个模块，就会产生一个HTTP请求，RequireJS 提供了一个优化工具（r.js）
 
-定义一个只有键值对，没有任何依赖的模块
+* 定义一个只有键值对，没有任何依赖的模块
 ```
 define({
     color: 'black',
     size: 'M'
 });
 ```
-定义一个函数，没有依赖
+* 定义一个函数，没有依赖
 ```
 define(function() {
     //TODO
