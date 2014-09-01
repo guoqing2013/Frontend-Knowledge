@@ -133,7 +133,7 @@ require(['helper/util'], function(util) {
 
 ##### 3.
 RequireJS 会假定所有依赖项默认都是脚本，所以书写依赖时可以省略 “.js”后缀，RequireJS 会自动加上这个后缀。
-RequireJS 会自动把模块ID翻译成一个路径（path），我们也可以在配置中声明多个路径（paths），通过 baseUrl + paths，可以用很少的代码找到相应的 js 文件，比起 <script> 标签要优雅简洁很多。
+RequireJS 会自动把模块ID翻译成一个路径（path），我们也可以在配置中声明多个路径（paths），通过 baseUrl + paths，可以用很少的代码找到相应的 js 文件，比起script标签要优雅简洁很多。
 如：baseUrl: 'js'
     require(['helper/util'], function() {})
 则：src='js/helper/util.js'
