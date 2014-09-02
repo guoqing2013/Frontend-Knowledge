@@ -52,7 +52,7 @@ function Human(sgender) {
 
 
 ##### 2. AMD规范：
-** define(id?, dependencies?, factory)**
+**define(id?, dependencies?, factory)**
 定义一个模块。它包含三个参数，前两个参数都是可选的。
 一个完整的模块定义包含模块名称，模块的依赖和回调函数
 
@@ -92,7 +92,7 @@ define(["require", "exports", "module"], function(require, exports, module) {
 Dependencies that can not be evalluated until runtime or only loaded when a specific event occurs;
 
 ```
-defind(function(require) {
+defind(function() {
     var isReady = false, 
         foobar;
     require(['foo', 'bar'], function(foo, bar) {
