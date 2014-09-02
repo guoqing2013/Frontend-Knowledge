@@ -42,7 +42,7 @@ exports.someModule = function () {
 按照CommonJS的描述，使用require方法来引用
 ```
 // do something with `myModule`
-var myModule = require(‘someModule’);
+var myModule = require('someModule');
 ```
 
 
