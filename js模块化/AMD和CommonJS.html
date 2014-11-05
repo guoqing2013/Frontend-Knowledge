@@ -294,7 +294,7 @@ img {
 </head>
 <body>
 <!--
- http://www.html-js.com/article/2126
+ http://www.html-js.com/article/2126 
  https://github.com/jnotnull/JavaScript-Sturcture/wiki/%E6%A8%A1%E5%9D%97%E5%8C%96%EF%BC%8C%E9%80%9A%E5%BE%80%E6%9C%AA%E6%9D%A5JavaScript%E5%BA%93%E4%B9%8B%E8%B7%AF
 -->
 <h2>依赖管理：AMD和CommonJS</h2>
@@ -310,46 +310,57 @@ img {
 <h3>AMD</h3>
 <p><strong>异步模块定义（AMD）</strong> 是一个用来定义异步加载模块的JS API，它一般用于浏览器端因为在调试和跨域访问中需要异步加载。AMD可以在开发阶段把各个模块分散在各个不同的文件中。</p>
 <p>AMD使用了define方法，用来定义一个模块并导出对象。使用AMD，我们可以引用任何依赖。</p>
-<p><code>define(['alpha'], function (alpha) {
-    return {
+<pre>
+define(['alpha'], function (alpha) {
+  return {
     verb: function () {
-    return alpha.verb() + 2;
+      return alpha.verb() + 2;
     }
-    };
-    });</code></p>
+  };
+});
+</pre>
 <h3>CommonJS</h3>
-<p>NodeJS使用了CommonJS，通过一个esports对象或module.exports来定义一个模块的内容
-    <code>// someModule.js
-        exports.someModule = function () {
-        return &quot;foo&quot;;
-        };</code></p>
-<p>按照CommonJS的描述，使用require方法来引用
-    <code>// do something with `myModule`
-        var myModule = require('someModule');</code></p>
+<p>NodeJS使用了CommonJS，通过一个esports对象或module.exports来定义一个模块的内容</p>
+<pre>
+// someModule.js
+exports.someModule = function () {
+  return "foo";
+};
+</pre>
+<p>按照CommonJS的描述，使用require方法来引用</p>
+<pre>
+// do something with `myModule`
+var myModule = require('someModule');
+</pre>
 <h3>统一模块定义(UMD)</h3>
 <p>通过if else来判断当前哪个方案可用，如果支持AMD或者CommonJS，那就可以直接使用它，这个解决方案被称为UMD。</p>
-<p>```
-    (function (root, factory) {
-    if (typeof define === 'function' &amp;&amp; define.amd) {
+<pre>
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
     define(['b'], factory);
-    } else if (typeof exports === 'object') {
+  } else if (typeof exports === 'object') {
     module.exports = factory;
-    } else {
+  } else {
     root.amdWeb = factory(root.b);
-    }
-    })(this, function (b) {
-    'use strict';
-    return {};
-    });</p>
-<p>```</p>
+  }
+})(this, function (b) {
+  'use strict';
+  return {};
+});
+
+</pre>
 <h3>ES6模块</h3>
-<p>JS库已经影响了原生JS语言了，比如类管理。下一代JS语言ES6会支持import和export。
-    <code>/// myModule.js
-        function myModule () {
-        // module content
-        }
-        export myModule;</code></p>
-<p><code>import {myModule} from 'myModule';</code></p>
+<p>JS库已经影响了原生JS语言了，比如类管理。下一代JS语言ES6会支持import和export。</p>
+<pre>
+/// myModule.js
+function myModule () {
+  // module content
+}
+export myModule;
+</pre>
+<pre>
+import {myModule} from 'myModule';
+</pre>
 
 </body>
 </html>
