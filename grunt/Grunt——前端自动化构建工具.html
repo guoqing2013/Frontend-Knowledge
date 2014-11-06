@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Grunt——前端自动化构建工具</title>
+<title>Grunt</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <style type="text/css">
 /* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
@@ -290,17 +290,18 @@ img {
     max-width: 100%
 }
 </style>
-<base href='file:\\\F:\Frontend-Knowledge\grunt\'/>
+<base href='file:\\\E:\grunt笔记\'/>
 </head>
 <body>
 <!--
-http://tgideas.qq.com/webplat/info/news_version3/804/808/811/m579/201307/216460.shtml
-
-http://wenku.baidu.com/link?url=foCse_EOL-v_WHP8LYircMvpZaMy9pCQnv49lr3zPRF-ZJJGYY3bzARBHMH220gpMpomh-e2dU89-fbtr-8F07nAEqoYqQfvsJIjKfdxObq
-
 http://javascript.ruanyifeng.com/tool/grunt.html
+
+http://blog.csdn.net/lihongxun945/article/details/8958063
+
+http://tgideas.qq.com/webplat/info/news_version3/804/808/811/m579/201307/216460.shtml
 -->
 <h1>Grunt 前端自动化构建工具</h1>
+<hr />
 <p>中文介绍网址：<a href="http://www.gruntjs.net/">http://www.gruntjs.net/</a><br />
     英文介绍网址：<a href="http://gruntjs.com/">http://gruntjs.com/</a></p>
 <p>Grunt是一个自动任务运行器，会按照预先设定的顺序自动运行一系列的任务。如：合并文件、压缩代码、检查语法错误、将Sass代码转成CSS代码等等。这可以简化工作流程，减轻重复性工作带来的负担。</p>
@@ -337,7 +338,7 @@ http://javascript.ruanyifeng.com/tool/grunt.html
         "web": "http://www.embedthis.com"
     }],
     "dependencies": {  //项目运行所依赖的模块
-        "express": "latest",
+        "express": "latest", 
         "mongoose": "~3.8.3",
         "handlebars-runtime": "~1.0.12",
         "express3-handlebars": "~0.5.0",
@@ -353,14 +354,14 @@ http://javascript.ruanyifeng.com/tool/grunt.html
         "browserify": "2.36.1",
         "grunt-browserify": "~1.3.0",
     },
-    "os": ["linux", "macos", "win"], //表示在哪些操作系统下可以运行
+    "os": ["linux", "macos", "win"], //表示在哪些操作系统下可以运行  
     "cpu": ["x86", "ppc", "x86_64"], //表在哪些cpu架构下可以运行
-    // "engines": ["v8", "ejs", "node", "rhino"],
+    // "engines": ["v8", "ejs", "node", "rhino"],  
     "engines": { //该项目所需要的node.js版本。
         "node": ">= 0.8.0"
     },
     "scripts": { //指定运行脚本命令的npm命令行缩写，比如start指定了运行npm run start时，所要执行的命令。
-        "preinstall": "echo here it comes!",
+        "preinstall": "echo here it comes!",  
         "postinstall": "echo there it goes!",
         "start": "node index.js"
     },
@@ -372,6 +373,9 @@ http://javascript.ruanyifeng.com/tool/grunt.html
 }
 </pre>
 <p>有了package.json文件，直接使用 <code>npm install</code> 命令，就会在当前目录中安装所需要的模块。</p>
+<blockquote>
+    <p><code>m -rf node_modules &amp;&amp; npm cache clean</code> 清除modules</p>
+</blockquote>
 <p>对应的版本可以加上各种限定，主要有以下几种：
 </p>
 <blockquote>
@@ -381,44 +385,489 @@ http://javascript.ruanyifeng.com/tool/grunt.html
         latest：安装最新版本。</p>
 </blockquote>
 <h2>Gruntfile.js</h2>
-<p>Gruntfile主要有三个方法：</p>
-<ul>
-    <li>
-        <p>grunt.initConfig：定义各种模块的参数，每一个成员项对应一个同名模块。</p>
-    </li>
-    <li>
-        <p>grunt.loadNpmTasks：加载完成任务所需的模块。</p>
-    </li>
-    <li>
-        <p>grunt.registerTask：定义具体的任务。第一个参数为任务名，第二个参数是一个数组，表示该任务需要依次使用的模块。default任务名表示，如果直接输入grunt命令，后面不跟任何参数，这时所调用的模块（该例为uglify）。</p>
-    </li>
-</ul>
 <pre>
 module.exports = function(grunt) {
 
-  // Project configuration.
+  // 配置Grunt各种模块的参数
   grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
-    uglify: {
-      options: {
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
-      },
-      build: {
-        src: 'src/<%= pkg.name %>.js',
-        dest: 'build/<%= pkg.name %>.min.js'
-      }
-    }
+    jshint: { /* jshint的参数 */ },
+    concat: { /* concat的参数 */ },
+    uglify: { /* uglify的参数 */ },
+    watch:  { /* watch的参数 */ }
   });
 
-  // Load the plugin that provides the "uglify" task.
+  // 从node_modules目录加载模块文件
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
-  // Default task(s).
-  grunt.registerTask('default', ['uglify']);
+  // 每行registerTask定义一个任务
+  grunt.registerTask('default', ['jshint', 'concat', 'uglify']);
+  grunt.registerTask('check', ['jshint']);
 
 };
 </pre>
-<p>待续</p>
+<p>Gruntfile主要有三个方法：</p>
+<ul>
+    <li>grunt.initConfig：定义各种模块的参数，每一个成员项对应一个同名模块。</li>
+    <li>grunt.loadNpmTasks：加载完成任务所需的模块。</li>
+    <li>grunt.registerTask：定义具体的任务。第一个参数为任务名，第二个参数是一个数组，表示该任务需要依次使用的模块。default任务名表示，如果直接输入grunt命令，后面不跟任何参数，这时所调用的模块（该例为jshint，concat和uglify）；该例的check任务则表示使用jshint插件对代码进行语法检查。</li>
+</ul>
+<p>上面的代码一共加载了四个模块：<br />
+    jshint（检查语法错误）、concat（合并文件）、uglify（压缩代码）和watch（自动执行）。接下来，有两种使用方法。
+</p>
+<p>（1）命令行执行某个模块，如运行jshint模块。  <br />
+    <code>grunt jshint</code>
+</p>
+<p>（2）命令行执行某个任务。<br />
+    <code>grunt check</code></p>
+<h2>grunt插件</h2>
+<p><section id="readme">
+<h4 id="-grunt-contrib-clean-https-github-com-gruntjs-grunt-contrib-clean-build-status-https-secure-travis-ci-org-gruntjs-grunt-contrib-clean-png-branch-master-http-travis-ci-org-gruntjs-grunt-contrib-clean-dependency-status-https-david-dm-org-gruntjs-grunt-contrib-clean-png-https-david-dm-org-gruntjs-grunt-contrib-clean-">
+    <a href="https://github.com/gruntjs/grunt-contrib-clean">
+        grunt-contrib-clean
+    </a>
+    <a href="http://travis-ci.org/gruntjs/grunt-contrib-clean">
+        <img src="https://secure.travis-ci.org/gruntjs/grunt-contrib-clean.png?branch=master"
+             alt="Build Status">
+    </a>
+    <a href="https://david-dm.org/gruntjs/grunt-contrib-clean">
+        <img src="https://david-dm.org/gruntjs/grunt-contrib-clean.png" alt="Dependency Status">
+    </a>
+</h4>
+<blockquote>
+    <p>
+        Clean files and folders.
+    </p>
+</blockquote>
+<h4 id="-grunt-contrib-coffee-https-github-com-gruntjs-grunt-contrib-coffee-build-status-https-secure-travis-ci-org-gruntjs-grunt-contrib-coffee-png-branch-master-http-travis-ci-org-gruntjs-grunt-contrib-coffee-dependency-status-https-david-dm-org-gruntjs-grunt-contrib-coffee-png-https-david-dm-org-gruntjs-grunt-contrib-coffee-">
+    <a href="https://github.com/gruntjs/grunt-contrib-coffee">
+        grunt-contrib-coffee
+    </a>
+    <a href="http://travis-ci.org/gruntjs/grunt-contrib-coffee">
+        <img src="https://secure.travis-ci.org/gruntjs/grunt-contrib-coffee.png?branch=master"
+             alt="Build Status">
+    </a>
+    <a href="https://david-dm.org/gruntjs/grunt-contrib-coffee">
+        <img src="https://david-dm.org/gruntjs/grunt-contrib-coffee.png" alt="Dependency Status">
+    </a>
+</h4>
+<blockquote>
+    <p>
+        Compile CoffeeScript files to JavaScript.
+    </p>
+</blockquote>
+<h4 id="-grunt-contrib-compass-https-github-com-gruntjs-grunt-contrib-compass-build-status-https-secure-travis-ci-org-gruntjs-grunt-contrib-compass-png-branch-master-http-travis-ci-org-gruntjs-grunt-contrib-compass-dependency-status-https-david-dm-org-gruntjs-grunt-contrib-compass-png-https-david-dm-org-gruntjs-grunt-contrib-compass-">
+    <a href="https://github.com/gruntjs/grunt-contrib-compass">
+        grunt-contrib-compass
+    </a>
+    <a href="http://travis-ci.org/gruntjs/grunt-contrib-compass">
+        <img src="https://secure.travis-ci.org/gruntjs/grunt-contrib-compass.png?branch=master"
+             alt="Build Status">
+    </a>
+    <a href="https://david-dm.org/gruntjs/grunt-contrib-compass">
+        <img src="https://david-dm.org/gruntjs/grunt-contrib-compass.png" alt="Dependency Status">
+    </a>
+</h4>
+<blockquote>
+    <p>
+        Compile Sass to CSS using Compass
+    </p>
+</blockquote>
+<h4 id="-grunt-contrib-compress-https-github-com-gruntjs-grunt-contrib-compress-build-status-https-secure-travis-ci-org-gruntjs-grunt-contrib-compress-png-branch-master-http-travis-ci-org-gruntjs-grunt-contrib-compress-dependency-status-https-david-dm-org-gruntjs-grunt-contrib-compress-png-https-david-dm-org-gruntjs-grunt-contrib-compress-">
+    <a href="https://github.com/gruntjs/grunt-contrib-compress">
+        grunt-contrib-compress
+    </a>
+    <a href="http://travis-ci.org/gruntjs/grunt-contrib-compress">
+        <img src="https://secure.travis-ci.org/gruntjs/grunt-contrib-compress.png?branch=master"
+             alt="Build Status">
+    </a>
+    <a href="https://david-dm.org/gruntjs/grunt-contrib-compress">
+        <img src="https://david-dm.org/gruntjs/grunt-contrib-compress.png" alt="Dependency Status">
+    </a>
+</h4>
+<blockquote>
+    <p>
+        Compress files and folders.
+    </p>
+</blockquote>
+<h4 id="-grunt-contrib-concat-https-github-com-gruntjs-grunt-contrib-concat-build-status-https-secure-travis-ci-org-gruntjs-grunt-contrib-concat-png-branch-master-http-travis-ci-org-gruntjs-grunt-contrib-concat-dependency-status-https-david-dm-org-gruntjs-grunt-contrib-concat-png-https-david-dm-org-gruntjs-grunt-contrib-concat-">
+    <a href="https://github.com/gruntjs/grunt-contrib-concat">
+        grunt-contrib-concat
+    </a>
+    <a href="http://travis-ci.org/gruntjs/grunt-contrib-concat">
+        <img src="https://secure.travis-ci.org/gruntjs/grunt-contrib-concat.png?branch=master"
+             alt="Build Status">
+    </a>
+    <a href="https://david-dm.org/gruntjs/grunt-contrib-concat">
+        <img src="https://david-dm.org/gruntjs/grunt-contrib-concat.png" alt="Dependency Status">
+    </a>
+</h4>
+<blockquote>
+    <p>
+        Concatenate files.
+    </p>
+</blockquote>
+<h4 id="-grunt-contrib-connect-https-github-com-gruntjs-grunt-contrib-connect-build-status-https-secure-travis-ci-org-gruntjs-grunt-contrib-connect-png-branch-master-http-travis-ci-org-gruntjs-grunt-contrib-connect-dependency-status-https-david-dm-org-gruntjs-grunt-contrib-connect-png-https-david-dm-org-gruntjs-grunt-contrib-connect-">
+    <a href="https://github.com/gruntjs/grunt-contrib-connect">
+        grunt-contrib-connect
+    </a>
+    <a href="http://travis-ci.org/gruntjs/grunt-contrib-connect">
+        <img src="https://secure.travis-ci.org/gruntjs/grunt-contrib-connect.png?branch=master"
+             alt="Build Status">
+    </a>
+    <a href="https://david-dm.org/gruntjs/grunt-contrib-connect">
+        <img src="https://david-dm.org/gruntjs/grunt-contrib-connect.png" alt="Dependency Status">
+    </a>
+</h4>
+<blockquote>
+    <p>
+        Start a connect web server.
+    </p>
+</blockquote>
+<h4 id="-grunt-contrib-copy-https-github-com-gruntjs-grunt-contrib-copy-build-status-https-secure-travis-ci-org-gruntjs-grunt-contrib-copy-png-branch-master-http-travis-ci-org-gruntjs-grunt-contrib-copy-dependency-status-https-david-dm-org-gruntjs-grunt-contrib-copy-png-https-david-dm-org-gruntjs-grunt-contrib-copy-">
+    <a href="https://github.com/gruntjs/grunt-contrib-copy">
+        grunt-contrib-copy
+    </a>
+    <a href="http://travis-ci.org/gruntjs/grunt-contrib-copy">
+        <img src="https://secure.travis-ci.org/gruntjs/grunt-contrib-copy.png?branch=master"
+             alt="Build Status">
+    </a>
+    <a href="https://david-dm.org/gruntjs/grunt-contrib-copy">
+        <img src="https://david-dm.org/gruntjs/grunt-contrib-copy.png" alt="Dependency Status">
+    </a>
+</h4>
+<blockquote>
+    <p>
+        Copy files and folders.
+    </p>
+</blockquote>
+<h4 id="-grunt-contrib-cssmin-https-github-com-gruntjs-grunt-contrib-cssmin-build-status-https-secure-travis-ci-org-gruntjs-grunt-contrib-cssmin-png-branch-master-http-travis-ci-org-gruntjs-grunt-contrib-cssmin-dependency-status-https-david-dm-org-gruntjs-grunt-contrib-cssmin-png-https-david-dm-org-gruntjs-grunt-contrib-cssmin-">
+    <a href="https://github.com/gruntjs/grunt-contrib-cssmin">
+        grunt-contrib-cssmin
+    </a>
+    <a href="http://travis-ci.org/gruntjs/grunt-contrib-cssmin">
+        <img src="https://secure.travis-ci.org/gruntjs/grunt-contrib-cssmin.png?branch=master"
+             alt="Build Status">
+    </a>
+    <a href="https://david-dm.org/gruntjs/grunt-contrib-cssmin">
+        <img src="https://david-dm.org/gruntjs/grunt-contrib-cssmin.png" alt="Dependency Status">
+    </a>
+</h4>
+<blockquote>
+    <p>
+        Compress CSS files.
+    </p>
+</blockquote>
+<h4 id="-grunt-contrib-csslint-https-github-com-gruntjs-grunt-contrib-csslint-build-status-https-secure-travis-ci-org-gruntjs-grunt-contrib-csslint-png-branch-master-http-travis-ci-org-gruntjs-grunt-contrib-csslint-dependency-status-https-david-dm-org-gruntjs-grunt-contrib-csslint-png-https-david-dm-org-gruntjs-grunt-contrib-csslint-">
+    <a href="https://github.com/gruntjs/grunt-contrib-csslint">
+        grunt-contrib-csslint
+    </a>
+    <a href="http://travis-ci.org/gruntjs/grunt-contrib-csslint">
+        <img src="https://secure.travis-ci.org/gruntjs/grunt-contrib-csslint.png?branch=master"
+             alt="Build Status">
+    </a>
+    <a href="https://david-dm.org/gruntjs/grunt-contrib-csslint">
+        <img src="https://david-dm.org/gruntjs/grunt-contrib-csslint.png" alt="Dependency Status">
+    </a>
+</h4>
+<blockquote>
+    <p>
+        Lint CSS files.
+    </p>
+</blockquote>
+<h4 id="-grunt-contrib-handlebars-https-github-com-gruntjs-grunt-contrib-handlebars-build-status-https-secure-travis-ci-org-gruntjs-grunt-contrib-handlebars-png-branch-master-http-travis-ci-org-gruntjs-grunt-contrib-handlebars-dependency-status-https-david-dm-org-gruntjs-grunt-contrib-handlebars-png-https-david-dm-org-gruntjs-grunt-contrib-handlebars-">
+    <a href="https://github.com/gruntjs/grunt-contrib-handlebars">
+        grunt-contrib-handlebars
+    </a>
+    <a href="http://travis-ci.org/gruntjs/grunt-contrib-handlebars">
+        <img src="https://secure.travis-ci.org/gruntjs/grunt-contrib-handlebars.png?branch=master"
+             alt="Build Status">
+    </a>
+    <a href="https://david-dm.org/gruntjs/grunt-contrib-handlebars">
+        <img src="https://david-dm.org/gruntjs/grunt-contrib-handlebars.png" alt="Dependency Status">
+    </a>
+</h4>
+<blockquote>
+    <p>
+        Precompile Handlebars templates to JST file.
+    </p>
+</blockquote>
+<h4 id="-grunt-contrib-htmlmin-build-status-https-secure-travis-ci-org-gruntjs-grunt-contrib-htmlmin-png-branch-master-http-travis-ci-org-gruntjs-grunt-contrib-htmlmin-dependency-status-https-david-dm-org-gruntjs-grunt-contrib-htmlmin-png-https-david-dm-org-gruntjs-grunt-contrib-htmlmin-">
+    <a href="https://github.com/gruntjs/grunt-contrib">
+        grunt-contrib-htmlmin
+    </a>
+    <a href="http://travis-ci.org/gruntjs/grunt-contrib-htmlmin">
+        <img src="https://secure.travis-ci.org/gruntjs/grunt-contrib-htmlmin.png?branch=master"
+             alt="Build Status">
+    </a>
+    <a href="https://david-dm.org/gruntjs/grunt-contrib-htmlmin">
+        <img src="https://david-dm.org/gruntjs/grunt-contrib-htmlmin.png" alt="Dependency Status">
+    </a>
+</h4>
+<blockquote>
+    <p>
+        Minify HTML
+    </p>
+</blockquote>
+<h4 id="-grunt-contrib-imagemin-build-status-https-secure-travis-ci-org-gruntjs-grunt-contrib-imagemin-png-branch-master-http-travis-ci-org-gruntjs-grunt-contrib-imagemin-dependency-status-https-david-dm-org-gruntjs-grunt-contrib-imagemin-png-https-david-dm-org-gruntjs-grunt-contrib-imagemin-">
+    <a href="https://github.com/gruntjs/grunt-contrib">
+        grunt-contrib-imagemin
+    </a>
+    <a href="http://travis-ci.org/gruntjs/grunt-contrib-imagemin">
+        <img src="https://secure.travis-ci.org/gruntjs/grunt-contrib-imagemin.png?branch=master"
+             alt="Build Status">
+    </a>
+    <a href="https://david-dm.org/gruntjs/grunt-contrib-imagemin">
+        <img src="https://david-dm.org/gruntjs/grunt-contrib-imagemin.png" alt="Dependency Status">
+    </a>
+</h4>
+<blockquote>
+    <p>
+        Minify PNG, JPEG and GIF images
+    </p>
+</blockquote>
+<h4 id="-grunt-contrib-jade-https-github-com-gruntjs-grunt-contrib-jade-build-status-https-secure-travis-ci-org-gruntjs-grunt-contrib-jade-png-branch-master-http-travis-ci-org-gruntjs-grunt-contrib-jade-dependency-status-https-david-dm-org-gruntjs-grunt-contrib-jade-png-https-david-dm-org-gruntjs-grunt-contrib-jade-">
+    <a href="https://github.com/gruntjs/grunt-contrib-jade">
+        grunt-contrib-jade
+    </a>
+    <a href="http://travis-ci.org/gruntjs/grunt-contrib-jade">
+        <img src="https://secure.travis-ci.org/gruntjs/grunt-contrib-jade.png?branch=master"
+             alt="Build Status">
+    </a>
+    <a href="https://david-dm.org/gruntjs/grunt-contrib-jade">
+        <img src="https://david-dm.org/gruntjs/grunt-contrib-jade.png" alt="Dependency Status">
+    </a>
+</h4>
+<blockquote>
+    <p>
+        Compile Jade templates.
+    </p>
+</blockquote>
+<h4 id="-grunt-contrib-jasmine-https-github-com-gruntjs-grunt-contrib-jasmine-build-status-https-secure-travis-ci-org-gruntjs-grunt-contrib-jasmine-png-branch-master-http-travis-ci-org-gruntjs-grunt-contrib-jasmine-dependency-status-https-david-dm-org-gruntjs-grunt-contrib-jasmine-png-https-david-dm-org-gruntjs-grunt-contrib-jasmine-">
+    <a href="https://github.com/gruntjs/grunt-contrib-jasmine">
+        grunt-contrib-jasmine
+    </a>
+    <a href="http://travis-ci.org/gruntjs/grunt-contrib-jasmine">
+        <img src="https://secure.travis-ci.org/gruntjs/grunt-contrib-jasmine.png?branch=master"
+             alt="Build Status">
+    </a>
+    <a href="https://david-dm.org/gruntjs/grunt-contrib-jasmine">
+        <img src="https://david-dm.org/gruntjs/grunt-contrib-jasmine.png" alt="Dependency Status">
+    </a>
+</h4>
+<blockquote>
+    <p>
+        Run jasmine specs headlessly through PhantomJS.
+    </p>
+</blockquote>
+<h4 id="-grunt-contrib-jshint-https-github-com-gruntjs-grunt-contrib-jshint-build-status-https-secure-travis-ci-org-gruntjs-grunt-contrib-jshint-png-branch-master-http-travis-ci-org-gruntjs-grunt-contrib-jshint-dependency-status-https-david-dm-org-gruntjs-grunt-contrib-jshint-png-https-david-dm-org-gruntjs-grunt-contrib-jshint-">
+    <a href="https://github.com/gruntjs/grunt-contrib-jshint">
+        grunt-contrib-jshint
+    </a>
+    <a href="http://travis-ci.org/gruntjs/grunt-contrib-jshint">
+        <img src="https://secure.travis-ci.org/gruntjs/grunt-contrib-jshint.png?branch=master"
+             alt="Build Status">
+    </a>
+    <a href="https://david-dm.org/gruntjs/grunt-contrib-jshint">
+        <img src="https://david-dm.org/gruntjs/grunt-contrib-jshint.png" alt="Dependency Status">
+    </a>
+</h4>
+<blockquote>
+    <p>
+        Validate files with JSHint.
+    </p>
+</blockquote>
+<h4 id="-grunt-contrib-jst-https-github-com-gruntjs-grunt-contrib-jst-build-status-https-secure-travis-ci-org-gruntjs-grunt-contrib-jst-png-branch-master-http-travis-ci-org-gruntjs-grunt-contrib-jst-dependency-status-https-david-dm-org-gruntjs-grunt-contrib-jst-png-https-david-dm-org-gruntjs-grunt-contrib-jst-">
+    <a href="https://github.com/gruntjs/grunt-contrib-jst">
+        grunt-contrib-jst
+    </a>
+    <a href="http://travis-ci.org/gruntjs/grunt-contrib-jst">
+        <img src="https://secure.travis-ci.org/gruntjs/grunt-contrib-jst.png?branch=master"
+             alt="Build Status">
+    </a>
+    <a href="https://david-dm.org/gruntjs/grunt-contrib-jst">
+        <img src="https://david-dm.org/gruntjs/grunt-contrib-jst.png" alt="Dependency Status">
+    </a>
+</h4>
+<blockquote>
+    <p>
+        Precompile Underscore templates to JST file.
+    </p>
+</blockquote>
+<h4 id="-grunt-contrib-less-https-github-com-gruntjs-grunt-contrib-less-build-status-https-secure-travis-ci-org-gruntjs-grunt-contrib-less-png-branch-master-http-travis-ci-org-gruntjs-grunt-contrib-less-dependency-status-https-david-dm-org-gruntjs-grunt-contrib-less-png-https-david-dm-org-gruntjs-grunt-contrib-less-">
+    <a href="https://github.com/gruntjs/grunt-contrib-less">
+        grunt-contrib-less
+    </a>
+    <a href="http://travis-ci.org/gruntjs/grunt-contrib-less">
+        <img src="https://secure.travis-ci.org/gruntjs/grunt-contrib-less.png?branch=master"
+             alt="Build Status">
+    </a>
+    <a href="https://david-dm.org/gruntjs/grunt-contrib-less">
+        <img src="https://david-dm.org/gruntjs/grunt-contrib-less.png" alt="Dependency Status">
+    </a>
+</h4>
+<blockquote>
+    <p>
+        Compile LESS files to CSS.
+    </p>
+</blockquote>
+<h4 id="-grunt-contrib-nodeunit-https-github-com-gruntjs-grunt-contrib-nodeunit-build-status-https-secure-travis-ci-org-gruntjs-grunt-contrib-nodeunit-png-branch-master-http-travis-ci-org-gruntjs-grunt-contrib-nodeunit-dependency-status-https-david-dm-org-gruntjs-grunt-contrib-nodeunit-png-https-david-dm-org-gruntjs-grunt-contrib-nodeunit-">
+    <a href="https://github.com/gruntjs/grunt-contrib-nodeunit">
+        grunt-contrib-nodeunit
+    </a>
+    <a href="http://travis-ci.org/gruntjs/grunt-contrib-nodeunit">
+        <img src="https://secure.travis-ci.org/gruntjs/grunt-contrib-nodeunit.png?branch=master"
+             alt="Build Status">
+    </a>
+    <a href="https://david-dm.org/gruntjs/grunt-contrib-nodeunit">
+        <img src="https://david-dm.org/gruntjs/grunt-contrib-nodeunit.png" alt="Dependency Status">
+    </a>
+</h4>
+<blockquote>
+    <p>
+        Run Nodeunit unit tests.
+    </p>
+</blockquote>
+<h4 id="-grunt-contrib-qunit-https-github-com-gruntjs-grunt-contrib-qunit-build-status-https-secure-travis-ci-org-gruntjs-grunt-contrib-qunit-png-branch-master-http-travis-ci-org-gruntjs-grunt-contrib-qunit-dependency-status-https-david-dm-org-gruntjs-grunt-contrib-qunit-png-https-david-dm-org-gruntjs-grunt-contrib-qunit-">
+    <a href="https://github.com/gruntjs/grunt-contrib-qunit">
+        grunt-contrib-qunit
+    </a>
+    <a href="http://travis-ci.org/gruntjs/grunt-contrib-qunit">
+        <img src="https://secure.travis-ci.org/gruntjs/grunt-contrib-qunit.png?branch=master"
+             alt="Build Status">
+    </a>
+    <a href="https://david-dm.org/gruntjs/grunt-contrib-qunit">
+        <img src="https://david-dm.org/gruntjs/grunt-contrib-qunit.png" alt="Dependency Status">
+    </a>
+</h4>
+<blockquote>
+    <p>
+        Run QUnit unit tests in a headless PhantomJS instance.
+    </p>
+</blockquote>
+<h4 id="-grunt-contrib-requirejs-https-github-com-gruntjs-grunt-contrib-requirejs-build-status-https-secure-travis-ci-org-gruntjs-grunt-contrib-requirejs-png-branch-master-http-travis-ci-org-gruntjs-grunt-contrib-requirejs-dependency-status-https-david-dm-org-gruntjs-grunt-contrib-requirejs-png-https-david-dm-org-gruntjs-grunt-contrib-requirejs-">
+    <a href="https://github.com/gruntjs/grunt-contrib-requirejs">
+        grunt-contrib-requirejs
+    </a>
+    <a href="http://travis-ci.org/gruntjs/grunt-contrib-requirejs">
+        <img src="https://secure.travis-ci.org/gruntjs/grunt-contrib-requirejs.png?branch=master"
+             alt="Build Status">
+    </a>
+    <a href="https://david-dm.org/gruntjs/grunt-contrib-requirejs">
+        <img src="https://david-dm.org/gruntjs/grunt-contrib-requirejs.png" alt="Dependency Status">
+    </a>
+</h4>
+<blockquote>
+    <p>
+        Optimize RequireJS projects using r.js.
+    </p>
+</blockquote>
+<h4 id="-grunt-contrib-sass-https-github-com-gruntjs-grunt-contrib-sass-build-status-https-secure-travis-ci-org-gruntjs-grunt-contrib-sass-png-branch-master-http-travis-ci-org-gruntjs-grunt-contrib-sass-dependency-status-https-david-dm-org-gruntjs-grunt-contrib-sass-png-https-david-dm-org-gruntjs-grunt-contrib-sass-">
+    <a href="https://github.com/gruntjs/grunt-contrib-sass">
+        grunt-contrib-sass
+    </a>
+    <a href="http://travis-ci.org/gruntjs/grunt-contrib-sass">
+        <img src="https://secure.travis-ci.org/gruntjs/grunt-contrib-sass.png?branch=master"
+             alt="Build Status">
+    </a>
+    <a href="https://david-dm.org/gruntjs/grunt-contrib-sass">
+        <img src="https://david-dm.org/gruntjs/grunt-contrib-sass.png" alt="Dependency Status">
+    </a>
+</h4>
+<blockquote>
+    <p>
+        Compile Sass to CSS
+    </p>
+</blockquote>
+<h4 id="-grunt-contrib-stylus-https-github-com-gruntjs-grunt-contrib-stylus-build-status-https-secure-travis-ci-org-gruntjs-grunt-contrib-stylus-png-branch-master-http-travis-ci-org-gruntjs-grunt-contrib-stylus-dependency-status-https-david-dm-org-gruntjs-grunt-contrib-stylus-png-https-david-dm-org-gruntjs-grunt-contrib-stylus-">
+    <a href="https://github.com/gruntjs/grunt-contrib-stylus">
+        grunt-contrib-stylus
+    </a>
+    <a href="http://travis-ci.org/gruntjs/grunt-contrib-stylus">
+        <img src="https://secure.travis-ci.org/gruntjs/grunt-contrib-stylus.png?branch=master"
+             alt="Build Status">
+    </a>
+    <a href="https://david-dm.org/gruntjs/grunt-contrib-stylus">
+        <img src="https://david-dm.org/gruntjs/grunt-contrib-stylus.png" alt="Dependency Status">
+    </a>
+</h4>
+<blockquote>
+    <p>
+        Compile Stylus files to CSS.
+    </p>
+</blockquote>
+<h4 id="-grunt-contrib-uglify-https-github-com-gruntjs-grunt-contrib-uglify-build-status-https-secure-travis-ci-org-gruntjs-grunt-contrib-uglify-png-branch-master-http-travis-ci-org-gruntjs-grunt-contrib-uglify-dependency-status-https-david-dm-org-gruntjs-grunt-contrib-uglify-png-https-david-dm-org-gruntjs-grunt-contrib-uglify-">
+    <a href="https://github.com/gruntjs/grunt-contrib-uglify">
+        grunt-contrib-uglify
+    </a>
+    <a href="http://travis-ci.org/gruntjs/grunt-contrib-uglify">
+        <img src="https://secure.travis-ci.org/gruntjs/grunt-contrib-uglify.png?branch=master"
+             alt="Build Status">
+    </a>
+    <a href="https://david-dm.org/gruntjs/grunt-contrib-uglify">
+        <img src="https://david-dm.org/gruntjs/grunt-contrib-uglify.png" alt="Dependency Status">
+    </a>
+</h4>
+<blockquote>
+    <p>
+        Minify files with UglifyJS.
+    </p>
+</blockquote>
+<h4 id="-grunt-contrib-watch-https-github-com-gruntjs-grunt-contrib-watch-build-status-https-secure-travis-ci-org-gruntjs-grunt-contrib-watch-png-branch-master-http-travis-ci-org-gruntjs-grunt-contrib-watch-dependency-status-https-david-dm-org-gruntjs-grunt-contrib-watch-png-https-david-dm-org-gruntjs-grunt-contrib-watch-">
+    <a href="https://github.com/gruntjs/grunt-contrib-watch">
+        grunt-contrib-watch
+    </a>
+    <a href="http://travis-ci.org/gruntjs/grunt-contrib-watch">
+        <img src="https://secure.travis-ci.org/gruntjs/grunt-contrib-watch.png?branch=master"
+             alt="Build Status">
+    </a>
+    <a href="https://david-dm.org/gruntjs/grunt-contrib-watch">
+        <img src="https://david-dm.org/gruntjs/grunt-contrib-watch.png" alt="Dependency Status">
+    </a>
+</h4>
+<blockquote>
+    <p>
+        Run predefined tasks whenever watched file patterns are added, changed
+        or deleted.
+    </p>
+</blockquote>
+<h4 id="-grunt-contrib-yuidoc-https-github-com-gruntjs-grunt-contrib-yuidoc-build-status-https-secure-travis-ci-org-gruntjs-grunt-contrib-yuidoc-png-branch-master-http-travis-ci-org-gruntjs-grunt-contrib-yuidoc-dependency-status-https-david-dm-org-gruntjs-grunt-contrib-yuidoc-png-https-david-dm-org-gruntjs-grunt-contrib-yuidoc-">
+    <a href="https://github.com/gruntjs/grunt-contrib-yuidoc">
+        grunt-contrib-yuidoc
+    </a>
+    <a href="http://travis-ci.org/gruntjs/grunt-contrib-yuidoc">
+        <img src="https://secure.travis-ci.org/gruntjs/grunt-contrib-yuidoc.png?branch=master"
+             alt="Build Status">
+    </a>
+    <a href="https://david-dm.org/gruntjs/grunt-contrib-yuidoc">
+        <img src="https://david-dm.org/gruntjs/grunt-contrib-yuidoc.png" alt="Dependency Status">
+    </a>
+</h4>
+<blockquote>
+    <p>
+        Compile YUIDoc Documentation.
+    </p>
+</blockquote>
+<h4 id="-grunt-contrib-symlink-https-github-com-gruntjs-grunt-contrib-symlink-build-status-https-secure-travis-ci-org-gruntjs-grunt-contrib-symlink-png-branch-master-http-travis-ci-org-gruntjs-grunt-contrib-symlink-dependency-status-https-david-dm-org-gruntjs-grunt-contrib-symlink-png-https-david-dm-org-gruntjs-grunt-contrib-symlink-">
+    <a href="https://github.com/gruntjs/grunt-contrib-symlink">
+        grunt-contrib-symlink
+    </a>
+    <a href="http://travis-ci.org/gruntjs/grunt-contrib-symlink">
+        <img src="https://secure.travis-ci.org/gruntjs/grunt-contrib-symlink.png?branch=master"
+             alt="Build Status">
+    </a>
+    <a href="https://david-dm.org/gruntjs/grunt-contrib-symlink">
+        <img src="https://david-dm.org/gruntjs/grunt-contrib-symlink.png" alt="Dependency Status">
+    </a>
+</h4>
+</section></p>
+<h3>参考链接</h3>
+<ol>
+    <li><a href="http://javascript.ruanyifeng.com/tool/grunt.html" target="_blank">http://javascript.ruanyifeng.com/tool/grunt.html</a></li>
+    <li><a href="http://blog.csdn.net/lihongxun945/article/details/8958063" target="_blank">http://blog.csdn.net/lihongxun945/article/details/8958063</a></li>
+</ol>
 
 </body>
 </html>

@@ -18,7 +18,7 @@ CommonJS规范，针对模块的同步加载，主要用于服务器端，即nod
 
 AMD使用了define方法，用来定义一个模块并导出对象。使用AMD，我们可以引用任何依赖。
 
-```
+<pre>
 define(['alpha'], function (alpha) {
   return {
     verb: function () {
@@ -26,30 +26,30 @@ define(['alpha'], function (alpha) {
     }
   };
 });
-```
+</pre>
 
 
 ### CommonJS
 
 NodeJS使用了CommonJS，通过一个esports对象或module.exports来定义一个模块的内容
-```
+<pre>
 // someModule.js
 exports.someModule = function () {
   return "foo";
 };
-```
+</pre>
 
 按照CommonJS的描述，使用require方法来引用
-```
+<pre>
 // do something with `myModule`
 var myModule = require('someModule');
-```
+</pre>
 
 
 ### 统一模块定义(UMD)
 通过if else来判断当前哪个方案可用，如果支持AMD或者CommonJS，那就可以直接使用它，这个解决方案被称为UMD。
 
-```
+<pre>
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     define(['b'], factory);
@@ -63,18 +63,18 @@ var myModule = require('someModule');
   return {};
 });
 
-```
+</pre>
 
 ### ES6模块
 JS库已经影响了原生JS语言了，比如类管理。下一代JS语言ES6会支持import和export。
-```
+<pre>
 /// myModule.js
 function myModule () {
   // module content
 }
 export myModule;
-```
+</pre>
 
-```
+<pre>
 import {myModule} from 'myModule';
-```
+</pre>
