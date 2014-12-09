@@ -2,7 +2,7 @@
  http://www.html-js.com/article/2126 
  https://github.com/jnotnull/JavaScript-Sturcture/wiki/%E6%A8%A1%E5%9D%97%E5%8C%96%EF%BC%8C%E9%80%9A%E5%BE%80%E6%9C%AA%E6%9D%A5JavaScript%E5%BA%93%E4%B9%8B%E8%B7%AF
 -->
-
+<link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
 ## 依赖管理：AMD和CommonJS 
 > 模块的概念并不新颖，我们经常使用他们。你可能知道JS可不仅仅只用于浏览器端，它可以运行于服务端甚至是TV。
 
@@ -50,6 +50,7 @@ var myModule = require('someModule');
 通过if else来判断当前哪个方案可用，如果支持AMD或者CommonJS，那就可以直接使用它，这个解决方案被称为UMD。
 
 <pre>
+<code>
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     define(['b'], factory);
@@ -62,19 +63,21 @@ var myModule = require('someModule');
   'use strict';
   return {};
 });
-
+</code>
 </pre>
 
 ### ES6模块
 JS库已经影响了原生JS语言了，比如类管理。下一代JS语言ES6会支持import和export。
-<pre>
+```js
 /// myModule.js
 function myModule () {
   // module content
 }
 export myModule;
-</pre>
+```
 
 <pre>
 import {myModule} from 'myModule';
 </pre>
+<script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
+<script >hljs.initHighlightingOnLoad();</script>

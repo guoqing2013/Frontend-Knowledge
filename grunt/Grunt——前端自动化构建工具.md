@@ -5,7 +5,7 @@ http://blog.csdn.net/lihongxun945/article/details/8958063
 
 http://tgideas.qq.com/webplat/info/news_version3/804/808/811/m579/201307/216460.shtml
 -->
-
+<link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">  
 # Grunt 前端自动化构建工具
 - - - 
 中文介绍网址：[http://www.gruntjs.net/](http://www.gruntjs.net/)  
@@ -587,7 +587,8 @@ jshint（检查语法错误）、concat（合并文件）、uglify（压缩代�
 
 
 
-
+<script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>  
+<script >hljs.initHighlightingOnLoad();</script> 
 
 
 
