@@ -23,7 +23,7 @@ Grunt是一个自动任务运行器，会按照预先设定的顺序自动运行
 1. **paskage.json** 此文件被npm用于存储项目的元数据，以便将此项目发布为npm模块。你可以在此文件中列出项目以来的grunt和grunt插件，置于devDependencies配置段内。  
 2. **Gruntfile**: Gruntfile.js是Grunt的配置文件，用来配置或定义任务（task）并加载Grunt插件的。  
 *Grunt项目的结构*：
-![Grunt项目的结构](http://guoqing2013.3vzhuji.com/markdown/grunt/pic1.png)
+![Grunt项目的结构](http://guoqing2013.free3v.net/markdown/grunt/pic1.png)
 
 ### 创建package.json文件的方式
  * 大部分 [grunt-init](http://gruntjs.com/project-scaffolding)  模版都会自动创建特定于项目的package.json文件。
