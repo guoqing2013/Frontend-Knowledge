@@ -33,16 +33,20 @@ define(['alpha'], function (alpha) {
 
 NodeJS使用了CommonJS，通过一个esports对象或module.exports来定义一个模块的内容
 <pre>
+<code>
 // someModule.js
 exports.someModule = function () {
   return "foo";
 };
+</code>
 </pre>
 
 按照CommonJS的描述，使用require方法来引用
 <pre>
+<code>
 // do something with `myModule`
 var myModule = require('someModule');
+</code>
 </pre>
 
 
