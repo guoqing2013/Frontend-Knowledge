@@ -18,7 +18,7 @@ CommonJS规范，针对模块的同步加载，主要用于服务器端，即nod
 
 AMD使用了define方法，用来定义一个模块并导出对象。使用AMD，我们可以引用任何依赖。
 
-<pre>
+```js
 define(['alpha'], function (alpha) {
   return {
     verb: function () {
@@ -26,7 +26,7 @@ define(['alpha'], function (alpha) {
     }
   };
 });
-</pre>
+```
 
 
 ### CommonJS
@@ -49,8 +49,7 @@ var myModule = require('someModule');
 ### 统一模块定义(UMD)
 通过if else来判断当前哪个方案可用，如果支持AMD或者CommonJS，那就可以直接使用它，这个解决方案被称为UMD。
 
-<pre>
-<code>
+```js
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     define(['b'], factory);
@@ -63,8 +62,7 @@ var myModule = require('someModule');
   'use strict';
   return {};
 });
-</code>
-</pre>
+```
 
 ### ES6模块
 JS库已经影响了原生JS语言了，比如类管理。下一代JS语言ES6会支持import和export。
@@ -76,9 +74,9 @@ function myModule () {
 export myModule;
 ```
 
-<pre>
+```js
 import {myModule} from 'myModule';
-</pre>
+```
 
 
 <script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
