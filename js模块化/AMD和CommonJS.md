@@ -32,22 +32,18 @@ define(['alpha'], function (alpha) {
 ### CommonJS
 
 NodeJS使用了CommonJS，通过一个esports对象或module.exports来定义一个模块的内容
-<pre>
-<code>
+```js
 // someModule.js
 exports.someModule = function () {
   return "foo";
 };
-</code>
-</pre>
+``` 
 
 按照CommonJS的描述，使用require方法来引用
-<pre>
-<code>
+```js
 // do something with `myModule`
 var myModule = require('someModule');
-</code>
-</pre>
+``` 
 
 
 ### 统一模块定义(UMD)
@@ -83,5 +79,7 @@ export myModule;
 <pre>
 import {myModule} from 'myModule';
 </pre>
+
+
 <script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
 <script >hljs.initHighlightingOnLoad();</script>
