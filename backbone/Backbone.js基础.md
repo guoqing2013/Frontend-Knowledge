@@ -7,8 +7,11 @@
 
 
  
-# Backbone.js教程
+# Backbone.js教程 
 - - - 
+Backbone用于创建 MVC 类应用程序。  
+模型-视图-控制器 (MVC) 是一个常见模式，可用于服务器端开发以生成有组织以及易维护的代码。  
+MVC支持将数据（比如通常用于Ajax交互的JSON对象）从表示层或从页面的文档对象模型（DOM）中分离出来，也可适用于客户端开发。 
 ## 一、Model
 <pre>
 var Person = Backbone.Model.extend({
