@@ -597,7 +597,8 @@ myAlbum.add(song4); //添加一条数据
     Backbone.history.start();  //监视Hash片段中的任何变更
 </pre>
 
-
+当实例化路由器时，会生成 Backbone.history 对象；它将自动引用 Backbone.History 函数。
+Backbone.History 负责匹配路由和 router 对象中定义的活动。start() 方法触发后，将创建 Backbone.history 的 fragment 属性。它包含散列片段的值。该序列在根据状态次序管理浏览器历史方面十分有用。用户如果想要返回前一状态，单击浏览器的返回按钮。
 
 ### 2. 动态路由
 :params  匹配斜杠之间的任何URL内容  
