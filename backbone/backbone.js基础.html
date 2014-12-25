@@ -1,295 +1,296 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-<title>Backbone.js教程</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<style type="text/css">
-/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
-/* Author: Nicolas Hery - http://nicolashery.com */
-/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
-/* Source: https://github.com/nicolahery/markdownpad-github */
+    <title>Backbone.js基础</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css">
+        /* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+        /* Author: Nicolas Hery - http://nicolashery.com */
+        /* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+        /* Source: https://github.com/nicolahery/markdownpad-github */
 
-/* RESET
-=============================================================================*/
+        /* RESET
+        =============================================================================*/
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
+        html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
 
-/* BODY
-=============================================================================*/
+        /* BODY
+        =============================================================================*/
 
-body {
-  font-family: Helvetica, arial, freesans, clean, sans-serif;
-  font-size: 14px;
-  line-height: 1.6;
-  color: #333;
-  background-color: #fff;
-  padding: 20px;
-  max-width: 960px;
-  margin: 0 auto;
-}
+        body {
+            font-family: Helvetica, arial, freesans, clean, sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            padding: 20px;
+            max-width: 960px;
+            margin: 0 auto;
+        }
 
-body>*:first-child {
-  margin-top: 0 !important;
-}
+        body>*:first-child {
+            margin-top: 0 !important;
+        }
 
-body>*:last-child {
-  margin-bottom: 0 !important;
-}
+        body>*:last-child {
+            margin-bottom: 0 !important;
+        }
 
-/* BLOCKS
-=============================================================================*/
+        /* BLOCKS
+        =============================================================================*/
 
-p, blockquote, ul, ol, dl, table, pre {
-  margin: 15px 0;
-}
+        p, blockquote, ul, ol, dl, table, pre {
+            margin: 15px 0;
+        }
 
-/* HEADERS
-=============================================================================*/
+        /* HEADERS
+        =============================================================================*/
 
-h1, h2, h3, h4, h5, h6 {
-  margin: 20px 0 10px;
-  padding: 0;
-  font-weight: bold;
-  -webkit-font-smoothing: antialiased;
-}
+        h1, h2, h3, h4, h5, h6 {
+            margin: 20px 0 10px;
+            padding: 0;
+            font-weight: bold;
+            -webkit-font-smoothing: antialiased;
+        }
 
-h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
-  font-size: inherit;
-}
+        h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+            font-size: inherit;
+        }
 
-h1 {
-  font-size: 28px;
-  color: #000;
-}
+        h1 {
+            font-size: 28px;
+            color: #000;
+        }
 
-h2 {
-  font-size: 24px;
-  border-bottom: 1px solid #ccc;
-  color: #000;
-}
+        h2 {
+            font-size: 24px;
+            border-bottom: 1px solid #ccc;
+            color: #000;
+        }
 
-h3 {
-  font-size: 18px;
-}
+        h3 {
+            font-size: 18px;
+        }
 
-h4 {
-  font-size: 16px;
-}
+        h4 {
+            font-size: 16px;
+        }
 
-h5 {
-  font-size: 14px;
-}
+        h5 {
+            font-size: 14px;
+        }
 
-h6 {
-  color: #777;
-  font-size: 14px;
-}
+        h6 {
+            color: #777;
+            font-size: 14px;
+        }
 
-body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
-  margin-top: 0;
-  padding-top: 0;
-}
+        body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+            margin-top: 0;
+            padding-top: 0;
+        }
 
-a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
-  margin-top: 0;
-  padding-top: 0;
-}
+        a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+            margin-top: 0;
+            padding-top: 0;
+        }
 
-h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
-  margin-top: 10px;
-}
+        h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+            margin-top: 10px;
+        }
 
-/* LINKS
-=============================================================================*/
+        /* LINKS
+        =============================================================================*/
 
-a {
-  color: #4183C4;
-  text-decoration: none;
-}
+        a {
+            color: #4183C4;
+            text-decoration: none;
+        }
 
-a:hover {
-  text-decoration: underline;
-}
+        a:hover {
+            text-decoration: underline;
+        }
 
-/* LISTS
-=============================================================================*/
+        /* LISTS
+        =============================================================================*/
 
-ul, ol {
-  padding-left: 30px;
-}
+        ul, ol {
+            padding-left: 30px;
+        }
 
-ul li > :first-child, 
-ol li > :first-child, 
-ul li ul:first-of-type, 
-ol li ol:first-of-type, 
-ul li ol:first-of-type, 
-ol li ul:first-of-type {
-  margin-top: 0px;
-}
+        ul li > :first-child,
+        ol li > :first-child,
+        ul li ul:first-of-type,
+        ol li ol:first-of-type,
+        ul li ol:first-of-type,
+        ol li ul:first-of-type {
+            margin-top: 0px;
+        }
 
-ul ul, ul ol, ol ol, ol ul {
-  margin-bottom: 0;
-}
+        ul ul, ul ol, ol ol, ol ul {
+            margin-bottom: 0;
+        }
 
-dl {
-  padding: 0;
-}
+        dl {
+            padding: 0;
+        }
 
-dl dt {
-  font-size: 14px;
-  font-weight: bold;
-  font-style: italic;
-  padding: 0;
-  margin: 15px 0 5px;
-}
+        dl dt {
+            font-size: 14px;
+            font-weight: bold;
+            font-style: italic;
+            padding: 0;
+            margin: 15px 0 5px;
+        }
 
-dl dt:first-child {
-  padding: 0;
-}
+        dl dt:first-child {
+            padding: 0;
+        }
 
-dl dt>:first-child {
-  margin-top: 0px;
-}
+        dl dt>:first-child {
+            margin-top: 0px;
+        }
 
-dl dt>:last-child {
-  margin-bottom: 0px;
-}
+        dl dt>:last-child {
+            margin-bottom: 0px;
+        }
 
-dl dd {
-  margin: 0 0 15px;
-  padding: 0 15px;
-}
+        dl dd {
+            margin: 0 0 15px;
+            padding: 0 15px;
+        }
 
-dl dd>:first-child {
-  margin-top: 0px;
-}
+        dl dd>:first-child {
+            margin-top: 0px;
+        }
 
-dl dd>:last-child {
-  margin-bottom: 0px;
-}
+        dl dd>:last-child {
+            margin-bottom: 0px;
+        }
 
-/* CODE
-=============================================================================*/
+        /* CODE
+        =============================================================================*/
 
-pre, code, tt {
-  font-size: 12px;
-  font-family: Consolas, "Liberation Mono", Courier, monospace;
-}
+        pre, code, tt {
+            font-size: 12px;
+            font-family: Consolas, "Liberation Mono", Courier, monospace;
+        }
 
-code, tt {
-  margin: 0 0px;
-  padding: 0px 0px;
-  white-space: nowrap;
-  border: 1px solid #eaeaea;
-  background-color: #f8f8f8;
-  border-radius: 3px;
-}
+        code, tt {
+            margin: 0 0px;
+            padding: 0px 0px;
+            white-space: nowrap;
+            border: 1px solid #eaeaea;
+            background-color: #f8f8f8;
+            border-radius: 3px;
+        }
 
-pre>code {
-  margin: 0;
-  padding: 0;
-  white-space: pre;
-  border: none;
-  background: transparent;
-}
+        pre>code {
+            margin: 0;
+            padding: 0;
+            white-space: pre;
+            border: none;
+            background: transparent;
+        }
 
-pre {
-  background-color: #f8f8f8;
-  border: 1px solid #ccc;
-  font-size: 13px;
-  line-height: 19px;
-  overflow: auto;
-  padding: 6px 10px;
-  border-radius: 3px;
-}
+        pre {
+            background-color: #f8f8f8;
+            border: 1px solid #ccc;
+            font-size: 13px;
+            line-height: 19px;
+            overflow: auto;
+            padding: 6px 10px;
+            border-radius: 3px;
+        }
 
-pre code, pre tt {
-  background-color: transparent;
-  border: none;
-}
+        pre code, pre tt {
+            background-color: transparent;
+            border: none;
+        }
 
-kbd {
-    -moz-border-bottom-colors: none;
-    -moz-border-left-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-top-colors: none;
-    background-color: #DDDDDD;
-    background-image: linear-gradient(#F1F1F1, #DDDDDD);
-    background-repeat: repeat-x;
-    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
-    border-image: none;
-    border-radius: 2px 2px 2px 2px;
-    border-style: solid;
-    border-width: 1px;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    line-height: 10px;
-    padding: 1px 4px;
-}
+        kbd {
+            -moz-border-bottom-colors: none;
+            -moz-border-left-colors: none;
+            -moz-border-right-colors: none;
+            -moz-border-top-colors: none;
+            background-color: #DDDDDD;
+            background-image: linear-gradient(#F1F1F1, #DDDDDD);
+            background-repeat: repeat-x;
+            border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+            border-image: none;
+            border-radius: 2px 2px 2px 2px;
+            border-style: solid;
+            border-width: 1px;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+            line-height: 10px;
+            padding: 1px 4px;
+        }
 
-/* QUOTES
-=============================================================================*/
+        /* QUOTES
+        =============================================================================*/
 
-blockquote {
-  border-left: 4px solid #DDD;
-  padding: 0 15px;
-  color: #777;
-}
+        blockquote {
+            border-left: 4px solid #DDD;
+            padding: 0 15px;
+            color: #777;
+        }
 
-blockquote>:first-child {
-  margin-top: 0px;
-}
+        blockquote>:first-child {
+            margin-top: 0px;
+        }
 
-blockquote>:last-child {
-  margin-bottom: 0px;
-}
+        blockquote>:last-child {
+            margin-bottom: 0px;
+        }
 
-/* HORIZONTAL RULES
-=============================================================================*/
+        /* HORIZONTAL RULES
+        =============================================================================*/
 
-hr {
-  clear: both;
-  margin: 15px 0;
-  height: 0px;
-  overflow: hidden;
-  border: none;
-  background: transparent;
-  border-bottom: 4px solid #ddd;
-  padding: 0;
-}
+        hr {
+            clear: both;
+            margin: 15px 0;
+            height: 0px;
+            overflow: hidden;
+            border: none;
+            background: transparent;
+            border-bottom: 4px solid #ddd;
+            padding: 0;
+        }
 
-/* TABLES
-=============================================================================*/
+        /* TABLES
+        =============================================================================*/
 
-table th {
-  font-weight: bold;
-}
+        table th {
+            font-weight: bold;
+        }
 
-table th, table td {
-  border: 1px solid #ccc;
-  padding: 6px 13px;
-}
+        table th, table td {
+            border: 1px solid #ccc;
+            padding: 6px 13px;
+        }
 
-table tr {
-  border-top: 1px solid #ccc;
-  background-color: #fff;
-}
+        table tr {
+            border-top: 1px solid #ccc;
+            background-color: #fff;
+        }
 
-table tr:nth-child(2n) {
-  background-color: #f8f8f8;
-}
+        table tr:nth-child(2n) {
+            background-color: #f8f8f8;
+        }
 
-/* IMAGES
-=============================================================================*/
+        /* IMAGES
+        =============================================================================*/
 
-img {
-  max-width: 100%
-}
-</style>
-<base href='file:\\\F:\Frontend-Knowledge\backbone\'/>
+        img {
+            max-width: 100%
+        }
+    </style>
+    <base href='file:\\\F:\Frontend-Knowledge\backbone\'/>
 </head>
 <body>
 <!--
@@ -298,6 +299,9 @@ img {
 <p><link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet"> </p>
 <h1>Backbone.js教程</h1>
 <hr />
+<p>Backbone用于创建 MVC 类应用程序。<br />
+    模型-视图-控制器 (MVC) 是一个常见模式，可用于服务器端开发以生成有组织以及易维护的代码。<br />
+    MVC支持将数据（比如通常用于Ajax交互的JSON对象）从表示层或从页面的文档对象模型（DOM）中分离出来，也可适用于客户端开发。 </p>
 <h2>一、Model</h2>
 <pre>
 var Person = Backbone.Model.extend({
@@ -373,7 +377,7 @@ var children2 = person2.get('children'); //[]
 </pre>
 <h3>5. 监听model的属性改变</h3>
 <p>通过 model.bind(event, callback)方法绑定change事件来监听属性改变。
-this.bind(&quot;change&quot;, function(){}); 监听所有的属性</p>
+    this.bind(&quot;change&quot;, function(){}); 监听所有的属性</p>
 <pre>
 var Person = Backbone.Model.extend({
     defaults: {
@@ -424,12 +428,16 @@ person.set({age: -100}, {validate: true}); //返回false
 console.log(person.toJSON()); //{name: "John Doe", age: 30, occupation: "worker"}
 </pre>
 <p>person.toJSON();  返回对当前属性的copy<br />
-person.attributes 返回属性的直接引用，对其的任何改变就等于实例属性本身的改变，建议使用set()来编辑模型的属性并使用backbone的监听器</p>
+    person.attributes 返回属性的直接引用，对其的任何改变就等于实例属性本身的改变，建议使用set()来编辑模型的属性并使用backbone的监听器</p>
 <h3>7. 与服务器交互</h3>
-<p>模型被用来呈现来自服务器的数据以及将在你在模型上的操作转化为RESTful操作。  </p>
-<p>一个模型的id属性指明了怎样在数据库汇总找到它，并且通常映射到surrogate key。  </p>
-<p>在这里我们假设我们有一张叫做Users的mysql表格，它有id，name，email三列。  </p>
-<p>服务器已经实现了一个RESTful URL /user，我们可以和它进行交互。  </p>
+<p>模型被用来呈现来自服务器的数据以及将在你在模型上的操作转化为RESTful操作。
+</p>
+<p>一个模型的id属性指明了怎样在数据库汇总找到它，并且通常映射到surrogate key。
+</p>
+<p>在这里我们假设我们有一张叫做Users的mysql表格，它有id，name，email三列。
+</p>
+<p>服务器已经实现了一个RESTful URL /user，我们可以和它进行交互。
+</p>
 <p>我们的模型定义如下所示： </p>
 <pre>
 var UserModel = Backbone.Model.extend({
@@ -465,13 +473,16 @@ user.save(userDetails, {
     }
 });
 </pre>
-<p>我们的表格现在应该有这些值：  </p>
+<p>我们的表格现在应该有这些值：
+</p>
 <pre>
 1,'Thomas','thomasalwydavis@gmail.com' 
 </pre>
 <h3>9. 获取一个模型</h3>
-<p>既然我们已经存储了一个新的user模型，我们可以从服务器获取它。我们知道上面例子中的id是1。  </p>
-<p>如果我们实例化一个id是1的模型，Backbone.js将就自动加上’/id’从urlRoot发送一个get请求。（符合RESTful的传统）  </p>
+<p>既然我们已经存储了一个新的user模型，我们可以从服务器获取它。我们知道上面例子中的id是1。
+</p>
+<p>如果我们实例化一个id是1的模型，Backbone.js将就自动加上’/id’从urlRoot发送一个get请求。（符合RESTful的传统）
+</p>
 <pre>
 //在这里我们设置了模型的id   
 var user = new UserModel({id: 1});
@@ -529,64 +540,64 @@ user.destory({
 <p>&quot;el&quot;属性引用DOM对象，每个view都会有个&quot;el&quot;属性，如果没有定义的话它会默认创建一个空的div元素。</p>
 <pre>
 <xmp>
-<ul id="personList"></ul>
-<script>
-var Person = Backbone.Model.extend({
-    defaults: {
-        name: 'John Doe',
-        age: 30,
-        occupation: 'worker'
-    }
-});
+    <ul id="personList"></ul>
+    <script>
+        var Person = Backbone.Model.extend({
+            defaults: {
+                name: 'John Doe',
+                age: 30,
+                occupation: 'worker'
+            }
+        });
 
-var PersonView = Backbone.View.extend({
-    tagName: 'li',
-    className: 'person',
-    initialize: function() {
-        this.render();
-    },
-    render: function() {
-        this.$el.html( this.model.get('name') + '(' + this.model.get('age') + ') - ' + this.model.get('occupation') );
-    }
-});
+        var PersonView = Backbone.View.extend({
+            tagName: 'li',
+            className: 'person',
+            initialize: function() {
+                this.render();
+            },
+            render: function() {
+                this.$el.html( this.model.get('name') + '(' + this.model.get('age') + ') - ' + this.model.get('occupation') );
+            }
+        });
 
-var person = new Person();
-var personView = new PersonView({model: person});
-$("#personList").append(personView.el);
-</script>
+        var person = new Person();
+        var personView = new PersonView({model: person});
+        $("#personList").append(personView.el);
+    </script>
 </xmp>
 </pre>
 <h3>2. 模板加载</h3>
 <pre>
 <xmp>
-<ul id="personList"></ul>
-<script id="personTemplate" type="text/template">
-   <strong><%= name %></strong> (<%= age %>) - <%= occupation %> 
-</script>
+    <ul id="personList"></ul>
+    <script id="personTemplate" type="text/template">
+        <strong><%= name %></strong> (<%= age %>) - <%= occupation %>
+    </script>
 
-var Person = Backbone.Model.extend({
+    var Person = Backbone.Model.extend({
     defaults: {
-        name: 'John Doe',
-        age: 30,
-        occupation: 'worker'
+    name: 'John Doe',
+    age: 30,
+    occupation: 'worker'
     }
-});
+    });
 
-var PersonView = Backbone.View.extend({
+    var PersonView = Backbone.View.extend({
     tagName: 'li',
     template: _.template($('#personTemplate').html()),
     //template: _.template("<strong><%= name %></strong> (<%= age %>) - <%= occupation %>"), //Inline Templates
     initialize: function() {
-        this.render();
+    this.render();
     },
-    render: function() {     
-        this.$el.html(this.template(this.model.toJSON()));
+    render: function() {
+    this.$el.html(this.template(this.model.toJSON()));
     }
-});
+    });
 
-var person = new Person();
-var personView = new PersonView({ model: person });
-$("#personList").append(personView.el);
+    var person = new Person();
+    var personView = new PersonView({ model: person });
+    $("#personList").append(personView.el);
 
 </xmp>
 </pre>
@@ -594,130 +605,130 @@ $("#personList").append(personView.el);
 <pre>
 <xmp>
 
-<h1>My Tasks</h1>
-<form id="addTask">
-    <input type="text" placeholder="Your new task" />
-    <input type="submit" value="Add Task" />
-</form>
-<div class="tasks">
-    <script id="taskTemplate" type="text/template">
-        <span><%= title %></span> 
-        <button class="edit">Edit</button>
-        <button class="delete">Delete</button>
-    </script>
-</div>
+    <h1>My Tasks</h1>
+    <form id="addTask">
+        <input type="text" placeholder="Your new task" />
+        <input type="submit" value="Add Task" />
+    </form>
+    <div class="tasks">
+        <script id="taskTemplate" type="text/template">
+            <span><%= title %></span>
+            <button class="edit">Edit</button>
+            <button class="delete">Delete</button>
+        </script>
+    </div>
 
 
-(function() {
+    (function() {
     window.App = {
-        Models: {},
-        Collections: {},
-        Views: {}
+    Models: {},
+    Collections: {},
+    Views: {}
     };
 
     window.template = function(id) {
-        return _.template($('#' + id).html());
+    return _.template($('#' + id).html());
     };
 
     App.Models.Task = Backbone.Model.extend({
-        validate: function(attrs) {
-            if( !$.trim(attrs.title) ) {
-                return 'A task requires a valid title.' ;
-            }
-        }
+    validate: function(attrs) {
+    if( !$.trim(attrs.title) ) {
+    return 'A task requires a valid title.' ;
+    }
+    }
     });
 
     App.Collections.Tasks = Backbone.Collection.extend({
-        model: App.Models.Task
+    model: App.Models.Task
     });
 
     App.Views.Tasks = Backbone.View.extend({
-        tagName: 'ul',
-        initialize: function() {
-            this.collection.on('add', this.addOne, this);
-        },
-        render: function() {
-            this.collection.each(this.addOne, this);
-            return this;
-        },
-        addOne: function(task) {
-            var taskView = new App.Views.Task({ model: task });
-            this.$el.append(taskView.render().el)
-        }
+    tagName: 'ul',
+    initialize: function() {
+    this.collection.on('add', this.addOne, this);
+    },
+    render: function() {
+    this.collection.each(this.addOne, this);
+    return this;
+    },
+    addOne: function(task) {
+    var taskView = new App.Views.Task({ model: task });
+    this.$el.append(taskView.render().el)
+    }
     });
 
     App.Views.Task = Backbone.View.extend({
-        tagName: 'li',
+    tagName: 'li',
 
-        template: template('taskTemplate'),
+    template: template('taskTemplate'),
 
-        initialize: function() {
-            this.model.on('change', this.render, this);
-            this.model.on('destroy', this.remove, this);
-        },
+    initialize: function() {
+    this.model.on('change', this.render, this);
+    this.model.on('destroy', this.remove, this);
+    },
 
-        events: {
-            'click .edit': 'editTask',
-            'click .delete': 'destroy'
-        },
+    events: {
+    'click .edit': 'editTask',
+    'click .delete': 'destroy'
+    },
 
-        editTask: function() {
-            var newTaskTitle = prompt('What would you like to change the text to?', this.model.get('title'));
-            // if( !newTaskTitle ) { return };
-            this.model.set('title', newTaskTitle, {validate: true});
-        },
+    editTask: function() {
+    var newTaskTitle = prompt('What would you like to change the text to?', this.model.get('title'));
+    // if( !newTaskTitle ) { return };
+    this.model.set('title', newTaskTitle, {validate: true});
+    },
 
-        destroy: function() {
-            this.model.destroy();
-        },
+    destroy: function() {
+    this.model.destroy();
+    },
 
-        remove: function() {
-            this.$el.remove();
-        },
+    remove: function() {
+    this.$el.remove();
+    },
 
-        render: function() {
-            var template = this.template(this.model.toJSON());
-            this.$el.html(template);
-            return this;
-        }
+    render: function() {
+    var template = this.template(this.model.toJSON());
+    this.$el.html(template);
+    return this;
+    }
     });
 
     App.Views.AddTask = Backbone.View.extend({
-        el: '#addTask',
+    el: '#addTask',
 
-        events: {
-            'submit': 'submit'
-        },
-        
-        initialize: function() {
+    events: {
+    'submit': 'submit'
+    },
 
-        },
+    initialize: function() {
 
-        submit: function(e) {
-            e.preventDefault();
-            var newTaskTitle = $(e.currentTarget).find('input[type=text]').val();
-            var task = new App.Models.Task({ title: newTaskTitle });
-            console.log(task);
-            this.collection.add(task);
-        }
+    },
+
+    submit: function(e) {
+    e.preventDefault();
+    var newTaskTitle = $(e.currentTarget).find('input[type=text]').val();
+    var task = new App.Models.Task({ title: newTaskTitle });
+    console.log(task);
+    this.collection.add(task);
+    }
 
     });
 
 
 
     var tasksCollection = new App.Collections.Tasks([
-        {
-            title: 'Go to the store',
-            priority: 4
-        },
-        {
-            title: 'Go to the mall',
-            priority: 3
-        },
-        {
-            title: 'Get to work',
-            priority: 5
-        }
+    {
+    title: 'Go to the store',
+    priority: 4
+    },
+    {
+    title: 'Go to the mall',
+    priority: 3
+    },
+    {
+    title: 'Get to work',
+    priority: 5
+    }
     ]);
 
     var addTaskView = new App.Views.AddTask({collection: tasksCollection});
@@ -725,7 +736,7 @@ $("#personList").append(personView.el);
     var tasksView = new App.Views.Tasks({collection: tasksCollection});
 
     $('.tasks').html(tasksView.render().el);
-})();
+    })();
 
 </xmp>
 </pre>
@@ -814,12 +825,12 @@ myAlbum.add(song4); //添加一条数据
 
    //初始化路由器 
     var appRouter = new AppRouter;
-
     Backbone.history.start();
 </pre>
 <h3>2. 动态路由</h3>
 <p>:params  匹配斜杠之间的任何URL内容<br />
-*splats  匹配URL中的任何数字内容  </p>
+    *splats  匹配URL中的任何数字内容
+</p>
 <pre>
 var AppRouter = Backbone.Router.extend({
     routes: {
@@ -850,7 +861,7 @@ new AppRouter;
 Backbone.history.start();
 </pre>
 <p><script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script><br />
-<script >hljs.initHighlightingOnLoad();</script> </p>
+    <script >hljs.initHighlightingOnLoad();</script> </p>
 
 </body>
 </html>
