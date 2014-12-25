@@ -593,9 +593,8 @@ myAlbum.add(song4); //添加一条数据
         }
     });
 
-   //初始化路由器 
-    var appRouter = new AppRouter;
-    Backbone.history.start();
+    var appRouter = new AppRouter;  //初始化路由器
+    Backbone.history.start();  //监视Hash片段中的任何变更
 </pre>
 
 
