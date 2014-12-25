@@ -594,11 +594,14 @@ myAlbum.add(song4); //添加一条数据
     });
 
     var appRouter = new AppRouter;  //初始化路由器
-    Backbone.history.start();  //监视Hash片段中的任何变更
+    Backbone.history.start();  //监视散列片段中的任何变更
 </pre>
 
 当实例化路由器时，会生成 Backbone.history 对象；它将自动引用 Backbone.History 函数。
 Backbone.History 负责匹配路由和 router 对象中定义的活动。start() 方法触发后，将创建 Backbone.history 的 fragment 属性。它包含散列片段的值。该序列在根据状态次序管理浏览器历史方面十分有用。用户如果想要返回前一状态，单击浏览器的返回按钮。
+
+通过一个启用 HTML5 特性 pushState 的配置调用 start() 方法。
+对于那些支持 pushState 的浏览器，Backbone 将监视 popstate 事件以触发一个新状态。如果浏览器不能支持 HTML5 特性，那么 onhashchange 活动会被监视。如果浏览器不支持该事件，轮询技术将监视 URL 散列片段的任何更改。
 
 ### 2. 动态路由
 :params  匹配斜杠之间的任何URL内容  
