@@ -1,9 +1,10 @@
 
 <!--
-    http://toybuy360admin.gotoip4.com/?p=31
+    http://www.html-js.com/article/column/76
+    http://www.ibm.com/developerworks/cn/web/wa-backbonejs/
 -->
 
-<link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet"> 
+<link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
 
 
  
@@ -202,6 +203,10 @@ user.save(userDetails, {
     }
 });
 </pre>
+save() 函数将在后台委托给 Backbone.sync，这是负责发出 RESTful 请求的组件，默认使用 jQuery 函数 $.ajax()。  
+由于调用了 REST 风格架构，每个 Create、Read、Update 或 Delete (CRUD) 活动均会与各种不同类型的 HTTP 请求（POST、GET、PUT 和 DELETE）相关联。首先保存模型对象，使用一个 POST 请求，创建一个标识符 ID，其后，尝试发送对象到服务器，使用一个 PUT 请求。
+
+
 
 我们的表格现在应该有这些值：  
 <pre>
@@ -226,6 +231,22 @@ user.fetch({
     }
 });
 </pre>
+
+
+fetch()方法属于异步调用，因此，在等待服务器响应时，应用程序不会终止。在一些情况下，要操作来自服务器的原始数据，可以使用集合的parse()方法。
+<pre>
+App.Collections.Teams = Backbone.Collection.extend({
+    model: App.Models.Team,
+    parse: function(data) {
+        // 'data' contains the raw JSON object
+        console.log(data);
+    }
+});
+</pre>
+
+
+集合提供的另一个有趣的方法是 reset()，它允许将多个模型设置到一个集合中。reset() 方法可以非常方便地将数据引导到集合中，比如页面加载，来避免用户等待异步调用返回。
+
 
 
 
@@ -556,8 +577,9 @@ console.log(myAlbum.toJSON());
 console.log(myAlbum.at(0)); // song1
 
 var song4 = new Song({name: "Can't We Talk It Over In Bed", artist: "OMC"});
-myAlbum.add(song4); //添加一条数据
-
+// 使用 add()/remove() 方法可以将一个模型添加和移动到集合中
+myAlbum.add(song4);
+myAlbum.remove(song4);
 </pre>
 
 
