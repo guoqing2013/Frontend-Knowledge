@@ -1,3 +1,5 @@
+<!-- http://tech.pro/blog/1561/five-helpful-tips-when-using-requirejs-->
+
 ##  require.js的用法
 
 
