@@ -1,10 +1,13 @@
+<link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
+<script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
+<script >hljs.initHighlightingOnLoad();</script>
+
 
 <!--
     http://www.html-js.com/article/column/76
     http://www.ibm.com/developerworks/cn/web/wa-backbonejs/
 -->
 
-<link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
 
 
  
@@ -232,13 +235,13 @@ save() 函数将在后台委托给 Backbone.sync，这是负责发出 RESTful �
 
 fetch()方法属于异步调用，因此，在等待服务器响应时，应用程序不会终止。在一些情况下，要操作来自服务器的原始数据，可以使用集合的parse()方法。
 
-App.Collections.Teams = Backbone.Collection.extend({
-    model: App.Models.Team,
-    parse: function(data) {
-        // 'data' contains the raw JSON object
-        console.log(data);
-    }
-});
+    App.Collections.Teams = Backbone.Collection.extend({
+        model: App.Models.Team,
+        parse: function(data) {
+            // 'data' contains the raw JSON object
+            console.log(data);
+        }
+    });
 
 
 
@@ -250,23 +253,21 @@ App.Collections.Teams = Backbone.Collection.extend({
 ### 10. 更新一个模型
 既然我们的模型已经存在于服务器上，我们可以使用一个PUT请求来执行一个更新操作。我们将使用save API，它很智能，如果已经有一个id存在它将发送一个PUT请求而不是一个POST请求。
 
-//这里我们设置这个模型的'id'   
+    //这里我们设置这个模型的'id'
+    var user = new UserModel({
+        id: 1,
+        name: 'Thomas',
+        email: 'thomasalwydavis@gmail.com'
+    });
 
-var user = new UserModel({
-    id: 1,
-    name: 'Thomas',
-    email: 'thomasalwydavis@gmail.com'
-});
-
-//现在我们改变name并更新服务器
-//因为已经有一个'id'存在了，Backbone.js将会连同
-//{name: 'Davis',email: 'thomasalwydavis@gmail.com'} 一起触发PUT /user/1   
-
-user.save({name: 'Davis'},{
-    success: function(model){
-        alert(user.toJSON());
-    }
-});
+    //现在我们改变name并更新服务器
+    //因为已经有一个'id'存在了，Backbone.js将会连同
+    //{name: 'Davis',email: 'thomasalwydavis@gmail.com'} 一起触发PUT /user/1
+    user.save({name: 'Davis'},{
+        success: function(model){
+            alert(user.toJSON());
+        }
+    });
 
 
 
@@ -274,21 +275,20 @@ user.save({name: 'Davis'},{
 ### 11. 删除一个模型
 当一个模型拥有了一个id时我们知道它已经存在于服务器上了，因此如果我们想要从吴福气上将它移除我们可以调用destory。destory将触发DELETE /user/id(符合RESTful的传统)。
 
-//在这里我们设置一个模型的'id'   
+    //在这里我们设置一个模型的'id'
+    var user = new Usermodel({
+        id: 1,
+        name: 'Thomas',
+        email: 'thomasalwyndavis@gmail.com'
+    });
 
-var user = new Usermodel({
-    id: 1,
-    name: 'Thomas',
-    email: 'thomasalwyndavis@gmail.com'
-});   
-
-//因为已经存在'id'，Backbone.js将会触发
-//DELETE /user/1   
-user.destory({
-    success: function(){
-        alert('Destoryed');
-    }
-});
+    //因为已经存在'id'，Backbone.js将会触发
+    //DELETE /user/1
+    user.destory({
+        success: function(){
+            alert('Destoryed');
+        }
+    });
 
 
 
@@ -305,92 +305,98 @@ user.destory({
 ### 1. “el”属性
 "el"属性引用DOM对象，每个view都会有个"el"属性，如果没有定义的话它会默认创建一个空的div元素。
 
-<xmp>
-<ul id="personList"></ul>
-<script>
-var Person = Backbone.Model.extend({
-    defaults: {
-        name: 'John Doe',
-        age: 30,
-        occupation: 'worker'
-    }
-});
 
-var PersonView = Backbone.View.extend({
-    tagName: 'li',
-    className: 'person',
-    initialize: function() {
-        this.render();
-    },
-    render: function() {
-        this.$el.html( this.model.get('name') + '(' + this.model.get('age') + ') - ' + this.model.get('occupation') );
-    }
-});
+    <ul id="personList"></ul>
 
-var person = new Person();
-var personView = new PersonView({model: person});
-$("#personList").append(personView.el);
-</script>
-</xmp>
+　　　　
+
+    var Person = Backbone.Model.extend({
+        defaults: {
+            name: 'John Doe',
+            age: 30,
+            occupation: 'worker'
+        }
+    });
+
+    var PersonView = Backbone.View.extend({
+        tagName: 'li',
+        className: 'person',
+        initialize: function() {
+            this.render();
+        },
+        render: function() {
+            this.$el.html( this.model.get('name') + '(' + this.model.get('age') + ') - ' + this.model.get('occupation') );
+        }
+    });
+
+    var person = new Person();
+    var personView = new PersonView({model: person});
+    $("#personList").append(personView.el);
+
+
 
 
 
 ### 2. 模板加载
 
-<xmp>
-<ul id="personList"></ul>
-<script id="personTemplate" type="text/template">
-   <strong><%= name %></strong> (<%= age %>) - <%= occupation %> 
-</script>
+html
 
-var Person = Backbone.Model.extend({
-    defaults: {
-        name: 'John Doe',
-        age: 30,
-        occupation: 'worker'
-    }
-});
+    <ul id="personList"></ul>
+    <script id="personTemplate" type="text/template">
+       <strong><%= name %></strong> (<%= age %>) - <%= occupation %>
+    </script>
 
-var PersonView = Backbone.View.extend({
-    tagName: 'li',
-    template: _.template($('#personTemplate').html()),
-    //template: _.template("<strong><%= name %></strong> (<%= age %>) - <%= occupation %>"), //Inline Templates
-    initialize: function() {
-        this.render();
-    },
-    render: function() {     
-        this.$el.html(this.template(this.model.toJSON()));
-    }
-});
 
-var person = new Person();
-var personView = new PersonView({ model: person });
-$("#personList").append(personView.el);
+js
 
-</xmp>
+    var Person = Backbone.Model.extend({
+        defaults: {
+            name: 'John Doe',
+            age: 30,
+            occupation: 'worker'
+        }
+    });
+
+    var PersonView = Backbone.View.extend({
+        tagName: 'li',
+        template: _.template($('#personTemplate').html()),
+        //template: _.template("<strong><%= name %></strong> (<%= age %>) - <%= occupation %>"), //Inline Templates
+        initialize: function() {
+            this.render();
+        },
+        render: function() {
+            this.$el.html(this.template(this.model.toJSON()));
+        }
+    });
+
+    var person = new Person();
+    var personView = new PersonView({ model: person });
+    $("#personList").append(personView.el);
+
+
 
 
 
 
 ### 3. 事件监听
 
-<xmp>
+html
 
-<h1>My Tasks</h1>
-<form id="addTask">
-    <input type="text" placeholder="Your new task" />
-    <input type="submit" value="Add Task" />
-</form>
-<div class="tasks">
-    <script id="taskTemplate" type="text/template">
-        <span><%= title %></span> 
-        <button class="edit">Edit</button>
-        <button class="delete">Delete</button>
-    </script>
-</div>
+    <h1>My Tasks</h1>
+    <form id="addTask">
+        <input type="text" placeholder="Your new task" />
+        <input type="submit" value="Add Task" />
+    </form>
+    <div class="tasks">
+        <script id="taskTemplate" type="text/template">
+            <span><%= title %></span>
+            <button class="edit">Edit</button>
+            <button class="delete">Delete</button>
+        </script>
+    </div>
 
+js
 
-(function() {
     window.App = {
         Models: {},
         Collections: {},
@@ -470,7 +476,7 @@ $("#personList").append(personView.el);
         events: {
             'submit': 'submit'
         },
-        
+
         initialize: function() {
 
         },
@@ -507,9 +513,8 @@ $("#personList").append(personView.el);
     var tasksView = new App.Views.Tasks({collection: tasksCollection});
 
     $('.tasks').html(tasksView.render().el);
-})();
 
-</xmp>
+
 
 
 
@@ -537,46 +542,46 @@ Backbone中的集合简单来说就是一列有序的模型。它可以被使用
 
 下面是一个一般的模型/集合的例子：
 
-var Song = Backbone.Model.extend({
-    initialize: function() {
-        console.log('Music is the answer');
-    }
-});
+    var Song = Backbone.Model.extend({
+        initialize: function() {
+            console.log('Music is the answer');
+        }
+    });
 
-var Album = Backbone.Collection.extend({
-    model: Song
-});
+    var Album = Backbone.Collection.extend({
+        model: Song
+    });
 
 
 
 
 ### 2. 创建一个集合
 
-var Song = Backbone.Model.extend({
-    defaults: {
-        name: "Not specified",
-        artist: "Not specified"
-    }
-});
+    var Song = Backbone.Model.extend({
+        defaults: {
+            name: "Not specified",
+            artist: "Not specified"
+        }
+    });
 
-var Album = Backbone.Collection.extend({
-    model: Song
-});
+    var Album = Backbone.Collection.extend({
+        model: Song
+    });
 
-var song1 = new Song({name: "How Bizarre", artist: "OMC"});   
-var song2 = new Song({name: "Sexual Healing", artist:"Marvin Gaye"});  
-var song3 = new Song({name: "Talk It Over In Bed", artist: "OMC"});
+    var song1 = new Song({name: "How Bizarre", artist: "OMC"});
+    var song2 = new Song({name: "Sexual Healing", artist:"Marvin Gaye"});
+    var song3 = new Song({name: "Talk It Over In Bed", artist: "OMC"});
 
-var myAlbum = new Album([song1, song2, song3]);
-//var myAlbum = new Album([{name: "How Bizarre", artist: "OMC"}, {name: "Sexual Healing", artist:"Marvin Gaye"}, {name: "Talk It Over In Bed", artist: "OMC"}]); //or you can do this
-console.log(myAlbum.models);   // [song1,song2,song3]  
-console.log(myAlbum.toJSON());
-console.log(myAlbum.at(0)); // song1
+    var myAlbum = new Album([song1, song2, song3]);
+    //var myAlbum = new Album([{name: "How Bizarre", artist: "OMC"}, {name: "Sexual Healing", artist:"Marvin Gaye"}, {name: "Talk It Over In Bed", artist: "OMC"}]); //or you can do this
+    console.log(myAlbum.models);   // [song1,song2,song3]
+    console.log(myAlbum.toJSON());
+    console.log(myAlbum.at(0)); // song1
 
-var song4 = new Song({name: "Can't We Talk It Over In Bed", artist: "OMC"});
-// 使用 add()/remove() 方法可以将一个模型添加和移动到集合中
-myAlbum.add(song4);
-myAlbum.remove(song4);
+    var song4 = new Song({name: "Can't We Talk It Over In Bed", artist: "OMC"});
+    // 使用 add()/remove() 方法可以将一个模型添加和移动到集合中
+    myAlbum.add(song4);
+    myAlbum.remove(song4);
 
 
 
@@ -593,7 +598,7 @@ myAlbum.remove(song4);
         }
     });
 
-   //初始化路由器 
+    //初始化路由器
     var appRouter = new AppRouter;
     appRouter.on('route:defaultRoute', function(actions) {
         console.log(actions);
@@ -626,39 +631,37 @@ Backbone.History 负责匹配路由和 router 对象中定义的活动。start()
 :params  匹配斜杠之间的任何URL内容  
 *splats  匹配URL中的任何数字内容  
 
-var AppRouter = Backbone.Router.extend({
-    routes: {
-        '': 'index',
-        'show/:id': 'show',
-        'download/*filename': 'download',
-        'search/:query': 'search',
-        '*other': 'default'
-    },
-    index: function() {
-        console.log('hi here from the index page');
-    },
-    show: function(id) {
-        console.log('show route for id of ' + id);
-    },
-    download: function(filename) {
-        console.log(filename);
-    },
-    search: function(query) {
-        
-    },
-    default: function(other) {
-        alert('Hmmm. not sure what you need here? You accessed to ' + other);
-    }
-});
+    var AppRouter = Backbone.Router.extend({
+        routes: {
+            '': 'index',
+            'show/:id': 'show',
+            'download/*filename': 'download',
+            'search/:query': 'search',
+            '*other': 'default'
+        },
+        index: function() {
+            console.log('hi here from the index page');
+        },
+        show: function(id) {
+            console.log('show route for id of ' + id);
+        },
+        download: function(filename) {
+            console.log(filename);
+        },
+        search: function(query) {
 
-new AppRouter;
-Backbone.history.start();
+        },
+        default: function(other) {
+            alert('Hmmm. not sure what you need here? You accessed to ' + other);
+        }
+    });
 
-
+    new AppRouter;
+    Backbone.history.start();
 
 
-<script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>  
-<script >hljs.initHighlightingOnLoad();</script> 
+
+
 
 
 

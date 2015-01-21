@@ -1,8 +1,12 @@
+<link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
+<script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
+<script >hljs.initHighlightingOnLoad();</script> 
+
 <!--
  http://www.html-js.com/article/2126 
  https://github.com/jnotnull/JavaScript-Sturcture/wiki/%E6%A8%A1%E5%9D%97%E5%8C%96%EF%BC%8C%E9%80%9A%E5%BE%80%E6%9C%AA%E6%9D%A5JavaScript%E5%BA%93%E4%B9%8B%E8%B7%AF
 -->
-<link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
+
 ## 依赖管理：AMD和CommonJS 
 > 模块的概念并不新颖，我们经常使用他们。你可能知道JS可不仅仅只用于浏览器端，它可以运行于服务端甚至是TV。
 
@@ -18,66 +22,60 @@ CommonJS规范，针对模块的同步加载，主要用于服务器端，即nod
 
 AMD使用了define方法，用来定义一个模块并导出对象。使用AMD，我们可以引用任何依赖。
 
-```js
-define(['alpha'], function (alpha) {
-  return {
-    verb: function () {
-      return alpha.verb() + 2;
-    }
-  };
-});
-```
+
+    define(['alpha'], function (alpha) {
+      return {
+        verb: function () {
+          return alpha.verb() + 2;
+        }
+      };
+    });
+
 
 
 ### CommonJS
 
 NodeJS使用了CommonJS，通过一个esports对象或module.exports来定义一个模块的内容
-```js
-// someModule.js
-exports.someModule = function () {
-  return "foo";
-};
-``` 
+
+    // someModule.js
+    exports.someModule = function () {
+      return "foo";
+    };
+
 
 按照CommonJS的描述，使用require方法来引用
-```js
-// do something with `myModule`
-var myModule = require('someModule');
-``` 
+
+    // do something with `myModule`
+    var myModule = require('someModule');
+
 
 
 ### 统一模块定义(UMD)
 通过if else来判断当前哪个方案可用，如果支持AMD或者CommonJS，那就可以直接使用它，这个解决方案被称为UMD。
 
-```js
-(function (root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(['b'], factory);
-  } else if (typeof exports === 'object') {
-    module.exports = factory;
-  } else {
-    root.amdWeb = factory(root.b);
-  }
-})(this, function (b) {
-  'use strict';
-  return {};
-});
-```
+    (function (root, factory) {
+      if (typeof define === 'function' && define.amd) {
+        define(['b'], factory);
+      } else if (typeof exports === 'object') {
+        module.exports = factory;
+      } else {
+        root.amdWeb = factory(root.b);
+      }
+    })(this, function (b) {
+      'use strict';
+      return {};
+    });
 
 ### ES6模块
 JS库已经影响了原生JS语言了，比如类管理。下一代JS语言ES6会支持import和export。
-```js
-/// myModule.js
-function myModule () {
-  // module content
-}
-export myModule;
-```
 
-```js
-import {myModule} from 'myModule';
-```
+    /// myModule.js
+    function myModule () {
+      // module content
+    }
+    export myModule;
 
 
-<script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
-<script >hljs.initHighlightingOnLoad();</script>
+    import {myModule} from 'myModule';
+
+
