@@ -30,7 +30,7 @@ Grunt是一个自动任务运行器，会按照预先设定的顺序自动运行
  * [npm init](https://www.npmjs.org/doc/cli/npm-init.html)命令会创建一个基本的package.json文件。
  * 复制下面的案例，并根据需要做扩充，参考此说明.
 
-<pre>
+
 {
     "name": "mypackage", //项目名称
     "version": "0.7.0", //版本
@@ -81,7 +81,7 @@ Grunt是一个自动任务运行器，会按照预先设定的顺序自动运行
         "jars": "java"
     }
 }
-</pre>
+
 
 有了package.json文件，直接使用 `npm install` 命令，就会在当前目录中安装所需要的模块。
 
@@ -95,7 +95,7 @@ Grunt是一个自动任务运行器，会按照预先设定的顺序自动运行
 
 
 ## Gruntfile.js
-<pre>
+
 module.exports = function(grunt) {
 
   // 配置Grunt各种模块的参数
@@ -117,7 +117,7 @@ module.exports = function(grunt) {
   grunt.registerTask('check', ['jshint']);
 
 };
-</pre>
+
 
 Gruntfile主要有三个方法：
 

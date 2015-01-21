@@ -8,7 +8,7 @@
 > 在复杂的逻辑下，javascript需要被模块化，模块需要封装起来，只留下供外界调用的API。
 
 **① Privileged Method**
-<pre>
+
 function Human(sgender){
     //Private
     var age = 1,
@@ -19,10 +19,10 @@ function Human(sgender){
         age++;
     }
 }
-</pre>
+
 
 **② Module Pattern**
-<pre>
+
 function Human(sgender) {
     //Private
     var age = 1,
@@ -35,7 +35,7 @@ function Human(sgender) {
         }
     };
 }
-</pre>
+
 
 ### 二、AMD规范
 **AMD**是“Asynchronous Module Definition”的缩写，意思就是“**异步模块定义**”（通过异步方式加载模块）。
@@ -63,7 +63,7 @@ function Human(sgender) {
 * 第三个参数 factory：是一个回调函数，在依赖的模块加载成功后，会执行这个回调函数，它的参数是所有依赖模块的引用，如果回调函数有返回值，会导出出来
 
 
-<pre>
+
 define('adder', ['math'], function(math) {
     return {
         addTen: function(x) {
@@ -71,14 +71,14 @@ define('adder', ['math'], function(math) {
         }
     };
 });
-</pre>
+
 
 ###### 匿名模块
 > 在实际中，使用的更多的是匿名模块定义方式，因为这样更加的灵活，模块的标识和它的源代码不在相关，开发人员可以把这个模块放在任意的位置而不需要修改代码。一般只要在使用工具打包模块到一个文件中时，才会声明第一个参数，所以应该尽量避免给模块命名。
 
 
 如果这个模块并没有依赖，那么默认的依赖是["require", "exports", "module"]
-<pre>
+
 define(["require", "exports", "module"], function(require, exports, module) {
     console.log(exports);   //{}
     exports.addTem = function(x) {
@@ -89,11 +89,11 @@ define(["require", "exports", "module"], function(require, exports, module) {
     //    return x + 10;
     //}
 });
-</pre>
+
 
 Dependencies that can not be evalluated until runtime or only loaded when a specific event occurs;
 
-<pre>
+
 defind(function() {
     var isReady = false, 
         foobar;
@@ -106,7 +106,7 @@ defind(function() {
         foobar: foobar
     };
 });
-</pre>
+
 
 
 
@@ -119,12 +119,12 @@ RequireJS 查找脚本的路径，主要是通过 baseUrl，在 data-main 中，
 
 ##### 2.
 在 main.js 中，可以通过 require() 加载依赖的脚本，这样不用在 html 中显示声明.main.js 相当于是一个入口点
-<pre>
+
 require(['helper/util'], function(util) {
     // 当 scripts/helper/util.js 加载完毕，会执行这个回调函数
     // 如果 util.js 也声明了依赖的文件（模块），那么这个函数会等到那些依赖的文件（模块）加载完毕后才调用
 });
-</pre>
+
 注意，data-main 中声明的模块会被异步加载，也就意味着如果页面后面通过script标签加载多个脚本，这些脚本不一定在 data-main 中声明的模块加载之后才加载；或者后面的js代码如果有对 data-main 中声明的模块的依赖，则有可能会出现错误。
 
 ##### 3.
@@ -145,7 +145,7 @@ RequireJS 会自动把模块ID翻译成一个路径（path），我们也可以�
 
 
 ##### 4. 加载模块
-<pre>
+
 requirejs.config({
     //默认从 js/lib 中加载模块
     baseUrl : 'js/lib',
@@ -156,9 +156,9 @@ requirejs.config({
         app : '../app'
     }
 });
-</pre>
 
-<pre>
+
+
 requirejs(['jquery', 'aModule', 'bModule'],
     function ($, myFunctionA, myFunctionB) {
         //jQuery, aModule 和 bModule 模块都加载完毕后，会执行这个函数
@@ -166,21 +166,21 @@ requirejs(['jquery', 'aModule', 'bModule'],
         //TODO
     }
 );
-</pre>
+
 
 ##### 5. 定义模块
 RequireJS 要求一个js文件只定义一个模块。
 每加载一个模块，就会产生一个HTTP请求，RequireJS 提供了一个优化工具（r.js）
 
 * 定义一个只有键值对，没有任何依赖的模块
-<pre>
+
 define({
     color: 'black',
     size: 'M'
 });
-</pre>
+
 * 定义一个函数，没有依赖
-<pre>
+
 define(function() {
     //TODO
     return {
@@ -188,11 +188,11 @@ define(function() {
         size: 'M'
     }
 });
-</pre>
+
 
 
 定义一个有依赖的函数，第一个参数是依赖的模块ID数组，后面是回调函数，会在所有依赖加载完毕后执行：
-<pre>
+
 define(['cart'], function(cart) {
     //TODO
     return {
@@ -203,19 +203,19 @@ define(['cart'], function(cart) {
         }
     };
 });
-</pre>
+
 当然不一定只是返回Object，也可以返回一个函数：
-<pre>
+
 define(['cart'], function(cart) {
      return function(title) {
          return title ? (window.title = title) : cart.name;
      };
 });
-</pre>
+
 
 ##### 6. RequireJS工作原理
 RequireJS 采用 head.appendChild() 的方式来加载所有依赖的脚本
-<pre>
+
 function loadjscssfile(filename, filetype) {
     if (filetype == "js") { //作为js文件载入
         var fileref = document.createElement('script')
@@ -235,11 +235,11 @@ function loadjscssfile(filename, filetype) {
 loadjscssfile("myscript.js", "js")
 loadjscssfile("javascript.php", "js")
 loadjscssfile("mystyle.css", "css")
-</pre>
+
 
 ##### 7. 加载非规范的模块
 在加载没有实现AMD规范的模块时，RequireJS 也提供了简洁的方式，就是通过配置定义这些模块的特征
-<pre>
+
 requirejs.config({
     // 要使用 shim 来配置没有实现 AMD 规范的模块
     // 不过注意 shim 不能用来配置已经实现 AMD 规范的模块
@@ -255,9 +255,9 @@ requirejs.config({
         }
     }
 });
-</pre>
+
 //jQuery
-<pre>
+
 requirejs.config({
     shim : {
         'jquery,colorize' : {
@@ -270,4 +270,4 @@ requirejs.config({
         }
     }
 });
-</pre>
+

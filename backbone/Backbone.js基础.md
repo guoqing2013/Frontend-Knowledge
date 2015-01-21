@@ -14,146 +14,144 @@ Backbone用于创建 MVC 类应用程序。
 模型-视图-控制器 (MVC) 是一个常见模式，其思想就是将视图和模型分离，通过控制器来连接他们  
 MVC支持将数据（比如通常用于Ajax交互的JSON对象）从表示层或从页面的文档对象模型（DOM）中分离出来，也可适用于客户端开发。 
 ## 一、Model
-<pre>
-var Person = Backbone.Model.extend({
-    initialize: function() {
-        console.log('Welcome to this world');
-    }
-});
-var person = new Person();
-</pre>
+
+    var Person = Backbone.Model.extend({
+        initialize: function() {
+            console.log('Welcome to this world');
+        }
+    });
+    var person = new Person();
+
 在new一个model的实例后就会触发initailize()函数（models，views和collections的工作机制都是一样的）
 
 
 ### 1. 设置属性
 两种方式：在创建model实例时进行传参，也可以在实例生成后通过model.set(obj)来进行设置或修改
-<pre>
-var Person = Backbone.Model.extend({
-    initialize: function() {
-        console.log('Welcome to this world');
-    }
-});
-var person = new Person({name: "John doe", age: 50});
-delete person;
 
-var person = new Person();
-person.set({name: "Sally Doe", age: 29});
-</pre>
+    var Person = Backbone.Model.extend({
+        initialize: function() {
+            console.log('Welcome to this world');
+        }
+    });
+    var person = new Person({name: "John doe", age: 50});
+    delete person;
+
+    var person = new Person();
+    person.set({name: "Sally Doe", age: 29});
+
 
 
 ### 2. 获取属性
 使用model.get(name)方法获取属性值
-<pre>
-var Person = Backbone.Model.extend({});
-var person = new Person({name: "John doe", age: 50});
-var name = person.get('name'); //"John doe"
-</pre>
+
+    var Person = Backbone.Model.extend({});
+    var person = new Person({name: "John doe", age: 50});
+    var name = person.get('name'); //"John doe"
+
 
 
 
 ### 3. 设置model默认属性
-<pre>
-var Person = Backbone.Model.extend({
-    defaults: {
-        name: 'John Doe',
-        age: 30,
-        children: []
-    }
-});
-var person = new Person({
-    name: "John doe",
-    age: 50,
-    children: ['Ryan']
-});
-var name = person.get('name'); //"John doe"
-</pre>
+
+    var Person = Backbone.Model.extend({
+        defaults: {
+            name: 'John Doe',
+            age: 30,
+            children: []
+        }
+    });
+    var person = new Person({
+        name: "John doe",
+        age: 50,
+        children: ['Ryan']
+    });
+    var name = person.get('name'); //"John doe"
 
 
 
 ### 4. 操纵model的属性
-<pre>
-var Person = Backbone.Model.extend({
-    defaults: {
-        name: 'John Doe',
-        age: 30,
-        children: []
-    },
-    adopt: function(newChildsName) {
-        var childrenArray = this.get('children');
-        childrenArray.push(newChildsName);
-        this.set({children: childrenArray});
-    }
-});
 
-var person = new Person({
-    name: "John doe",
-    age: 50,
-    children: ['Ryan']
-});
-person.adopt('John Resig');
-var children = person.get('children'); // ["Ryan", "John Resig"]
+    var Person = Backbone.Model.extend({
+        defaults: {
+            name: 'John Doe',
+            age: 30,
+            children: []
+        },
+        adopt: function(newChildsName) {
+            var childrenArray = this.get('children');
+            childrenArray.push(newChildsName);
+            this.set({children: childrenArray});
+        }
+    });
 
-var person2 = new Person();
-var children2 = person2.get('children'); //[]
-</pre>
+    var person = new Person({
+        name: "John doe",
+        age: 50,
+        children: ['Ryan']
+    });
+    person.adopt('John Resig');
+    var children = person.get('children'); // ["Ryan", "John Resig"]
+
+    var person2 = new Person();
+    var children2 = person2.get('children'); //[]
 
 
 ### 5. 监听model的属性改变
 通过 model.bind(event, callback)方法绑定change事件来监听属性改变。
 this.bind("change", function(){}); 监听所有的属性
-<pre>
-var Person = Backbone.Model.extend({
-    defaults: {
-        name: 'John Doe',
-        age: 30,
-        occupation: 'worker'
-    },
-    initialize: function() {
-        this.bind("change:name", function() {
-            var name = this.get("name");
-            console.log('new Name: ' + name );
-        });
-    },
-    replaceNameAttr: function(name) {
-        this.set({name: name});
-    }
-});
-var person = new Person({name: "Jeffrey Way", age: 27});
-person.replaceNameAttr('Sally Doe');
-</pre>
+
+    var Person = Backbone.Model.extend({
+        defaults: {
+            name: 'John Doe',
+            age: 30,
+            occupation: 'worker'
+        },
+        initialize: function() {
+            this.bind("change:name", function() {
+                var name = this.get("name");
+                console.log('new Name: ' + name );
+            });
+        },
+        replaceNameAttr: function(name) {
+            this.set({name: name});
+        }
+    });
+    var person = new Person({name: "Jeffrey Way", age: 27});
+    person.replaceNameAttr('Sally Doe');
+
 
 
 
 ### 6. 在设置或存储属性的时候进行数据校验
-<pre>
-var Person = Backbone.Model.extend({
-    defaults: {
-        name: 'John Doe',
-        age: 30,
-        occupation: 'worker'
-    },
-    validate: function(attrs) {
-        if (attrs.age < 0) {
-            return 'age must be positive, stupid.';
-        }
-        if (!attrs.name) {
-            return 'Every person must have a name, fool.';
-        }
-    },
-    initialize: function() {
-        this.on("invalid", function(model, error) {
-            console.log(error);
-        });
-    }
-});
 
-var person = new Person();
-person.set({name: ''}, {validate: true}); //返回false
-person.set({age: -100}, {validate: true}); //返回false
+    var Person = Backbone.Model.extend({
+        defaults: {
+            name: 'John Doe',
+            age: 30,
+            occupation: 'worker'
+        },
+        validate: function(attrs) {
+            if (attrs.age < 0) {
+                return 'age must be positive, stupid.';
+            }
+            if (!attrs.name) {
+                return 'Every person must have a name, fool.';
+            }
+        },
+        initialize: function() {
+            this.on("invalid", function(model, error) {
+                console.log(error);
+            });
+        }
+    });
 
-console.log(person.toJSON()); //{name: "John Doe", age: 30, occupation: "worker"}
-</pre>
-person.toJSON();  返回对当前属性的copy  
+    var person = new Person();
+    person.set({name: ''}, {validate: true}); //返回false
+    person.set({age: -100}, {validate: true}); //返回false
+
+    console.log(person.toJSON()); //{name: "John Doe", age: 30, occupation: "worker"}
+
+person.toJSON();  返回对当前属性的copy
 person.attributes 返回属性的直接引用，对其的任何改变就等于实例属性本身的改变，建议使用set()来编辑模型的属性并使用backbone的监听器
 
 
@@ -166,75 +164,74 @@ person.attributes 返回属性的直接引用，对其的任何改变就等于�
 
 服务器已经实现了一个RESTful URL /user，我们可以和它进行交互。  
 
-我们的模型定义如下所示： 
-<pre>
-var UserModel = Backbone.Model.extend({
-	urlRoot: '/user',
-	defaults: {
-		name: '',
-		email: ''
-	}
-}); 
-</pre>
+我们的模型定义如下所示：
+
+    var UserModel = Backbone.Model.extend({
+        urlRoot: '/user',
+        defaults: {
+            name: '',
+            email: ''
+        }
+    });
+
 
 
 ### 8. 创建一个新模型
 如果我们想要在服务器上创建一个新的用户我们需要实例化一个UserModel然后调用save方法。如果模型的id属性是null，Backbone.js就会发送一个POST请求到服务器的urlRoot。
-<pre>
-var UserModel = Backbone.Model.extend({
-    urlRoot: '/user',
-    defaults: {
-        name: '',
-        email: ''
-    }
-});
 
-var user = new UserModel();
-//注意到我们没有设置一个'id'属性 
-var userDetails = {
-    name: 'Thomas',
-    email: 'thomasalwyndavis@gmail.com'
-};
-//因为我们没有设置一个'id'属性，服务器将会调用POST /user 连同一个{name: 'Thomas',email: 'thomasalwydavis@gmail.com'}
-//服务器应该保存数据并且返回一个包含新的'id'的相应 
-user.save(userDetails, {
-    success: function(user) {
-        alert(user.toJSON());
-    }
-});
-</pre>
-save() 函数将在后台委托给 Backbone.sync，这是负责发出 RESTful 请求的组件，默认使用 jQuery 函数 $.ajax()。  
+    var UserModel = Backbone.Model.extend({
+        urlRoot: '/user',
+        defaults: {
+            name: '',
+            email: ''
+        }
+    });
+
+    var user = new UserModel();
+    //注意到我们没有设置一个'id'属性
+    var userDetails = {
+        name: 'Thomas',
+        email: 'thomasalwyndavis@gmail.com'
+    };
+    //因为我们没有设置一个'id'属性，服务器将会调用POST /user 连同一个{name: 'Thomas',email: 'thomasalwydavis@gmail.com'}
+    //服务器应该保存数据并且返回一个包含新的'id'的相应
+    user.save(userDetails, {
+        success: function(user) {
+            alert(user.toJSON());
+        }
+    });
+
+save() 函数将在后台委托给 Backbone.sync，这是负责发出 RESTful 请求的组件，默认使用 jQuery 函数 $.ajax()。
 由于调用了 REST 风格架构，每个 Create、Read、Update 或 Delete (CRUD) 活动均会与各种不同类型的 HTTP 请求（POST、GET、PUT 和 DELETE）相关联。首先保存模型对象，使用一个 POST 请求，创建一个标识符 ID，其后，尝试发送对象到服务器，使用一个 PUT 请求。
 
 
 
-我们的表格现在应该有这些值：  
-<pre>
-1,'Thomas','thomasalwydavis@gmail.com' 
-</pre>
+我们的表格现在应该有这些值：
+
+    1,'Thomas','thomasalwydavis@gmail.com'
 
 
 
 ### 9. 获取一个模型
 既然我们已经存储了一个新的user模型，我们可以从服务器获取它。我们知道上面例子中的id是1。  
 
-如果我们实例化一个id是1的模型，Backbone.js将就自动加上’/id’从urlRoot发送一个get请求。（符合RESTful的传统）  
-<pre>
-//在这里我们设置了模型的id   
-var user = new UserModel({id: 1});
+如果我们实例化一个id是1的模型，Backbone.js将就自动加上’/id’从urlRoot发送一个get请求。（符合RESTful的传统）
 
-//下面的获取将会执行GET /user/1    
-//服务器将会从数据库中返回id,name以及email  
-user.fetch({
-    success: function(user) {
-        alert(user.toJSON());
-    }
-});
-</pre>
+    //在这里我们设置了模型的id
+    var user = new UserModel({id: 1});
+
+    //下面的获取将会执行GET /user/1
+    //服务器将会从数据库中返回id,name以及email
+    user.fetch({
+        success: function(user) {
+            alert(user.toJSON());
+        }
+    });
+
 
 
 fetch()方法属于异步调用，因此，在等待服务器响应时，应用程序不会终止。在一些情况下，要操作来自服务器的原始数据，可以使用集合的parse()方法。
-<pre>
+
 App.Collections.Teams = Backbone.Collection.extend({
     model: App.Models.Team,
     parse: function(data) {
@@ -242,7 +239,7 @@ App.Collections.Teams = Backbone.Collection.extend({
         console.log(data);
     }
 });
-</pre>
+
 
 
 集合提供的另一个有趣的方法是 reset()，它允许将多个模型设置到一个集合中。reset() 方法可以非常方便地将数据引导到集合中，比如页面加载，来避免用户等待异步调用返回。
@@ -252,7 +249,7 @@ App.Collections.Teams = Backbone.Collection.extend({
 
 ### 10. 更新一个模型
 既然我们的模型已经存在于服务器上，我们可以使用一个PUT请求来执行一个更新操作。我们将使用save API，它很智能，如果已经有一个id存在它将发送一个PUT请求而不是一个POST请求。
-<pre>
+
 //这里我们设置这个模型的'id'   
 
 var user = new UserModel({
@@ -270,13 +267,13 @@ user.save({name: 'Davis'},{
         alert(user.toJSON());
     }
 });
-</pre>
+
 
 
 
 ### 11. 删除一个模型
 当一个模型拥有了一个id时我们知道它已经存在于服务器上了，因此如果我们想要从吴福气上将它移除我们可以调用destory。destory将触发DELETE /user/id(符合RESTful的传统)。
-<pre>
+
 //在这里我们设置一个模型的'id'   
 
 var user = new Usermodel({
@@ -292,7 +289,7 @@ user.destory({
         alert('Destoryed');
     }
 });
-</pre>
+
 
 
 
@@ -307,7 +304,7 @@ user.destory({
 ## 二、View
 ### 1. “el”属性
 "el"属性引用DOM对象，每个view都会有个"el"属性，如果没有定义的话它会默认创建一个空的div元素。
-<pre>
+
 <xmp>
 <ul id="personList"></ul>
 <script>
@@ -335,11 +332,11 @@ var personView = new PersonView({model: person});
 $("#personList").append(personView.el);
 </script>
 </xmp>
-</pre>
+
 
 
 ### 2. 模板加载
-<pre>
+
 <xmp>
 <ul id="personList"></ul>
 <script id="personTemplate" type="text/template">
@@ -371,12 +368,12 @@ var personView = new PersonView({ model: person });
 $("#personList").append(personView.el);
 
 </xmp>
-</pre>
+
 
 
 
 ### 3. 事件监听
-<pre>
+
 <xmp>
 
 <h1>My Tasks</h1>
@@ -513,7 +510,7 @@ $("#personList").append(personView.el);
 })();
 
 </xmp>
-</pre>
+
 
 
 
@@ -523,23 +520,23 @@ $("#personList").append(personView.el);
 ## 三、Collection
 ### 1. 什么是一个集合
 Backbone中的集合简单来说就是一列有序的模型。它可以被使用在例如下面例子这样的情形：
-<pre>
+
 - 模型：Student，集合：ClassStudents 
 - 模型：Todo Item，集合：Todo List
 - 模型：Animals，集合：Zoo
-</pre>
+
 
 
 一般来说你的集合只使用一种类型的模型，但是模型本身并不限于在一种类型的集合中使用：
-<pre>
+
 - 模型：Student，集合：Gym Class
 - 模型：Student，集合：Art Class
 - 模型：Student，集合：English Class
-</pre>
+
 
 
 下面是一个一般的模型/集合的例子：
-<pre>
+
 var Song = Backbone.Model.extend({
     initialize: function() {
         console.log('Music is the answer');
@@ -549,12 +546,12 @@ var Song = Backbone.Model.extend({
 var Album = Backbone.Collection.extend({
     model: Song
 });
-</pre>
+
 
 
 
 ### 2. 创建一个集合
-<pre>
+
 var Song = Backbone.Model.extend({
     defaults: {
         name: "Not specified",
@@ -580,7 +577,7 @@ var song4 = new Song({name: "Can't We Talk It Over In Bed", artist: "OMC"});
 // 使用 add()/remove() 方法可以将一个模型添加和移动到集合中
 myAlbum.add(song4);
 myAlbum.remove(song4);
-</pre>
+
 
 
 
@@ -589,7 +586,7 @@ myAlbum.remove(song4);
 含有大量 Ajax 交互的应用程序越来越像那些无页面刷新的应用程序。这些应用程序常常试图限制与单个页面的交互。该 SPI 方法提高了效率和速度，并使整个应用程序变得更灵敏。状态概念代替了页面概念。散列 (Hash) 片段被用于识别一个特定状态。散列片段 是 URL 中散列标签 (#) 后的那部分，是该类应用程序的关键元素。
 
 路由解释URL中位于”#”标签之后的任何东西。你的应用中的所有连接需要标的到”#/action”或者”#action”。(在hash标签后面添加一个正斜杠看起来更好看，例如: http://example.com/#/user/help)。
-<pre>
+
     var AppRouter = Backbone.Router.extend({
         routes: {
             "*actions": "defaultRoute"   //匹配 http://example.com/#anything-here
@@ -603,9 +600,9 @@ myAlbum.remove(song4);
     });
 
     Backbone.history.start();
-</pre>
 
-<pre>
+
+
     var AppRouter = Backbone.Router.extend({
         routes: {
             "*actions": "defaultRoute"   //匹配 http://example.com/#anything-here
@@ -617,7 +614,7 @@ myAlbum.remove(song4);
 
     var appRouter = new AppRouter;  //初始化路由器
     Backbone.history.start();  //监视散列片段中的任何变更
-</pre>
+
 
 当实例化路由器时，会生成 Backbone.history 对象；它将自动引用 Backbone.History 函数。
 Backbone.History 负责匹配路由和 router 对象中定义的活动。start() 方法触发后，将创建 Backbone.history 的 fragment 属性。它包含散列片段的值。该序列在根据状态次序管理浏览器历史方面十分有用。用户如果想要返回前一状态，单击浏览器的返回按钮。
@@ -628,7 +625,7 @@ Backbone.History 负责匹配路由和 router 对象中定义的活动。start()
 ### 2. 动态路由
 :params  匹配斜杠之间的任何URL内容  
 *splats  匹配URL中的任何数字内容  
-<pre>
+
 var AppRouter = Backbone.Router.extend({
     routes: {
         '': 'index',
@@ -656,7 +653,7 @@ var AppRouter = Backbone.Router.extend({
 
 new AppRouter;
 Backbone.history.start();
-</pre>
+
 
 
 

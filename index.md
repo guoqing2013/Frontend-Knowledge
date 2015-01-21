@@ -10,10 +10,10 @@ title: 前端笔记
 ## 前端笔记
 - js模块化
 
-    - [AMD和CommonJS](js模块化/AMD和CommonJS.html)
-    - [require.js的用法](js模块化/require.js的用法.html)
-    - [Grunt——前端自动化构建工具](grunt/Grunt——前端自动化构建工具.html)
-    - [backbone.js基础](backbone/backbone.js基础.html)
+    - [AMD和CommonJS](js模块化/AMD和CommonJS.md)
+    - [require.js的用法](js模块化/require.js的用法.md)
+    - [Grunt——前端自动化构建工具](grunt/Grunt——前端自动化构建工具.md)
+    - [backbone.js基础](backbone/backbone.js基础.md)
 
 
 
