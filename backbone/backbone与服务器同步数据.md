@@ -7,7 +7,7 @@ http://www.tuicool.com/articles/na67bm
 -->
 
 
-##backbone requests的几个简易demo
+##backbone与服务器同步数据
 
 backbone 默认实现了一套与RESTful风格的服务端同步模型的机制，这套机制不仅可以减轻开发人员的工作量，而且可以使模型变得更为健壮（在各种异常下仍能保持数据一致性）
 
