@@ -14,6 +14,7 @@ title: 前端笔记
     - [require.js的用法](js模块化/require.js的用法.html)
     - [Grunt——前端自动化构建工具](grunt/Grunt——前端自动化构建工具.html)
     - [backbone.js基础](backbone/backbone.js基础.html)
+    - [backbone与服务器同步数据](backbone/backbone与服务器同步数据.html)
 
 
 

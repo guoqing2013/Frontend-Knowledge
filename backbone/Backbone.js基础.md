@@ -11,12 +11,12 @@
 
 
  
-# Backbone.js教程 
-- - - 
-Backbone用于创建 MVC 类应用程序。  
-模型-视图-控制器 (MVC) 是一个常见模式，其思想就是将视图和模型分离，通过控制器来连接他们  
-MVC支持将数据（比如通常用于Ajax交互的JSON对象）从表示层或从页面的文档对象模型（DOM）中分离出来，也可适用于客户端开发。 
-## 一、Model
+## Backbone.js教程 
+
+> Backbone用于创建 MVC 类应用程序。  
+> 模型-视图-控制器 (MVC) 是一个常见模式，其思想就是将视图和模型分离，通过控制器来连接他们  
+> MVC支持将数据（比如通常用于Ajax交互的JSON对象）从表示层或从页面的文档对象模型（DOM）中分离出来，也可适用于客户端开发。 
+### 一、Model
 
     var Person = Backbone.Model.extend({
         initialize: function() {
@@ -28,7 +28,7 @@ MVC支持将数据（比如通常用于Ajax交互的JSON对象）从表示层或
 在new一个model的实例后就会触发initailize()函数（models，views和collections的工作机制都是一样的）
 
 
-### 1. 设置属性
+#### 1. 设置属性
 两种方式：在创建model实例时进行传参，也可以在实例生成后通过model.set(obj)来进行设置或修改
 
     var Person = Backbone.Model.extend({
@@ -44,7 +44,7 @@ MVC支持将数据（比如通常用于Ajax交互的JSON对象）从表示层或
 
 
 
-### 2. 获取属性
+#### 2. 获取属性
 使用model.get(name)方法获取属性值
 
     var Person = Backbone.Model.extend({});
@@ -54,7 +54,7 @@ MVC支持将数据（比如通常用于Ajax交互的JSON对象）从表示层或
 
 
 
-### 3. 设置model默认属性
+#### 3. 设置model默认属性
 
     var Person = Backbone.Model.extend({
         defaults: {
@@ -72,7 +72,7 @@ MVC支持将数据（比如通常用于Ajax交互的JSON对象）从表示层或
 
 
 
-### 4. 操纵model的属性
+#### 4. 操纵model的属性
 
     var Person = Backbone.Model.extend({
         defaults: {
@@ -99,7 +99,7 @@ MVC支持将数据（比如通常用于Ajax交互的JSON对象）从表示层或
     var children2 = person2.get('children'); //[]
 
 
-### 5. 监听model的属性改变
+#### 5. 监听model的属性改变
 通过 model.bind(event, callback)方法绑定change事件来监听属性改变。
 this.bind("change", function(){}); 监听所有的属性
 
@@ -125,7 +125,7 @@ this.bind("change", function(){}); 监听所有的属性
 
 
 
-### 6. 在设置或存储属性的时候进行数据校验
+#### 6. 在设置或存储属性的时候进行数据校验
 
     var Person = Backbone.Model.extend({
         defaults: {
@@ -158,7 +158,7 @@ person.toJSON();  返回对当前属性的copy
 person.attributes 返回属性的直接引用，对其的任何改变就等于实例属性本身的改变，建议使用set()来编辑模型的属性并使用backbone的监听器
 
 
-### 7. 与服务器交互
+#### 7. 与服务器交互
 模型被用来呈现来自服务器的数据以及将在你在模型上的操作转化为RESTful操作。  
   
 一个模型的id属性指明了怎样在数据库汇总找到它，并且通常映射到surrogate key。  
@@ -179,7 +179,7 @@ person.attributes 返回属性的直接引用，对其的任何改变就等于�
 
 
 
-### 8. 创建一个新模型
+#### 8. 创建一个新模型
 如果我们想要在服务器上创建一个新的用户我们需要实例化一个UserModel然后调用save方法。如果模型的id属性是null，Backbone.js就会发送一个POST请求到服务器的urlRoot。
 
     var UserModel = Backbone.Model.extend({
@@ -215,7 +215,7 @@ save() 函数将在后台委托给 Backbone.sync，这是负责发出 RESTful �
 
 
 
-### 9. 获取一个模型
+#### 9. 获取一个模型
 既然我们已经存储了一个新的user模型，我们可以从服务器获取它。我们知道上面例子中的id是1。  
 
 如果我们实例化一个id是1的模型，Backbone.js将就自动加上’/id’从urlRoot发送一个get请求。（符合RESTful的传统）
@@ -235,22 +235,61 @@ save() 函数将在后台委托给 Backbone.sync，这是负责发出 RESTful �
 
 fetch()方法属于异步调用，因此，在等待服务器响应时，应用程序不会终止。在一些情况下，要操作来自服务器的原始数据，可以使用集合的parse()方法。
 
-    App.Collections.Teams = Backbone.Collection.extend({
-        model: App.Models.Team,
+    var UserCollection = Backbone.Collection.extend({
+        model: UserModel,
+		url: '/user',
         parse: function(data) {
             // 'data' contains the raw JSON object
             console.log(data);
         }
     });
+	
 
 
 
 集合提供的另一个有趣的方法是 reset()，它允许将多个模型设置到一个集合中。reset() 方法可以非常方便地将数据引导到集合中，比如页面加载，来避免用户等待异步调用返回。
 
 
+**自动模型构造**　　
+
+利用 Collection 的 fetch ，可以加载服务端数据集合，与此同时，可以自动创建相关的Model实例，并调用构造方法
 
 
-### 10. 更新一个模型
+**元素重复判断**  　　　
+
+Collection 会根据 Model 的 idAttribute 指定的唯一键，来判断元素是否重复，默认情况下唯一键是 id ，可以重写 *idAttribute* 来覆盖。当元素重复的时候，可以选择是丢弃重复元素，还是合并两种元素，默认是丢弃的
+
+
+**模型转化**　　
+
+有时从REST接口得到的数据并不能完全满足界面的处理需求，可以通过 Model.parse 或者 Collection.parse 方法，在实例化Backbone对象前，对数据进行预处理。
+Model.parse 用来对返回的单个对象进行属性的处理，而 Collection.parse 用来对返回的集合进行处理，通常是过滤掉不必要的数据。例如：
+
+    //只挑选type=1的book
+    var Books = Backbone.Collection.extend({
+        parse:function(models,options){
+            return _.filter(models , function(model){
+                return model.type == 1;
+            })
+        }
+    })
+
+
+    //为Book对象添加url属性，以便渲染
+    var Book = Backbone.Model.extend({
+        parse: function(model,options){
+            return _.extend(model,{ url : '/books/' + model.id });
+        }
+    })
+
+
+通过Collection的 fetch ，自动实例化的Model，其parse也会被调用。
+
+
+
+
+
+#### 10. 更新一个模型
 既然我们的模型已经存在于服务器上，我们可以使用一个PUT请求来执行一个更新操作。我们将使用save API，它很智能，如果已经有一个id存在它将发送一个PUT请求而不是一个POST请求。
 
     //这里我们设置这个模型的'id'
@@ -272,7 +311,7 @@ fetch()方法属于异步调用，因此，在等待服务器响应时，应用�
 
 
 
-### 11. 删除一个模型
+#### 11. 删除一个模型
 当一个模型拥有了一个id时我们知道它已经存在于服务器上了，因此如果我们想要从吴福气上将它移除我们可以调用destory。destory将触发DELETE /user/id(符合RESTful的传统)。
 
     //在这里我们设置一个模型的'id'
@@ -301,8 +340,8 @@ fetch()方法属于异步调用，因此，在等待服务器响应时，应用�
 
 
 
-## 二、View
-### 1. “el”属性
+### 二、View
+#### 1. “el”属性
 "el"属性引用DOM对象，每个view都会有个"el"属性，如果没有定义的话它会默认创建一个空的div元素。
 
 
@@ -337,7 +376,7 @@ fetch()方法属于异步调用，因此，在等待服务器响应时，应用�
 
 
 
-### 2. 模板加载
+#### 2. 模板加载
 
 html
 
@@ -378,7 +417,7 @@ js
 
 
 
-### 3. 事件监听
+#### 3. 事件监听
 
 html
 
@@ -440,8 +479,8 @@ js
         template: template('taskTemplate'),
 
         initialize: function() {
-            this.model.on('change', this.render, this);
-            this.model.on('destroy', this.remove, this);
+            this.model.on('change', this.render, this); //change:id 侦听到元素的id属性被change后，自动更新内部对model的引用关系
+            this.model.on('destroy', this.remove, this); //destroy  侦听到元素的 destroy 事件后，会自动将元素从集合中移除，并引发 remove 事件
         },
 
         events: {
@@ -522,8 +561,8 @@ js
 
 
 
-## 三、Collection
-### 1. 什么是一个集合
+### 三、Collection
+#### 1. 什么是一个集合
 Backbone中的集合简单来说就是一列有序的模型。它可以被使用在例如下面例子这样的情形：
 
 - 模型：Student，集合：ClassStudents 
@@ -555,7 +594,7 @@ Backbone中的集合简单来说就是一列有序的模型。它可以被使用
 
 
 
-### 2. 创建一个集合
+#### 2. 创建一个集合
 
     var Song = Backbone.Model.extend({
         defaults: {
@@ -586,11 +625,12 @@ Backbone中的集合简单来说就是一列有序的模型。它可以被使用
 
 
 
-## 四、Router
-### 1. 什么是一个路由
+### 四、Router
+#### 1. 什么是一个路由
 含有大量 Ajax 交互的应用程序越来越像那些无页面刷新的应用程序。这些应用程序常常试图限制与单个页面的交互。该 SPI 方法提高了效率和速度，并使整个应用程序变得更灵敏。状态概念代替了页面概念。散列 (Hash) 片段被用于识别一个特定状态。散列片段 是 URL 中散列标签 (#) 后的那部分，是该类应用程序的关键元素。
 
-路由解释URL中位于”#”标签之后的任何东西。你的应用中的所有连接需要标的到”#/action”或者”#action”。(在hash标签后面添加一个正斜杠看起来更好看，例如: http://example.com/#/user/help)。
+路由解释URL中位于”#”标签之后的任何东西。你的应用中的所有连接需要标的到”#/action”或者”#action”。(在hash标签后面添加一个正斜杠看起来更好看，例如: http://example.com/#/user/help)。  
+第一种写法：
 
     var AppRouter = Backbone.Router.extend({
         routes: {
@@ -606,7 +646,7 @@ Backbone中的集合简单来说就是一列有序的模型。它可以被使用
 
     Backbone.history.start();
 
-
+第二种写法：
 
     var AppRouter = Backbone.Router.extend({
         routes: {
@@ -627,7 +667,7 @@ Backbone.History 负责匹配路由和 router 对象中定义的活动。start()
 通过一个启用 HTML5 特性 pushState 的配置调用 start() 方法。
 对于那些支持 pushState 的浏览器，Backbone 将监视 popstate 事件以触发一个新状态。如果浏览器不能支持 HTML5 特性，那么 onhashchange 活动会被监视。如果浏览器不支持该事件，轮询技术将监视 URL 散列片段的任何更改。
 
-### 2. 动态路由
+#### 2. 动态路由
 :params  匹配斜杠之间的任何URL内容  
 *splats  匹配URL中的任何数字内容  
 
