@@ -10,292 +10,304 @@
         /* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
         /* Source: https://github.com/nicolahery/markdownpad-github */
 
-        /* RESET
-        =============================================================================*/
 
-        html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-            margin: 0;
-            padding: 0;
-            border: 0;
-        }
+<!DOCTYPE html>
+<html>
+<head>
+<title>前端模块化开发</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
 
-        /* BODY
-        =============================================================================*/
+/* RESET
+=============================================================================*/
 
-        body {
-            font-family: Helvetica, arial, freesans, clean, sans-serif;
-            font-size: 14px;
-            line-height: 1.6;
-            color: #333;
-            background-color: #fff;
-            padding: 20px;
-            max-width: 960px;
-            margin: 0 auto;
-        }
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
 
-        body>*:first-child {
-            margin-top: 0 !important;
-        }
+/* BODY
+=============================================================================*/
 
-        body>*:last-child {
-            margin-bottom: 0 !important;
-        }
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
 
-        /* BLOCKS
-        =============================================================================*/
+body>*:first-child {
+  margin-top: 0 !important;
+}
 
-        p, blockquote, ul, ol, dl, table, pre {
-            margin: 15px 0;
-        }
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
 
-        /* HEADERS
-        =============================================================================*/
+/* BLOCKS
+=============================================================================*/
 
-        h1, h2, h3, h4, h5, h6 {
-            margin: 20px 0 10px;
-            padding: 0;
-            font-weight: bold;
-            -webkit-font-smoothing: antialiased;
-        }
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
 
-        h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
-            font-size: inherit;
-        }
+/* HEADERS
+=============================================================================*/
 
-        h1 {
-            font-size: 28px;
-            color: #000;
-        }
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
 
-        h2 {
-            font-size: 24px;
-            border-bottom: 1px solid #ccc;
-            color: #000;
-        }
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
 
-        h3 {
-            font-size: 18px;
-        }
+h1 {
+  font-size: 28px;
+  color: #000;
+}
 
-        h4 {
-            font-size: 16px;
-        }
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
 
-        h5 {
-            font-size: 14px;
-        }
+h3 {
+  font-size: 18px;
+}
 
-        h6 {
-            color: #777;
-            font-size: 14px;
-        }
+h4 {
+  font-size: 16px;
+}
 
-        body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
-            margin-top: 0;
-            padding-top: 0;
-        }
+h5 {
+  font-size: 14px;
+}
 
-        a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
-            margin-top: 0;
-            padding-top: 0;
-        }
+h6 {
+  color: #777;
+  font-size: 14px;
+}
 
-        h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
-            margin-top: 10px;
-        }
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
 
-        /* LINKS
-        =============================================================================*/
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
 
-        a {
-            color: #4183C4;
-            text-decoration: none;
-        }
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
 
-        a:hover {
-            text-decoration: underline;
-        }
+/* LINKS
+=============================================================================*/
 
-        /* LISTS
-        =============================================================================*/
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
 
-        ul, ol {
-            padding-left: 30px;
-        }
+a:hover {
+  text-decoration: underline;
+}
 
-        ul li > :first-child,
-        ol li > :first-child,
-        ul li ul:first-of-type,
-        ol li ol:first-of-type,
-        ul li ol:first-of-type,
-        ol li ul:first-of-type {
-            margin-top: 0px;
-        }
+/* LISTS
+=============================================================================*/
 
-        ul ul, ul ol, ol ol, ol ul {
-            margin-bottom: 0;
-        }
+ul, ol {
+  padding-left: 30px;
+}
 
-        dl {
-            padding: 0;
-        }
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
 
-        dl dt {
-            font-size: 14px;
-            font-weight: bold;
-            font-style: italic;
-            padding: 0;
-            margin: 15px 0 5px;
-        }
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
 
-        dl dt:first-child {
-            padding: 0;
-        }
+dl {
+  padding: 0;
+}
 
-        dl dt>:first-child {
-            margin-top: 0px;
-        }
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
 
-        dl dt>:last-child {
-            margin-bottom: 0px;
-        }
+dl dt:first-child {
+  padding: 0;
+}
 
-        dl dd {
-            margin: 0 0 15px;
-            padding: 0 15px;
-        }
+dl dt>:first-child {
+  margin-top: 0px;
+}
 
-        dl dd>:first-child {
-            margin-top: 0px;
-        }
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
 
-        dl dd>:last-child {
-            margin-bottom: 0px;
-        }
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
 
-        /* CODE
-        =============================================================================*/
+dl dd>:first-child {
+  margin-top: 0px;
+}
 
-        pre, code, tt {
-            font-size: 12px;
-            font-family: Consolas, "Liberation Mono", Courier, monospace;
-        }
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
 
-        code, tt {
-            margin: 0 0px;
-            padding: 0px 0px;
-            white-space: nowrap;
-            border: 1px solid #eaeaea;
-            background-color: #f8f8f8;
-            border-radius: 3px;
-        }
+/* CODE
+=============================================================================*/
 
-        pre>code {
-            margin: 0;
-            padding: 0;
-            white-space: pre;
-            border: none;
-            background: transparent;
-        }
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
 
-        pre {
-            background-color: #f8f8f8;
-            border: 1px solid #ccc;
-            font-size: 13px;
-            line-height: 19px;
-            overflow: auto;
-            padding: 6px 10px;
-            border-radius: 3px;
-        }
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
 
-        pre code, pre tt {
-            background-color: transparent;
-            border: none;
-        }
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
 
-        kbd {
-            -moz-border-bottom-colors: none;
-            -moz-border-left-colors: none;
-            -moz-border-right-colors: none;
-            -moz-border-top-colors: none;
-            background-color: #DDDDDD;
-            background-image: linear-gradient(#F1F1F1, #DDDDDD);
-            background-repeat: repeat-x;
-            border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
-            border-image: none;
-            border-radius: 2px 2px 2px 2px;
-            border-style: solid;
-            border-width: 1px;
-            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-            line-height: 10px;
-            padding: 1px 4px;
-        }
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
 
-        /* QUOTES
-        =============================================================================*/
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
 
-        blockquote {
-            border-left: 4px solid #DDD;
-            padding: 0 15px;
-            color: #777;
-        }
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
 
-        blockquote>:first-child {
-            margin-top: 0px;
-        }
+/* QUOTES
+=============================================================================*/
 
-        blockquote>:last-child {
-            margin-bottom: 0px;
-        }
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
 
-        /* HORIZONTAL RULES
-        =============================================================================*/
+blockquote>:first-child {
+  margin-top: 0px;
+}
 
-        hr {
-            clear: both;
-            margin: 15px 0;
-            height: 0px;
-            overflow: hidden;
-            border: none;
-            background: transparent;
-            border-bottom: 4px solid #ddd;
-            padding: 0;
-        }
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
 
-        /* TABLES
-        =============================================================================*/
+/* HORIZONTAL RULES
+=============================================================================*/
 
-        table th {
-            font-weight: bold;
-        }
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
 
-        table th, table td {
-            border: 1px solid #ccc;
-            padding: 6px 13px;
-        }
+/* TABLES
+=============================================================================*/
 
-        table tr {
-            border-top: 1px solid #ccc;
-            background-color: #fff;
-        }
+table th {
+  font-weight: bold;
+}
 
-        table tr:nth-child(2n) {
-            background-color: #f8f8f8;
-        }
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
 
-        /* IMAGES
-        =============================================================================*/
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
 
-        img {
-            max-width: 100%
-        }
-    </style>
-    <base href='file:\\\F:\Frontend-Knowledge\js模块化\'/>
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+<base href='file:\\\F:\Frontend-Knowledge\js模块化\'/>
 </head>
 <body>
 <p><link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
-    <script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
-    <script >hljs.initHighlightingOnLoad();</script></p>
+<script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
+<script >hljs.initHighlightingOnLoad();</script></p>
 <!--
    http://www.cnblogs.com/snandy/archive/2012/03/12/2390782.html
    http://my.oschina.net/felumanman/blog/263330?p=1
@@ -307,7 +319,7 @@
 -->
 <p>模块化是一种处理复杂系统分解成为更好的可管理模块的方式，它可以把系统代码划分为一系列职责单一，高度解耦且可替换的模块，系统中某一部分的变化将如何影响其它部分就会变得显而易见，系统的可维护性更加简单易得。</p>
 <blockquote>
-    <p>前端模块，是能独立提供功能且能够复用的模块化代码。</p>
+<p>前端模块，是能独立提供功能且能够复用的模块化代码。</p>
 </blockquote>
 <p>模块化的目的：<br />
     1. 减少循环依赖<br />
@@ -315,14 +327,14 @@
     3. 提高开发的效率。 <br />
     (规避命名的冲突、全局变量的污染、有利于代码的维护、异步加载模块对页面性能方面有提升)</p>
 <p>CSS的模块化：推荐<strong>BIGPIPE</strong>或者<strong>LESS（Sass，Stylus）</strong><br />
-    JavaScript的模块化：使用模块加载器，<strong>requireJS</strong>，<strong>seaJS</strong></p>
+JavaScript的模块化：使用模块加载器，<strong>requireJS</strong>，<strong>seaJS</strong></p>
 <h3>一、AMD规范和CommonJS规范</h3>
 <ul>
-    <li>AMD (Asynchromous Module Definition 异步模块定义)，浏览器中的模块规范，使模块和它的依赖可以被异步加载，并且又可以按照正确的顺序去加载。</li>
-    <li>CommonJS (致力于设计、规划并标准化 JavaScript API) 是服务器端模块的规范，其模块加载的方式为同步的模式，Node.js采用了这个规范。</li>
+<li>AMD (Asynchromous Module Definition 异步模块定义)，浏览器中的模块规范，使模块和它的依赖可以被异步加载，并且又可以按照正确的顺序去加载。</li>
+<li>CommonJS (致力于设计、规划并标准化 JavaScript API) 是服务器端模块的规范，其模块加载的方式为同步的模式，Node.js采用了这个规范。</li>
 </ul>
 <blockquote>
-    <p>CommonJS 加载模块是同步的，所以只有加载完成才能执行后面的操作。像Node.js主要用于服务器的编程，加载的模块文件一般都已经存在本地硬盘，所以加载起来比较快，不用考虑异步加载的方式，所以CommonJS规范比较适用。但如果是浏览器环境，要从服务器加载模块，这是就必须采用异步模式。所以就有了 AMD  CMD 解决方案。</p>
+<p>CommonJS 加载模块是同步的，所以只有加载完成才能执行后面的操作。像Node.js主要用于服务器的编程，加载的模块文件一般都已经存在本地硬盘，所以加载起来比较快，不用考虑异步加载的方式，所以CommonJS规范比较适用。但如果是浏览器环境，要从服务器加载模块，这是就必须采用异步模式。所以就有了 AMD  CMD 解决方案。</p>
 </blockquote>
 <h4>1. AMD</h4>
 <p>（1） AMD设计出一个简洁的写模块API：</p>
@@ -331,28 +343,28 @@
 
 <p>其中：</p>
 <ul>
-    <li>id: 模块标识，一般省略。</li>
-    <li>dependencies: 所依赖的模块。</li>
-    <li>factory: 模块的实现，或者一个JavaScript对象。</li>
+<li>id: 模块标识，一般省略。</li>
+<li>dependencies: 所依赖的模块。</li>
+<li>factory: 模块的实现，或者一个JavaScript对象。</li>
 </ul>
 <hr style="border:none;"/>         
 <pre><code>// math.js
-    define(function() {
+define(function() {
     var add = function(x, y) {　　　　　　
-    return x + y;　　　　
+        return x + y;　　　　
     };　　　　
     return {
-    　　　　　　add: add　　　　
+　　　　　　add: add　　　　
     };　　
-    });
+});
 </code></pre>
 
 <p>定义数据对象模块：</p>
 <pre><code>//data.js
-    define({
+define({
     users: [],
     members: []
-    });
+});
 </code></pre>
 
 <p>AMD规范允许输出模块兼容CommonJS规范，这时define方法如下：</p>
@@ -360,16 +372,15 @@
     var reqModule = require(&quot;./someModule&quot;);
     requModule.test();
     exports.asplode = function () {
-    //someing
+        //someing
     }
-    });
+});
 </code></pre>
 
 <p>（2）加载模块：使用require获取依赖模块，使用exports导出API。</p>
 <h4>2. CommonJS Module</h4>
 <p>require - 用来引入依赖<br />
-    export - 用来导出模块
-</p>
+export - 用来导出模块  </p>
 <p>（1）根据CommonJS规范，一个单独的文件就是一个模块。每一个模块都是一个单独的作用域，也就是说，在该模块内部定义的变量，无法被其他模块读取，除非定义为 <strong>global</strong> 对象的属性。</p>
 <pre><code>global.warning = true;   //global即为window对象
 </code></pre>
@@ -377,45 +388,45 @@
 <p>上面的代码的warning变量，可以被所有模块读取。</p>
 <p>（2）使用一个<strong>esports</strong>对象或<strong>module.exports</strong>来定义一个模块的内容</p>
 <pre><code>var i = 1;
-    var max = 30;
+var max = 30;
 
-    module.exports = function () {
-    for (i -= 1; i++ &lt; max; ) {
+module.exports = function () {
+  for (i -= 1; i++ &lt; max; ) {
     console.log(i);
-    }
-    max *= 1.1;
-    };
+  }
+  max *= 1.1;
+};
 </code></pre>
 
 <p>（3）使用<strong>require</strong>或<strong>require.async</strong>方法加载模块</p>
 <pre><code>// do something with `myModule`
-    var myModule = require('someModule');
+var myModule = require('someModule');
 </code></pre>
 
 <p>require 提供的是一种类似于后端语言的同步调用方式，调用的时候默认所需要的模块都已经加载完成，解决方案会负责完成静态资源的加载。
-    <a href="https://www.npmjs.com/package/require.async">require.async</a> 提供的是一种异步加载方式，主要用来满足“按需加载”的场景，在require.async被执行的时候才去加载所需要的模块，当模块加载回来会执行相应的回调函数。</p>
+<a href="https://www.npmjs.com/package/require.async">require.async</a> 提供的是一种异步加载方式，主要用来满足“按需加载”的场景，在require.async被执行的时候才去加载所需要的模块，当模块加载回来会执行相应的回调函数。</p>
 <p>一般require用于处理首页首屏所需要的模块，require.async用于处理首屏外的按需模块。</p>
 <h3>二、requireJS和Browerify</h3>
 <p>CommonJS Module和AMD都是为了解决JS模块化的规范API，CommonJS更适合于Server端，而AMD基本是用于浏览器端。</p>
 <ul>
-    <li><a href="http://requirejs.org/"><strong>requirejs</strong></a> 以AMD模块开发规范来约束前端模块开发,最后上线的时候提供r.js命令行工具来生成合并压缩文件</li>
-    <li><a href="https://www.npmjs.org/package/browserify"><strong>browserify</strong></a> 以commonjs模块开发规范来约束前端模块开发,最后上线时提供命令行生成合并文件</li>
+<li><a href="http://requirejs.org/"><strong>requirejs</strong></a> 以AMD模块开发规范来约束前端模块开发,最后上线的时候提供r.js命令行工具来生成合并压缩文件</li>
+<li><a href="https://www.npmjs.org/package/browserify"><strong>browserify</strong></a> 以commonjs模块开发规范来约束前端模块开发,最后上线时提供命令行生成合并文件</li>
 </ul>
 <h4>1. requireJS</h4>
 <p>加载模块：</p>
 <pre><code>// main.js
-    require(['math'], function(math) {
+require(['math'], function(math) {
     alert(math.add(1, 1))
-    });
+});
 </code></pre>
 
 <p>require()函数接受两个参数。<br />
-    第一个参数是一个数组，表示所依赖的模块，上例就是['math']，即主模块依赖这一个模块；<br />
-    第二个参数是一个回调函数，当前面指定的模块都加载成功后，它将被调用。</p>
+第一个参数是一个数组，表示所依赖的模块，上例就是['math']，即主模块依赖这一个模块；<br />
+第二个参数是一个回调函数，当前面指定的模块都加载成功后，它将被调用。</p>
 <h4>2. Browserify —— 利用Node.js实现JS模块化加载</h4>
 <p>Browserify 可以让你使用类似于 node 的 require() 的方式来组织浏览器端的 Javascript 代码，通过预编译让前端 Javascript 可以直接使用 Node NPM 安装的一些库。</p>
 <p>安装： <code>npm install -g browserify</code><br />
-    使用 browserify 编译：<code>$ browserify main.js &gt; bundle.js</code></p>
+使用 browserify 编译：<code>$ browserify main.js &gt; bundle.js</code></p>
 <p>现在 main.js 需要的所有其它文件都会被编译进 bundle.js 中，包括很多层 require() 的情况也会一起被递归式的编译过来。</p>
 <p>编译好的 js 可以直接拿到浏览器使用</p>
 <pre><code>&lt;script src=&quot;bundle.js&quot;&gt;&lt;/script&gt;
