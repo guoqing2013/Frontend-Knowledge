@@ -301,6 +301,7 @@ img {
    http://my.oschina.net/felumanman/blog/263330?p=1
 -->
 <h1>前端模块化开发</h1>
+<hr>
 <p>模块化是一种处理复杂系统分解成为更好的可管理模块的方式，它可以把系统代码划分为一系列职责单一，高度解耦且可替换的模块，系统中某一部分的变化将如何影响其它部分就会变得显而易见，系统的可维护性更加简单易得。</p>
 <blockquote>
 <p>前端模块，是能独立提供功能且能够复用的模块化代码。</p>
@@ -364,7 +365,8 @@ define({
 <p>（2）加载模块：使用require获取依赖模块，使用exports导出API。</p>
 <h3>2. CommonJS Module</h3>
 <p>require - 用来引入依赖<br />
-export - 用来导出模块  </p>
+export - 用来导出模块  
+</p>
 <p>（1）根据CommonJS规范，一个单独的文件就是一个模块。每一个模块都是一个单独的作用域，也就是说，在该模块内部定义的变量，无法被其他模块读取，除非定义为 <strong>global</strong> 对象的属性。</p>
 <pre><code>global.warning = true;   //global即为window对象
 </code></pre>
