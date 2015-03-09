@@ -9,7 +9,7 @@
 
 
 
-# 网页速度分析工具：PageSpeed Insights 
+# 网页速度分析工具：PageSpeed Insights
 ***
 
 
@@ -46,8 +46,6 @@ PageSpeed的分析基于一个分为五类的最佳实践列表：
 * 在即时显示内容上，应避免JavaScript和CSS外部阻塞
 * 为浏览器布局和渲染预留时间（200ms）
 * 优化JavaScript执行和渲染时间
-
-
 
 
 
