@@ -50,4 +50,5 @@ PageSpeed的分析基于一个分为五类的最佳实践列表：
 
 
 
-
+最后推荐一个在线的页面分析测试网站： [http://gtmetrix.com/](http://gtmetrix.com/)
+![3](3.jpg)
