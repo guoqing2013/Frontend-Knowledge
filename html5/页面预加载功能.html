@@ -313,10 +313,13 @@
 
     &lt;!-- 图片，也可以是其他类型的文件 --&gt;
     &lt;link rel=&quot;prefetch&quot; href=&quot;sprite.png&quot; /&gt;
+</code></pre>
 
-
-    &lt;link rel=&quot;prefetch&quot; href=&quot;http://www.example.com/&quot;&gt; &lt;!--  火狐 --&gt;
+<p>火狐和Chrome</p>
+<pre><code>&lt;link rel=&quot;prefetch&quot; href=&quot;http://www.example.com/&quot;&gt; &lt;!--  火狐 --&gt;
     &lt;link rel=&quot;prerender&quot; href=&quot;http://www.example.com/&quot;&gt; &lt;!-- Chrome --&gt;
+
+    &lt;link rel=&quot;prefetch prerender&quot; href=&quot;http://www.example.com/&quot; &gt; &lt;!-- 同时兼容两个浏览器，可以写成这样 --&gt;
 </code></pre>
 
 <p>Mozilla还提供了不一样的rel属性去预加载：</p>
