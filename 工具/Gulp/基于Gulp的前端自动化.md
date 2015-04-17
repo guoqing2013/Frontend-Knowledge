@@ -6,11 +6,14 @@
 
 # 基于Gulp的前端自动化
 ***
+[Gulp官方文档](https://github.com/gulpjs/gulp/tree/master/docs)  
+[Gulp插件列表](http://gulpjs.com/plugins/)
 
 Gulp是一种基于流的，代码优于配置的新一代构建工具。 
 
-[Gulp官方文档](https://github.com/gulpjs/gulp/tree/master/docs)  
-[Gulp插件列表](http://gulpjs.com/plugins/)
+> Gulp具有高效性特点，因为它是通过Node.js强大的流，不需要写入临时文件/文件夹到磁盘，因此可以更快的完成构建。  
+> Gulp允许你一次输入所有插件，然后把这一堆插件通过管流一次输出出来，比起安装每个插件，然后对每个插件进行输入输出（如Grunt）要快的多。
+
 
 ### 1. 安装
 
@@ -18,7 +21,7 @@ Gulp是基于Node.js的，故要首先安装 Node.js。
 Gulp需要全局安装，然后再在项目的开发目录中安装为本地模块。  
 
 ```npm install --global gulp```   
- ```npm install --save-dev gulp```  
+```npm install gulp --save-dev```  
 
 
 ### 2. 在项目根目录下创建 gulpfile.js
@@ -113,6 +116,7 @@ task方法有两个参数，第一个是任务名，第二个是任务函数。�
 
 
 参考链接：  
-1. [http://www.smashingmagazine.com/2014/06/11/building-with-gulp/](http://www.smashingmagazine.com/2014/06/11/building-with-gulp/)  
-2. [http://javascript.ruanyifeng.com/tool/gulp.html](http://javascript.ruanyifeng.com/tool/gulp.html)
+1. [http://markgoodyear.com/2014/01/getting-started-with-gulp/](http://markgoodyear.com/2014/01/getting-started-with-gulp/)  
+2. [http://www.smashingmagazine.com/2014/06/11/building-with-gulp/](http://www.smashingmagazine.com/2014/06/11/building-with-gulp/)  
+3. [http://javascript.ruanyifeng.com/tool/gulp.html](http://javascript.ruanyifeng.com/tool/gulp.html)
 

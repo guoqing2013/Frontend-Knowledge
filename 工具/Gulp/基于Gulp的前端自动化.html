@@ -298,14 +298,18 @@ img {
 <script >hljs.initHighlightingOnLoad();</script></p>
 <h1>基于Gulp的前端自动化</h1>
 <hr />
-<p>Gulp是一种基于流的，代码优于配置的新一代构建工具。 </p>
 <p><a href="https://github.com/gulpjs/gulp/tree/master/docs">Gulp官方文档</a><br />
 <a href="http://gulpjs.com/plugins/">Gulp插件列表</a></p>
+<p>Gulp是一种基于流的，代码优于配置的新一代构建工具。 </p>
+<blockquote>
+<p>Gulp具有高效性特点，因为它是通过Node.js强大的流，不需要写入临时文件/文件夹到磁盘，因此可以更快的完成构建。<br />
+Gulp允许你一次输入所有插件，然后把这一堆插件通过管流一次输出出来，比起安装每个插件，然后对每个插件进行输入输出（如Grunt）要快的多。</p>
+</blockquote>
 <h3>1. 安装</h3>
 <p>Gulp是基于Node.js的，故要首先安装 Node.js。<br />
 Gulp需要全局安装，然后再在项目的开发目录中安装为本地模块。  </p>
 <p><code>npm install --global gulp</code> <br />
- <code>npm install --save-dev gulp</code>  </p>
+<code>npm install gulp --save-dev</code>  </p>
 <h3>2. 在项目根目录下创建 gulpfile.js</h3>
 <p><strong>在项目中安装你所需要的模块，如：</strong><br />
 <code>npm install gulp-uglify --save-dev</code></p>
@@ -386,8 +390,9 @@ gulp.task('default', ['watch', 'scripts', 'images']);
 <li>gulp.dest(glob) 返回一个可写的stream</li>
 </ul>
 <p>参考链接：<br />
-1. <a href="http://www.smashingmagazine.com/2014/06/11/building-with-gulp/">http://www.smashingmagazine.com/2014/06/11/building-with-gulp/</a><br />
-2. <a href="http://javascript.ruanyifeng.com/tool/gulp.html">http://javascript.ruanyifeng.com/tool/gulp.html</a></p>
+1. <a href="http://markgoodyear.com/2014/01/getting-started-with-gulp/">http://markgoodyear.com/2014/01/getting-started-with-gulp/</a><br />
+2. <a href="http://www.smashingmagazine.com/2014/06/11/building-with-gulp/">http://www.smashingmagazine.com/2014/06/11/building-with-gulp/</a><br />
+3. <a href="http://javascript.ruanyifeng.com/tool/gulp.html">http://javascript.ruanyifeng.com/tool/gulp.html</a></p>
 
 </body>
 </html>
