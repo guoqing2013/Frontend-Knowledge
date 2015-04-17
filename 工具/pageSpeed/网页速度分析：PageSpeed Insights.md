@@ -21,7 +21,7 @@ PageSpeed Insights扩展安装地址：[点击安装](https://chrome.google.com/
 PageSpeed Insights是一款谷歌公司开发的网页速度分析插件，在Chrome中安装了PageSpeed Insights插件以后，用户在网站开发完成以后，就可以使用PageSpeed Insights插件来监控当前网站的运行速度，PageSpeed Insights插件在监控完成以后，还会给出一些网页速度优化的建议，用户可以参考其中的提示，在网站的开发或服务器开发方面更改产品的性能或增强服务器质量等方式来缩短网站的打开速度。  
 
 
-![1](1.jpg)
+![1](1.png)
 
 使用方法：点击 “分析”，稍等一会儿就会给出分析结果。
 
