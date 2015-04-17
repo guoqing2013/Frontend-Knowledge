@@ -586,7 +586,7 @@ jshint（检查语法错误）、concat（合并文件）、uglify（压缩代�
     </h4>
 </section>
 
-### 参考链接
+参考链接
 1. <a href="http://javascript.ruanyifeng.com/tool/grunt.html" target="_blank">http://javascript.ruanyifeng.com/tool/grunt.html</a>
 2. <a href="http://blog.csdn.net/lihongxun945/article/details/8958063" target="_blank">http://blog.csdn.net/lihongxun945/article/details/8958063</a>
 
