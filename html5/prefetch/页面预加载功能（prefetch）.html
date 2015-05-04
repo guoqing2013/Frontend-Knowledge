@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>页面预加载功能</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+<base href='file:\\\F:\Frontend-Knowledge\html5\'/>
+</head>
+<body>
+<p><link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
+<script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
+<script >hljs.initHighlightingOnLoad();</script></p>
+<!--
+   http://www.cnblogs.com/snandy/archive/2012/03/12/2390782.html
+   http://my.oschina.net/felumanman/blog/263330?p=1
+-->
+<h1>页面预加载功能（prefetch）</h1>
+<hr />
+<p>在HTML5里，出现了一个新的用来优化网站速度的新功能：页面资源预加载/预读取(Link prefetch)。</p>
+<h3>1. 页面资源预加载/预读取</h3>
+<p>预读取就是很常见的资源预加载，当前页面加载完成之后，就会在后面偷偷的下载你指定的资源，一般是 JS 、CSS 和 图片 。</p>
+<p>页面资源预加载(Link prefetch)是浏览器提供的一个技巧，目的是让浏览器在空闲时间下载或预读取一些文档资源，用户在将来将会访问这些资源。一个Web页面可以对浏览器设置一系列的预加载指示，当浏览器加载完当前页面后，它会在后台静悄悄的加载指定的文档，并把它们存储在缓存里。当用户访问到这些预加载的文档后，浏览器能快速的从缓存里提取给用户。<br />
+注：HTTPS协议资源下也可以使用prefetch。</p>
+<h3>2. HTML5页面资源预加载写法</h3>
+<pre><code>&lt;!-- 页面，可以使用绝对或者相对路径 --&gt; 
+&lt;link rel=&quot;prefetch&quot; href=&quot;page2.html&quot; /&gt; 
+
+&lt;!-- 图片，也可以是其他类型的文件 --&gt; 
+&lt;link rel=&quot;prefetch&quot; href=&quot;sprite.png&quot; /&gt; 
+</code></pre>
+
+<p>火狐和Chrome</p>
+<pre><code>&lt;link rel=&quot;prefetch&quot; href=&quot;http://www.example.com/&quot;&gt; &lt;!--  火狐 --&gt;
+&lt;link rel=&quot;prerender&quot; href=&quot;http://www.example.com/&quot;&gt; &lt;!-- Chrome --&gt;
+
+&lt;link rel=&quot;prefetch prerender&quot; href=&quot;http://www.example.com/&quot; &gt; &lt;!-- 同时兼容两个浏览器，可以写成这样 --&gt;
+</code></pre>
+
+<p>Mozilla还提供了不一样的rel属性去预加载：</p>
+<pre><code>&lt;link rel=&quot;prefetch alternate stylesheet&quot; title=&quot;Designed for Mozilla&quot; href=&quot;mozspecific.css&quot; /&gt;
+&lt;link rel=&quot;next&quot; href=&quot;2.html&quot; /&gt;
+</code></pre>
+
+<h3>3. 什么情况下应该预加载页面资源</h3>
+<ul>
+<li>当页面有幻灯片类似的服务时，预加载/预读取接下来的1-3页和之前的1-3页。 </li>
+<li>预加载那些整个网站通用的图片。 </li>
+<li>预加载网站上搜索结果的下一页。 </li>
+</ul>
+<!--
+### 4. 禁止页面资源预加载(Link prefetch)
+火狐浏览器里有一个选项可以禁止任何的页面资源预加载(Link prefetch)功能，你可以这样设置： 
+
+	user_pref("network.prefetch-next", false);
+-->
+<h3>4. 面资源预加载注意事项</h3>
+<ul>
+<li>预加载不能跨域工作，包括跨域拉取cookies。</li>
+<li>预加载会污染你的网站访问量统计，因为有些预加载到浏览器的页面用户可能并未真正访问。</li>
+<li>火狐浏览器从2003年开始就已经提供了对这项预加载术的支持。</li>
+</ul>
+<p>更多资料:
+1. <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Link_prefetching_FAQ">https://developer.mozilla.org/en-US/docs/Web/HTTP/Link<em>prefetching</em>FAQ</a><br />
+2. <a href="https://medium.com/@luisvieira_gmr/html5-prefetch-1e54f6dda15d">https://medium.com/@luisvieira_gmr/html5-prefetch-1e54f6dda15d</a><br />
+3. <a href="http://yujiangshui.com/three-html5-feature-intro/">http://yujiangshui.com/three-html5-feature-intro/</a>  
+</p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

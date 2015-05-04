@@ -9,7 +9,7 @@
 
 
 
-# 页面预加载功能
+# 页面预加载功能（prefetch）
 ***
 
 在HTML5里，出现了一个新的用来优化网站速度的新功能：页面资源预加载/预读取(Link prefetch)。
@@ -27,7 +27,7 @@
     <!-- 页面，可以使用绝对或者相对路径 --> 
     <link rel="prefetch" href="page2.html" /> 
 
-    <!-- 图片，也可以是其他类型的文件 --> 
+    <!-- 图片，也可以是其他类型的文件 -->
     <link rel="prefetch" href="sprite.png" /> 
 
 

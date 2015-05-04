@@ -1,4 +1,6 @@
-
+<link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
+<script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
+<script >hljs.initHighlightingOnLoad();</script>
 
 
 <!--
@@ -8,12 +10,15 @@
 -->
 
 
-## 1. 模板引擎
+
+# 简单javascript模板引擎
+***
+
+### 一、模板引擎
 
 通过分析模板，将数据和模板结合在一起输出最后的结果的程序称为模板引擎。
 
 
-## 2. 模板文本转化
 
 模板写法：
 
@@ -31,28 +36,18 @@
     }
     temp += '</ul>';
 
-## 3. javascript动态函数
-我们通常使用function关键字在js中声明函数，很少用Function。在js中function是字面语法，js的运行时会将字面的function转化成Function对象，所以实际上Function提供了更为底层和灵活的机制。
-用 Function 类直接创建函数的语法如下：
-
-    var function_name = new Function(arg1, arg2, ..., argN, function_body);
-
-例如：
-
-    //创建动态函数
-    var sayHi = new Function("sName", "sMessage", "alert(\"Hello \" + sName + sMessage);");
-    //执行
-    sayHi('Hello','World');
 
 
-## 二、JS模板引擎的实现原理
+
+
+
+### 二、JS模板引擎的实现原理
 
 想得到预期html字符串，我们必须设法让模板内部的javascript变量置换、javaScript语句执行，也就是把JavaScript代码剥离出来执行，把其它html语句拼接为一个字符串。
-
 虽然每个引擎从模板语法、语法解析、变量赋值、字符串拼接的实现方式各有所不同，但关键的渲染原理仍然是动态执行 javascript 字符串。
 
 
-### 1. 正则进行简单的字符串置换
+#### 1. 正则进行简单的字符串置换
 使用正则表达式寻找里面的模板参数，然后替换成传给引擎的具体数据。
 
     var TemplateEngine = function(tpl, data) {
@@ -63,7 +58,7 @@
         return tpl;
     }
 
-如果正则匹配成功，则match不为空，match[0]是匹配到的字符串 <% template %>，match[1]是捕获到的变量template，。
+如果正则匹配成功，则match不为空，match[0]是匹配到的字符串 <% template %>，match[1]是捕获到的变量template。
 
 
 
@@ -71,6 +66,23 @@
 
 
 
+#### 2. javascript动态函数
+在js中function是字面语法，js的运行时会将字面的function转化成Function对象，所以实际上Function提供了更为底层和灵活的机制。
+
+用 Function 类直接创建函数的语法如下：
+
+    var function_name = new Function(arg1, arg2, ..., argN, function_body);
+
+例如：
+
+    //创建动态函数
+    var fn = new Function("arg", "console.log(arg + 1);");  //参数: arg，函数体: console.log(arg + 1);
+    //执行
+    fn(2); // outputs 3
+
+
+
+最终代码：
 
     module.exports = function(html, options) {
         var re = /<%(.+?)%>/g,
@@ -93,3 +105,8 @@
         catch(err) { console.error("'" + err.message + "'", " in \n\nCode:\n", code, "\n"); }
         return result;
     }
+
+
+更多资料:
+[http://krasimirtsonev.com/blog/article/Javascript-template-engine-in-just-20-line](http://krasimirtsonev.com/blog/article/Javascript-template-engine-in-just-20-line)  
+
