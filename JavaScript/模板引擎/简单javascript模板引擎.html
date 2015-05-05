@@ -347,6 +347,20 @@ temp += '&lt;/ul&gt;';
 var fn = new Function(&quot;arg&quot;, &quot;console.log(arg + 1);&quot;);  //参数: arg，函数体: console.log(arg + 1);
 //执行
 fn(2); // outputs 3
+
+
+
+function tmpl(id,data){
+    var html=document.getElementById(id).innerHTML;
+    var result=&quot;var p=[];with(obj){p.push('&quot;
+        +html.replace(/[\r\n\t]/g,&quot; &quot;)
+        .replace(/&lt;%=(.*?)%&gt;/g,&quot;');p.push($1);p.push('&quot;)
+        .replace(/&lt;%/g,&quot;');&quot;)
+        .replace(/%&gt;/g,&quot;p.push('&quot;)
+        +&quot;');}return p.join('');&quot;;
+    var fn=new Function(&quot;obj&quot;,result);
+    return fn(data);
+}
 </code></pre>
 
 <p>最终代码：</p>
