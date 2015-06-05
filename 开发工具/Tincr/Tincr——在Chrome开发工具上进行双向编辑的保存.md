@@ -10,15 +10,13 @@ http://addyosmani.com/blog/lets-tincr-bi-directional-editing-and-saving-with-the
 - - -  
 
 
-
 我们常常发现我们自己在调试代码时经常需要在Chrome开发工具和文本编辑器之间进行来回切换， 这耗费了我们很多不必要的时间。 
+[Tincr](http://tin.cr/)都可以帮助我们解决这个问题。
+ - 在Chrome开发工具上的改变（css或js）立即同步到源文件中；
+ - 在源文件中代码（css或js）的改变，使得浏览器重新加载并展现代码更改后的效果；
 
-[Tincr](http://tin.cr/)
-
-Tincr可以帮助我们解决这个问题。
 
 
-使用AutoSave拓展程序可以将你在Chrome Developer Tools的修改点立即同步到你相应的本地css和js文件中，这意味着你将不需要在文本编辑器和浏览器之间不断地做来回切换，大大节省开发时间。
 
 
 ### 一、安装

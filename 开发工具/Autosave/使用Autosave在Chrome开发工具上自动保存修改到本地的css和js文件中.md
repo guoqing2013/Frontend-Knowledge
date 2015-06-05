@@ -17,7 +17,7 @@ http://addyosmani.com/blog/autosave-changes-chrome-dev-tools/
  - 继续调试
 
 
-使用[Chrome DevTools Autosave](https://github.com/NV/chrome-devtools-autosave)可以将你在Chrome开发工具上css和js的修改点立即同步到你本地的源文件中，这意味着你将不需要在文本编辑器和浏览器之间不断地做来回切换，大大节省开发时间。
+使用[Autosave](https://github.com/NV/chrome-devtools-autosave)可以将你在Chrome开发工具上css和js的修改点立即同步到你本地的源文件中，这意味着你将不需要在文本编辑器和浏览器之间不断地做来回切换，大大节省开发时间。
 
 
 ### 一、安装
