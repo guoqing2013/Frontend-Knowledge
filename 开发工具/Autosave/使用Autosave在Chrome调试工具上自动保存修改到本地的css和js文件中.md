@@ -31,7 +31,7 @@ AutoSave需要使用node服务器保存文件。
 
 
 ### 二、使用
-```$ autosave```
+运行```$ autosave```
 
 
 AutoSave默认是调试以file://路径开头的页面，如果想要调试 http://localhost/ 或 http://10.1.204.74:9898 这样的地址，只要在AutoSave拓展配置添加你要配置的页面路径地址，如下图：  
