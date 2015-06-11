@@ -4,42 +4,42 @@
 
 <!--
 http://addyosmani.com/blog/lets-tincr-bi-directional-editing-and-saving-with-the-chrome-devtools/
+
+http://tin.cr/docs.html
 -->
 
 # Tincr——在Chrome DevTools双向编辑的保存
 - - -  
 
 
-我们常常发现我们自己在调试代码时经常需要在Chrome开发工具和文本编辑器之间进行来回切换， 这耗费了我们很多不必要的时间。 
+我们常常发现我们自己在调试代码时经常需要在Chrome开发工具和文本编辑器之间进行来回切换， 这耗费了我们很多不必要的时间。   
 [Tincr](http://tin.cr/)都可以帮助我们解决这个问题。
- - 在Chrome开发工具上的改变（css或js）立即同步到源文件中；
- - 在源文件中代码（css或js）的改变，使得浏览器重新加载并展现代码更改后的效果；
 
 
 
+### 1. Tincr是什么?
+Tince的两大作用：
+
+ - 在Chrome开发工具上的改变（css或js）立即同步到源文件中。 例如，我们常常使用“审查元素”的这个功能，然后尝试修改元素的样式，调试好后，又要将调试好的样式复制粘贴到编辑器中。
+ - 在源文件中代码修改css或js后，浏览器会自动重新加载并展现新的页面效果。
 
 
-### 一、安装
-#### 1. Installing the Extension
- * 在谷歌浏览器中输入 **chrome://flags/**，然后找到实验性扩展程序API ，点击开启后。
-![1](1.jpg)
- * 重启浏览器
- * 下载安装[AutoSave](http://userscripts.ru/js/chrome-devtools-autosave/latest.crx)拓展程序  
+Tincr Demo Video: [https://www.youtube.com/watch?v=d30unX8Xv_8](https://www.youtube.com/watch?v=d30unX8Xv_8) 个人觉得比Autosave更强大，更好用
 
 
-#### 2. Installing the Server
-AutoSave需要使用node服务器保存文件。
+### 2. 安装
+安装地址：[https://chrome.google.com/webstore/detail/tincr/lfjbhpnjiajjgnjganiaggebdhhpnbih](https://chrome.google.com/webstore/detail/tincr/lfjbhpnjiajjgnjganiaggebdhhpnbih)
 
- * 安装[Node.js](https://nodejs.org/)
- * 在终端上执行命令 ```npm install -g autosave```
-
-
-### 二、使用
-运行```$ autosave```
-
-
-AutoSave默认是调试以file://路径开头的页面，如果想要调试 http://localhost/ 或 http://10.1.204.74:9898 这样的地址，只要在AutoSave拓展配置添加你要配置的页面路径地址，如下图：  
-![2](2.png)
+### 3. 配置
+安装成功后Tincr会在Chrome开发工具上添加一个新的tab。 
+![1](1.png)
 
 
 
+Tincr支持4应用程序类型 (Ruby on Rails, Chrome Extension, Atlassian Plugin, Configuration file)
+![](2.png)
+
+如果你是一个Ruby开发人员和调试应用程序的DevTools
+
+
+配置Tincr,遵循这些步骤 
