@@ -44,7 +44,8 @@ Tincr支持4应用程序类型 (Ruby on Rails, Chrome Extension, Atlassian Plugi
 配置Tincr,遵循这些步骤 
 
 1. 选择一个应用程序类型。 
-2. 单击Browse按钮，选择项目的根目录。
+2. 单击Browse按钮，选择项目的根目录。(如果点击Browse按钮，则需要打开chrome://flags/，然后启用NPAPI)
 3. 定制您的配置设置或更改默认资源映射为选定的项目类型。 文件的url和配置文件应用程序类型迦南€™t被定制 。
 ![](config.jpg)
 ![](step3.jpg)
+
