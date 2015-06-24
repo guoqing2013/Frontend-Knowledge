@@ -32,8 +32,7 @@ Tincr Demo Video: [https://www.youtube.com/watch?v=d30unX8Xv_8](https://www.yout
 
 ### 3. 配置
 安装成功后Tincr会在Chrome开发工具上添加一个新的tab。 
-![1](1.png)
-
+![](1.png)
 
 
 Tincr支持4应用程序类型 (Ruby on Rails, Chrome Extension, Atlassian Plugin, Configuration file)
@@ -43,3 +42,9 @@ Tincr支持4应用程序类型 (Ruby on Rails, Chrome Extension, Atlassian Plugi
 
 
 配置Tincr,遵循这些步骤 
+
+1. 选择一个应用程序类型。 
+2. 单击Browse按钮，选择项目的根目录。
+3. 定制您的配置设置或更改默认资源映射为选定的项目类型。 文件的url和配置文件应用程序类型迦南€™t被定制 。
+![](config.jpg)
+![](step3.jpg)
