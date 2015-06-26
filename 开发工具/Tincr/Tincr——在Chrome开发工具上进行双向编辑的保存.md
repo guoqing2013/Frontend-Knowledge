@@ -35,7 +35,7 @@ Tincr Demo Video: [https://www.youtube.com/watch?v=d30unX8Xv_8](https://www.yout
 ![](1.png)
 
 
-Tincr支持4应用程序类型 (Ruby on Rails, Chrome Extension, Atlassian Plugin, Configuration file)
+Tincr支持5应用程序类型 (Ruby on Rails, Chrome Extension, Http Web Server, Atlassian Plugin, Configuration file)
 ![](2.png)
 
 如果你是一个Ruby开发人员和调试应用程序的DevTools
