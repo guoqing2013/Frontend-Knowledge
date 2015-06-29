@@ -23,7 +23,8 @@ Tince的两大作用：
  - 在源文件中代码修改css或js后，浏览器会自动重新加载并展现新的页面效果。
 
 
-[**Tincr Demo Video**](https://www.youtube.com/watch?v=d30unX8Xv_8)
+**Tincr Demo Video**
+<embed src="http://player.youku.com/player.php/sid/XMTI3MzE1NzU4OA==/v.swf" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
 
 ### 2. 安装
 安装地址：[https://chrome.google.com/webstore/detail/tincr/lfjbhpnjiajjgnjganiaggebdhhpnbih](https://chrome.google.com/webstore/detail/tincr/lfjbhpnjiajjgnjganiaggebdhhpnbih)
