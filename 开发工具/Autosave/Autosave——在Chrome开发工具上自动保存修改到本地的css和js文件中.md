@@ -6,7 +6,7 @@
 http://addyosmani.com/blog/autosave-changes-chrome-dev-tools/
 -->
 
-# 使用Autosave在Chrome调试工具上自动保存修改到本地的css和js文件中
+# Autosave——在Chrome调试工具上自动保存修改到本地的css和js文件中
 - - - 
 
 我们在开发调试时通常的工作流这样子的：
