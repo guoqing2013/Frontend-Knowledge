@@ -16,7 +16,6 @@ http://tin.cr/docs.html
 [Tincr](http://tin.cr/)都可以帮助我们解决这个问题。
 
 
-
 ### 1. Tincr是什么?
 Tince的两大作用：
 
@@ -24,28 +23,26 @@ Tince的两大作用：
  - 在源文件中代码修改css或js后，浏览器会自动重新加载并展现新的页面效果。
 
 
-Tincr Demo Video: [https://www.youtube.com/watch?v=d30unX8Xv_8](https://www.youtube.com/watch?v=d30unX8Xv_8) 个人觉得比Autosave更强大，更好用
-
+**Tincr Demo Video**
+<video src="Tincr Demo.mp4" controls="controls"></video>
 
 ### 2. 安装
 安装地址：[https://chrome.google.com/webstore/detail/tincr/lfjbhpnjiajjgnjganiaggebdhhpnbih](https://chrome.google.com/webstore/detail/tincr/lfjbhpnjiajjgnjganiaggebdhhpnbih)
 
 ### 3. 配置
-安装成功后Tincr会在Chrome开发工具上添加一个新的tab。 
-![](1.png)
+安装成功后Tincr会在Chrome开发工具上添加一个新的tab。
 
+![](newtab.jpg)
 
-Tincr支持5应用程序类型 (Ruby on Rails, Chrome Extension, Http Web Server, Atlassian Plugin, Configuration file)
-![](2.png)
-
-如果你是一个Ruby开发人员和调试应用程序的DevTools
 
 
 配置Tincr,遵循这些步骤 
 
-1. 选择一个应用程序类型。 
-2. 单击Browse按钮，选择项目的根目录。(如果点击Browse按钮，则需要打开chrome://flags/，然后启用NPAPI)
-3. 定制您的配置设置或更改默认资源映射为选定的项目类型。 文件的url和配置文件应用程序类型迦南€™t被定制 。
+1. 选择一个应用程序类型。 Tincr支持5应用程序类型 (Ruby on Rails, Chrome Extension, Http Web Server, Atlassian Plugin, Configuration file)
+2. 单击Browse按钮，选择项目的根目录。(如果点击Browse按钮无效，则需要打开chrome://flags/，然后启用NPAPI)
+3. 为你选定的项目类型定制您的配置设置或更改默认资源映射 （文件的url和文件的应用程序类型不能被自定义）
 ![](config.jpg)
 ![](step3.jpg)
+
+
 
