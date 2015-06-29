@@ -24,6 +24,7 @@ Tince的两大作用：
 
 
 **Tincr Demo Video**
+
 <embed src="http://player.youku.com/player.php/sid/XMTI3MzE1NzU4OA==/v.swf" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
 
 ### 2. 安装
