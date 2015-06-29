@@ -8,7 +8,7 @@ http://addyosmani.com/blog/lets-tincr-bi-directional-editing-and-saving-with-the
 http://tin.cr/docs.html
 -->
 
-# Tincr——在Chrome开发工具和编辑器之间的双向编辑和保存
+# Tincr——在Chrome开发工具和编辑器之间双向编辑和保存
 - - -  
 
 
