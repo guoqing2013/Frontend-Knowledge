@@ -41,7 +41,7 @@ Tince的两大作用：
 
 1. 选择一个应用程序类型。 Tincr支持5应用程序类型 (Ruby on Rails, Chrome Extension, Http Web Server, Atlassian Plugin, Configuration file)
 2. 单击Browse按钮，选择项目的根目录。(如果点击Browse按钮无效，则需要打开chrome://flags/，然后启用NPAPI)
-3. 为你选定的项目类型定制您的配置设置或更改默认资源映射 （文件的url和文件的应用程序类型不能被自定义）
+3. 为你所选定的项目配置所映射的资源 （文件的url和文件的应用程序类型不能被自定义）
 ![](config.jpg)
 ![](step3.jpg)
 

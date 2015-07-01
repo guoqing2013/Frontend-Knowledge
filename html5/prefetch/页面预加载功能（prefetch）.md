@@ -5,7 +5,6 @@
 <!--
    http://www.cnblogs.com/snandy/archive/2012/03/12/2390782.html
    http://my.oschina.net/felumanman/blog/263330?p=1
-   http://www.jianshu.com/p/7f58ddfc1392
 -->
 
 
@@ -35,7 +34,7 @@ HTML5提供了3种方法
 
 
 
-
+    prefetch（预读取-用法）
 
     <!-- 页面，可以使用绝对或者相对路径 --> 
     <link rel="prefetch" href="page2.html" /> 
