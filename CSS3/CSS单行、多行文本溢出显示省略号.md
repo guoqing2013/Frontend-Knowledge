@@ -57,4 +57,4 @@
         el.style.overflow = curOverflow;
         return isOverflowing;
     }
-  
+
