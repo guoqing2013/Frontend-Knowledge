@@ -44,8 +44,23 @@
     }
 
 
-### 检测元素是否溢出
+### 3. 检测元素的内容是否溢出
 
+通常,我们可以比较client[Height|Width]和scroll[Height|Width]的大小来判断元素（overflow为hidden时）的内容是否有溢出。
+
+
+    function checkOverflow(el) {
+        var curOverflow = el.style.overflow;:
+        if(!curOverflow || curOverflow === "visible") {
+            el.style.overflow = "hidden";
+        }
+
+        var isOverflowing = el.clientWidth < el.scrollWidth || el.clientHeight < el.scrollHeight;
+
+        el.style.overflow = curOverflow;
+
+        return isOverflowing;
+    }
 
 
 
