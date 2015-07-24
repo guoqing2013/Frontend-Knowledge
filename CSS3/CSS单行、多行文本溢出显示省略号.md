@@ -1,13 +1,13 @@
 <link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
 <script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
-<script >hljs.initHighlightingOnLoad();</script> 
+<script >hljs.initHighlightingOnLoad();</script>
 
 
 # CSS单行、多行文本溢出显示省略号
 - - -  
 
 
-使用*text-overflow: ellipsis*属性，可以让溢出的文本显示省略标记(…)。
+使用**text-overflow: ellipsis**属性，可以让溢出的文本显示省略标记(…)。
 想要实现溢出时产生省略号的效果。还必须定义：强制文本在一行内显示（white-space:nowrap）及溢出内容为隐藏（overflow:hidden）。只有这样才能实现溢出文本显示省略号的效果
 
 
@@ -48,23 +48,13 @@
 
 通常,我们可以比较client[Height|Width]和scroll[Height|Width]的大小来判断元素（overflow为hidden时）的内容是否有溢出。
 
-
     function checkOverflow(el) {
-        var curOverflow = el.style.overflow;:
-        if(!curOverflow || curOverflow === "visible") {
+        var curOverflow = el.style.overflow; 
+        if (!curOverflow || curOverflow === "visible") {
             el.style.overflow = "hidden";
         }
-
         var isOverflowing = el.clientWidth < el.scrollWidth || el.clientHeight < el.scrollHeight;
-
         el.style.overflow = curOverflow;
-
         return isOverflowing;
     }
-
-
-
-
-
-
-
+  
