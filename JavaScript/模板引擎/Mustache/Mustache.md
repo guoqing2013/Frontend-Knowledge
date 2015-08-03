@@ -82,16 +82,16 @@ Handlebars为最流行的模板引擎之一，构建于Mustache之上。
 4. [Jade](http://jade-lang.com/)  
 Jade是受Haml的影响以JavaScript实现用于node的高性能模板引擎。
 
-	 // template.jade  
+
+	// template.jade  
 	  p  
 	    | Hello,  
 	    = name  
   
-	 // JS  
-	  jade.renderFile("template.jade", { name: "Jack" }, function(err, result) {  
-	    console.log(result);  
-	    // logs: Hello, Jack  
-	  });  
+	// JS  
+	jade.renderFile("template.jade", { name: "Jack" }, function(err, result) {  
+		console.log(result);  // logs: Hello, Jack 		
+	});  
 
 
 
