@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+<ul id="carousel"></ul>
+<script id="template" type="text/template">
+<h1>{{header}}</h1>
+{{#bug}}
+{{/bug}}
+
+{{#items}}
+        <li>
+            {{name}}
+            
+            {{#loop}}
+                
+                <p>{{a}}</p>
+                <p>{{url}}</p>
+
+            {{/loop}}
+        
+        </li>
+{{/items}}
+
+{{#empty}}
+    <p>The list is empty.</p>
+{{/empty}}
+</script>
+
+
+
+<script src="libs/jquery-2.0.3.js"></script>    
+<script src="libs/mustache.js"></script>
+<script type="text/javascript">
+var data = {
+  "header": "Colors",
+  "items": [
+      {
+          "name": "red",
+          "loop": [
+            {
+                'a': 1,
+                "url": "#Red1"
+            },
+            {
+                'b': 2,
+                "url": "#Green1"
+            }
+            
+
+          ]  
+      },
+       {
+          "name": "green",
+           "loop": [
+            {
+                'a': 1,
+                "url": "#Red2"
+            },
+            {
+                'b': 2,
+                "url": "#Green2"
+            }
+          ]  
+      }
+  ],
+  "empty": false
+};
+
+
+
+$(function() {
+    var template = $("#template").html();
+    var html = Mustache.render(template, data); //使用render或to_html进行渲染
+    $("#carousel").html(html);
+   
+
+});
+
+</script>
+</body>
+</html>
+
