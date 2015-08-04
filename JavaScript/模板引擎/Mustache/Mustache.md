@@ -115,3 +115,80 @@ Mustache 的模板语法很简单，就那么几个：
 {{!comments}}
 
 
+	var data = {
+	    "company": "Apple",
+	    "address": {
+	        "street": "1 Infinite Loop Cupertino</br>",
+	        "city": "California ",
+	        "state": "CA ",
+	        "zip": "95014 "
+	    },
+	    "product": ["Macbook", "iPhone", "iPod", "iPad"]
+	 
+	};
+	
+
+
+#### 1. {{keyName}} 
+**{{}}**是 Mustache 的标示符，花括号里的 keyName 表示键名，这句的作用是直接输出与键名匹配的键值，例如：
+
+	var tpl = '{{company}}'; 
+	var html = Mustache.render(tpl, data); // 输出： Apple 
+
+data 是数据，tpl 是定义的模板。
+
+
+#### 2. {{#keyName}} {{/keyName}}
+ 以#开始、以/结束表示区块，它会根据当前上下文中的键值来对区块进行一次或多次渲染；
+
+	var tpl = '{{#address}} <p>{{street}},{{city}},{{state}}</p> {{/address}}';
+	var html = Mustache.render(tpl, data);  //输出： <p>1 Infinite Loop Cupertino&lt;/br&gt;,California,CA</p> 
+
+注意：如果{{#keyName}} {{/keyName}}中的 keyName 值为 null, undefined, false；则不渲染输出任何内容。
+
+
+####　3.　{{^keyName}} {{/keyName}}
+该语法与{{#keyName}} {{/keyName}}类似，不同在于它是当 keyName 值为 null, undefined, false 时才渲染输出该区块内容。
+
+	var tpl = '{{^nothing}}没找到 nothing 键名就会渲染这段{{/nothing}}';
+	var html = Mustache.render(tpl, data); //输出： 没找到 nothing 键名就会渲染这段 
+
+
+#### 4. {{.}}
+{{.}}表示枚举，可以循环输出整个数组；
+
+	var tpl = '{{#product}} <p>{{.}}</p> {{/product}}'; 
+	var html = Mustache.render(tpl, data); //输出： <p>Macbook iPhone iPod iPad</p> 
+
+#### 5. {{>partials}} 
+{{>partials}} 以>开始表示子模块，如{{> address}}；当结构比较复杂时，我们可以使用该语法将复杂的结构拆分成几个小的子模块；
+
+	var tpl = "<h1>{{company}}</h1> <ul>{{>address}}</ul>"；
+	var partials = {
+	    address: "{{#address}}<li>{{street}}</li><li>{{city}}</li><li>{{state}}</li><li>{{zip}}</li>{{/address}}"
+	}；
+	var html = Mustache.render(tpl, data, partials); 
+	/* 
+		输出：
+		<h1>Apple</h1> 
+		<ul>
+		    <li>1 Infinite Loop Cupertino</br></li>
+		    <li>California</li>
+		    <li>CA</li>
+		    <li>95014</li>
+		</ul>
+	*/
+
+#### 6. {{{keyName}}}
+
+{{keyName}}输出会将等特殊字符转译，如果想保持内容原样输出可以使用{{{}}}，例如：
+
+	var tpl = '{{#address}} <p>{{{street}}}</p> {{/address}}';
+	var html = Mustache.render(tpl, data);
+	console.log(html); //<p>1 Infinite Loop Cupertino</br></p> 
+
+
+#### 7. {{!comments}}
+{{!comments}} !表示注释，注释后不会渲染输出任何内容。
+
+{{!这里是注释}} //输出： 

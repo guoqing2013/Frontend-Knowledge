@@ -35,7 +35,7 @@
 <script src="libs/jquery-2.0.3.js"></script>    
 <script src="libs/mustache.js"></script>
 <script type="text/javascript">
-var data = {
+var data2 = {
   "header": "Colors",
   "items": [
       {
@@ -74,7 +74,7 @@ var data = {
 
 $(function() {
     var template = $("#template").html();
-    var html = Mustache.render(template, data); //使用render或to_html进行渲染
+    var html = Mustache.render(template, data2); //使用render或to_html进行渲染
     $("#carousel").html(html);
    
 
