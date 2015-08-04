@@ -147,7 +147,7 @@ data 是数据，tpl 是定义的模板。
 注意：如果{{#keyName}} {{/keyName}}中的 keyName 值为 null, undefined, false；则不渲染输出任何内容。
 
 
-####　3.　{{^keyName}} {{/keyName}}
+#### 3. {{^keyName}} {{/keyName}}
 该语法与{{#keyName}} {{/keyName}}类似，不同在于它是当 keyName 值为 null, undefined, false 时才渲染输出该区块内容。
 
 	var tpl = '{{^nothing}}没找到 nothing 键名就会渲染这段{{/nothing}}';
