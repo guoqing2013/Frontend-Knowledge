@@ -5,7 +5,7 @@
 
 ## call和apply
 
-### call
+### 一、call
 
 ####1. 语法
 function.call(thisobj, args...)
@@ -33,9 +33,9 @@ call()将指定的函数function作为对象thisobj的方法来调用，把参�
 
 
 
-### apply
+### 二、apply
 
-####1. 语法  
+####1. 语法
 function.apply(thisobj, args)
 
 ####2. 参数
@@ -51,7 +51,7 @@ apply()将指定的函数function作为对象thisobj的方法来调用，传递�
 
 
 
-### 两者的区别
+### 三、两者的区别
 对于apply和call两者在作用上是相同的，但两者在参数上有区别的。
 对于第一个参数意义都一样，但对第二个参数：
 apply传入的是一个参数数组，也就是将多个参数组合成为一个数组传入，而call则作为call的参数传入（从第二个参数开始）。
