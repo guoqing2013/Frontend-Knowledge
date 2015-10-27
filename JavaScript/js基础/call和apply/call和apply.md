@@ -7,16 +7,16 @@
 
 ### call
 
-1. 语法
+####1. 语法
 function.call(thisobj, args...)
 
 
-2. 参数
+####2. 参数
 thisobj: 调用function的对象。在函数主体中，thisobj是关键字this的值。
 
 args...: (可选)任意多个参数，这些参数将传递给函数function。
 
-3. 描述
+####3. 描述
 call()将指定的函数function作为对象thisobj的方法来调用，把参数列表中thisobj后的参数传递给它，返回值是调用函数后的返回值。在函数体内，关键字this引用thisobj对象。
 
 
@@ -35,16 +35,16 @@ call()将指定的函数function作为对象thisobj的方法来调用，把参�
 
 ### apply
 
-1. 语法
+####1. 语法  
 function.apply(thisobj, args)
 
-2. 参数
+####2. 参数
 thisobj: 调用function的对象。在函数主体中，thisobj是关键字this的值。
 
 args: 一个数组，它的元素是要传递给函数function的参数值。
 
 
-3. 描述
+####3. 描述
 
 apply()将指定的函数function作为对象thisobj的方法来调用，传递给它的是存放在数组args中的参数，返回的是调用function的返回值。在函数体内，关键字this引用thisobj对象。
 
