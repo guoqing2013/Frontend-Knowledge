@@ -52,29 +52,21 @@ NodeJS使用了CommonJS，通过一个esports对象或module.exports来定义一
 
 ### 统一模块定义(UMD)
 通过if else来判断当前哪个方案可用，如果支持AMD或者CommonJS，那就可以直接使用它，这个解决方案被称为UMD。
- [**umd github**](https://github.com/umdjs/umd)
+ [**umd github**](https://github.com/umdjs/umd/blob/master/returnExports.js)
+
 
     (function (root, factory) {
         if (typeof define === 'function' && define.amd) {
-            // AMD. Register as an anonymous module.
             define(['b'], factory);
         } else if (typeof exports === 'object') {
-            // Node. Does not work with strict CommonJS, but
-            // only CommonJS-like environments that support module.exports,
-            // like Node.
             module.exports = factory(require('b'));
         } else {
-            // Browser globals (root is window)
             root.returnExports = factory(root.b);
         }
     }(this, function (b) {
-        //use b in some fashion.
-
-        // Just return a value to define the module export.
-        // This example returns an object, but the module
-        // can return a function as the exported value.
         return {};
     }));
+
 
 ### ES6模块
 JS库已经影响了原生JS语言了，比如类管理。下一代JS语言ES6会支持import和export。
