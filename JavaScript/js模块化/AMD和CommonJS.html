@@ -337,27 +337,64 @@ var myModule = require('someModule');
 
 <h3>统一模块定义(UMD)</h3>
 <p>通过if else来判断当前哪个方案可用，如果支持AMD或者CommonJS，那就可以直接使用它，这个解决方案被称为UMD。
- <a href="https://github.com/umdjs/umd"><strong>umd github</strong></a></p>
+ <a href="https://github.com/umdjs/umd/blob/master/returnExports.js"><strong>umd github</strong></a></p>
 <pre><code>(function (root, factory) {
     if (typeof define === 'function' &amp;&amp; define.amd) {
-        // AMD. Register as an anonymous module.
         define(['b'], factory);
     } else if (typeof exports === 'object') {
-        // Node. Does not work with strict CommonJS, but
-        // only CommonJS-like environments that support module.exports,
-        // like Node.
         module.exports = factory(require('b'));
     } else {
-        // Browser globals (root is window)
         root.returnExports = factory(root.b);
     }
 }(this, function (b) {
-    //use b in some fashion.
-
-    // Just return a value to define the module export.
-    // This example returns an object, but the module
-    // can return a function as the exported value.
     return {};
+}));
+</code></pre>
+
+<p>通用模块规范,它兼容了AMD和CommonJS，同时还支持老式的“全局”变量规范：</p>
+<pre><code>(function (root, factory) {
+    if (typeof define === 'function' &amp;&amp; define.amd) {
+        // AMD
+        define(['jquery'], factory);
+    } else if (typeof exports === 'object') {
+        // Node, CommonJS之类的
+        module.exports = factory(require('jquery'));
+    } else {
+        // 浏览器全局变量(root 即 window)
+        root.returnExports = factory(root.jQuery);
+    }
+}(this, function ($) {
+    //    方法
+    function myFunc(){};
+
+    //    暴露公共方法
+    return myFunc;
+}));
+</code></pre>
+
+<p>例：依赖了多个组件并且暴露多个方法</p>
+<pre><code>(function (root, factory) {
+    if (typeof define === 'function' &amp;&amp; define.amd) {
+        // AMD
+        define(['jquery', 'underscore'], factory);
+    } else if (typeof exports === 'object') {
+        // Node, CommonJS之类的
+        module.exports = factory(require('jquery'), require('underscore'));
+    } else {
+        // 浏览器全局变量(root 即 window)
+        root.returnExports = factory(root.jQuery, root._);
+    }
+}(this, function ($, _) {
+    //    方法
+    function a(){};    //    私有方法，因为它没被返回 (见下面)
+    function b(){};    //    公共方法，因为被返回了
+    function c(){};    //    公共方法，因为被返回了
+
+    //    暴露公共方法
+    return {
+        b: b,
+        c: c
+    }
 }));
 </code></pre>
 
