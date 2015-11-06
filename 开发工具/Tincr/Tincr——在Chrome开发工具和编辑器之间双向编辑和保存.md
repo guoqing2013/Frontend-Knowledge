@@ -40,7 +40,7 @@ Tince的两大作用：
 配置Tincr,遵循这些步骤 
 
 1. 选择一个应用程序类型。 Tincr支持5应用程序类型 (Ruby on Rails, Chrome Extension, Http Web Server, Atlassian Plugin, Configuration file)
-2. 单击Browse按钮，选择项目的根目录。(如果点击Browse按钮无效，则需要打开chrome://flags/，然后启用NPAPI)
+2. 单击Browse按钮，选择项目的根目录。(如果点击Browse按钮无效，则需要打开chrome://flags/，然后启用NPAPI<(旧版的谷歌浏览器，很遗憾，新版的谷歌浏览器不再支持此插件，新版的nacl代替npapi> )
 3. 为你所选定的项目配置所映射的资源 （文件的url和文件的应用程序类型不能被自定义）
 ![](config.jpg)
 ![](step3.jpg)
