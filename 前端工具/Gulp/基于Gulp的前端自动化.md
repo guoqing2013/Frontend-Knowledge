@@ -51,7 +51,14 @@ Compress images (<a href="https://github.com/sindresorhus/gulp-imagemin" target=
 LiveReload (<a href="https://github.com/vohof/gulp-livereload" target="_blank">gulp-livereload</a>)  
 Caching of images so only changed images are compressed (<a href="https://github.com/jgable/gulp-cache/" target="_blank">gulp-cache</a>)  
 Notify of changes (<a href="https://github.com/mikaelbr/gulp-notify" target="_blank">gulp-notify</a>)  
-Clean files for a clean build (<a href="https://www.npmjs.org/package/del" target="_blank">del</a>)  
+Clean files for a clean build (<a href="https://www.npmjs.org/package/del" target="_blank">del</a>)
+
+删除文件或文件夹 (<a href="https://www.npmjs.com/package/gulp-clean" target="_blank">gulp-clean</a>)
+通过glob删除文件或文件夹 (<a href="https://www.npmjs.com/package/del" target="_blank">del</a>)
+通过gulp去存档 (<a href="https://www.npmjs.com/package/gulp-archiver" target="_blank">gulp-archiver</a>)
+ 
+自动载入所有的gulp模块(推荐使用) (<a href="https://www.npmjs.com/package/gulp-load-plugins" target="_blank">gulp-load-plugins</a>)
+
 
 可使用以下命令一次安装多个插件
 ```$ npm install gulp-ruby-sass gulp-autoprefixer gulp-minify-css gulp-jshint gulp-concat gulp-uglify gulp-imagemin gulp-notify gulp-rename gulp-livereload gulp-cache del --save-dev```
