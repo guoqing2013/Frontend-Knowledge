@@ -146,10 +146,12 @@ task方法有两个参数，第一个是任务名，第二个是任务函数。�
 
 ### 4.  gulp api
 
-* gulp.task(name, fn) - 定义任务，第一个参数是任务名，第二个参数是任务内容。
-* gulp.src(path) - 选择文件，传入参数是文件路径。
-* gulp.dest(path) - 输出文件
+* gulp.task(name[, deps], fn) - 注册任务 ，name 是任务名称；deps 是可选的数组，其中列出需要在本任务运行要执行的任务；fn 是任务体  
+* gulp.src(globs[, options])：指明源文件路径
+* gulp.dest(path)：指明任务处理后的目标输出路径
+* gulp.watch(glob[, options], tasks)／gulp.watch(glob[, options, cb])：监视文件的变化并运行相应的任务。
 * gulp.pipe() - 管道，你可以暂时将 pipe 理解为将操作加入执行队列
+
 
 [gulp api](http://www.gulpjs.com.cn/docs/api/)
 
@@ -210,6 +212,30 @@ Gulp:
 
 
 ### 4.  gulp-project-template
+
+	|-- app
+	|  |-- vendors (bower_components)
+	|  |-- styles
+	|  |  |-- style_one.scss
+	|  |  |-- style_two.scss
+	|  |-- scripts
+	|  |  |-- script_one.coffee
+	|  |  |-- script_two.coffee
+	|  |-- images
+	|  |  |-- background.png
+	|  |-- index.html
+	|-- dist
+	|  |-- styles
+	|  |  |-- main.min.css
+	|  |-- scripts
+	|  |  |-- scripts.min.js
+	|  |-- images
+	|  |-- index.html
+	|-- node_modules
+	|-- test
+
+
+
 ![gulp-project-template.jpg](gulp-project-template.jpg)
 
 
