@@ -56,3 +56,11 @@
 
 
 
+var countdown = new Countdown(5, function(seconds) {
+    console.log(seconds); //log the number of seconds that have passed
+}, function() {
+    console.log("Countdown complete!"); //log that the countdown has complete
+});
+
+//console.log(countdown.abort());
+//console.log(countdown.getRemainingTime());
