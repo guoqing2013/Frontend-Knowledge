@@ -55,7 +55,13 @@ textarea:focus, input:focus, button:focus { outline: none; }
 .fl-right {
     float: right;
 }
+.po-relative {
+    position: relative;
+}
 
+.po-absolute {
+    position: absolute;
+}
 
 
 .color-333 {
