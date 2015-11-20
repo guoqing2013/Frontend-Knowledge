@@ -208,8 +208,7 @@ body, html {
     width: 100%; }
 
 .interalmall-listitem-cont h3, .coupon-listitem-cont h3 {
-  color: #000000;
-  margin: 0.25rem 0 0.25rem 0; }
+  color: #000000; }
 .interalmall-listitem-cont label, .coupon-listitem-cont label {
   color: #ffffff;
   line-height: 0;
