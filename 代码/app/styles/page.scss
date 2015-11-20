@@ -69,6 +69,18 @@ html {
   background-color: #f60!important;
 }
 
+//高度和行高都为88，
+//-------------------------------
+@mixin height-and-lineheight-88 {
+  height: rem(88);
+  line-height: rem(88);
+}
+
+@mixin padding-left-right-10 {
+  padding-left: rem(10);
+  padding-right: rem(10);
+}
+
 
 // =======================================================================
 // 首页
@@ -216,6 +228,26 @@ html {
 
 
 // =======================================================================
+// 积分商城 和 优惠券 和优惠券详情 公共样式
+// =======================================================================
+
+.label-state {
+  color: #ffffff;
+  line-height: 0;
+  padding: rem(2) rem(3);
+}
+.label-vip {
+  background: #FF735C;
+}
+.label-coupon {
+  background: #FF8400;
+}
+.label-discount {
+  background: #4CA4FF;
+}
+
+
+// =======================================================================
 // 积分商城 和 优惠券 公共样式
 // =======================================================================
 
@@ -263,10 +295,8 @@ html {
     color: #000000;
   }
 
-  label {
+/*  label {
     color: #ffffff;
-    //@include size(rem(82) rem(28) );
-    //line-height: rem(28);
     line-height: 0;
     padding: rem(2) rem(3);
   }
@@ -279,7 +309,7 @@ html {
   }
   .label-discount {
     background: #4CA4FF;
-  }
+  }*/
 
 }
 .coupon-listitem-cont .po-absolute {
@@ -288,8 +318,6 @@ html {
 // =======================================================================
 // 积分商城
 // =======================================================================
-
-
 .interalmall-order-more {
   @include size(rem(80) null);
 }
@@ -319,8 +347,54 @@ html {
 
 }
 
+// =======================================================================
+// 优惠券详情
+// =======================================================================
 
+.coupondetail-top {
 
+  .coupondetail-img-wrap {
+    line-height: 0;
+  }
+
+  img {
+    width: 100%;
+  }
+  h3,.coupondetail-text, .coupondetail-validity, .coupondetail-shop {
+    @include height-and-lineheight-88;
+    @include padding-left-right-10;
+    background: #ffffff;
+  }
+  .coupondetail-text {
+
+    p {
+      display: inline-block;
+    }
+
+    p:first-child {
+      margin-right: rem(3);
+    }
+
+    button {
+      @include size(rem(160) rem(60) );
+      line-height: rem(60);
+      color: #ffffff;
+      border-radius: rem(4);
+      margin-top: rem(14);
+    }
+
+  }
+  .coupondetail-shop {
+
+  }
+}
+
+.coupondetail-explain {
+  h4 {
+    @include height-and-lineheight-88;
+    margin-left: rem(10);
+  }
+}
 
 
 

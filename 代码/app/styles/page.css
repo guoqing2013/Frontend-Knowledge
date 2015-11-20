@@ -174,6 +174,20 @@ body, html {
   -webkit-transition: height .4s ease-out;
   transition: height .4s ease-out; }
 
+.label-state {
+  color: #ffffff;
+  line-height: 0;
+  padding: 0.125rem 0.1875rem; }
+
+.label-vip {
+  background: #FF735C; }
+
+.label-coupon {
+  background: #FF8400; }
+
+.label-discount {
+  background: #4CA4FF; }
+
 .interalmall-order, .coupon-order {
   background: #ffffff;
   height: 5rem;
@@ -207,18 +221,24 @@ body, html {
     height: 100%;
     width: 100%; }
 
-.interalmall-listitem-cont h3, .coupon-listitem-cont h3 {
-  color: #000000; }
-.interalmall-listitem-cont label, .coupon-listitem-cont label {
-  color: #ffffff;
-  line-height: 0;
-  padding: 0.125rem 0.1875rem; }
-.interalmall-listitem-cont .label-vip, .coupon-listitem-cont .label-vip {
-  background: #FF735C; }
-.interalmall-listitem-cont .label-coupon, .coupon-listitem-cont .label-coupon {
-  background: #FF8400; }
-.interalmall-listitem-cont .label-discount, .coupon-listitem-cont .label-discount {
-  background: #4CA4FF; }
+.interalmall-listitem-cont, .coupon-listitem-cont {
+  /*  label {
+      color: #ffffff;
+      line-height: 0;
+      padding: rem(2) rem(3);
+    }
+    .label-vip {
+      background: #FF735C;
+    }
+    .label-coupon {
+      background: #FF8400;
+  
+    }
+    .label-discount {
+      background: #4CA4FF;
+    }*/ }
+  .interalmall-listitem-cont h3, .coupon-listitem-cont h3 {
+    color: #000000; }
 
 .coupon-listitem-cont .po-absolute {
   right: 0;
@@ -238,5 +258,32 @@ body, html {
   width: 7.5rem;
   color: #ffffff;
   margin-top: 0.25rem; }
+
+.coupondetail-top .coupondetail-img-wrap {
+  line-height: 0; }
+.coupondetail-top img {
+  width: 100%; }
+.coupondetail-top h3, .coupondetail-top .coupondetail-text, .coupondetail-top .coupondetail-validity, .coupondetail-top .coupondetail-shop {
+  height: 5.5rem;
+  line-height: 5.5rem;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  background: #ffffff; }
+.coupondetail-top .coupondetail-text p {
+  display: inline-block; }
+.coupondetail-top .coupondetail-text p:first-child {
+  margin-right: 0.1875rem; }
+.coupondetail-top .coupondetail-text button {
+  height: 3.75rem;
+  width: 10rem;
+  line-height: 3.75rem;
+  color: #ffffff;
+  border-radius: 0.25rem;
+  margin-top: 0.875rem; }
+
+.coupondetail-explain h4 {
+  height: 5.5rem;
+  line-height: 5.5rem;
+  margin-left: 0.625rem; }
 
 /*# sourceMappingURL=page.css.map */

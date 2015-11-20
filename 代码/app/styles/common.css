@@ -63,15 +63,14 @@ textarea:focus, input:focus, button:focus { outline: none; }
     position: absolute;
 }
 
-
+.color-000 {
+    color: #333;
+}
 .color-333 {
     color: #333;
 }
 .color-666 {
     color: #666;
-}
-.color-c5 {
-    color: #999;
 }
 .color-999 {
     color: #999;
