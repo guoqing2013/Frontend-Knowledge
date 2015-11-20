@@ -83,12 +83,10 @@ html {
 }
 
 @mixin padding-left-right-10 {
-  padding-left: rem(20);
-  padding-right: rem(20);
+  padding: 0 rem(20);
 }
 @mixin padding-left-right-15 {
-  padding-left: rem(30);
-  padding-right: rem(30);
+  padding: 0 rem(30);
 }
 
 
@@ -360,6 +358,9 @@ html {
 // =======================================================================
 // ”≈ª›»ØœÍ«È
 // =======================================================================
+.coupondetail-content {
+  padding-bottom: rem(40);
+}
 .coupondetail-top {
 
   .coupondetail-img-wrap {
@@ -400,14 +401,29 @@ html {
 
 .coupondetail-explain {
   background: #ffffff;
-  h4 {
+}
+.coupondetail-article {
+  padding-bottom: rem(30);
+
+  h1 {
     @include height-and-lineheight-44;
     margin-left: rem(20);
   }
+
+
 }
 
 
+.coupondetail-article-cont {
+  @include padding-left-right-15;
 
+  h2 {
+    padding: rem(10) 0 rem(5) 0;
+  }
+  p {
+    line-height: 1.5;
+  }
+}
 
 
 

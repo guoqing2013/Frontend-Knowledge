@@ -4,7 +4,7 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fiel
 html, body { overflow-x: hidden; }
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
 /*body, button, input, select, textarea { font: 16px/1.5 arial, \5b8b\4f53; color: #333; }*/
-body, button, input, select, textarea { color: #333; }
+body, button, input, select, textarea { color: #333; line-height:1.5; }
 input, select, textarea { font-size: 100%; }
 input { -webkit-box-shadow: none; -moz-box-shoadow: none; -o-box-shadow: none; box-shadow: none; -webkit-user-modify: read-write-plaintext-only; -webkit-tap-highlight-color:rgba(0,0,0,0);}
 input[type="text"] { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }

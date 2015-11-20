@@ -265,6 +265,9 @@ body, html {
   color: #ffffff;
   margin-top: 0.25rem; }
 
+.coupondetail-content {
+  padding-bottom: 2.5rem; }
+
 .coupondetail-top .coupondetail-img-wrap {
   line-height: 0; }
 .coupondetail-top img {
@@ -272,8 +275,7 @@ body, html {
 .coupondetail-top h3, .coupondetail-top .coupondetail-text, .coupondetail-top .coupondetail-validity, .coupondetail-top .coupondetail-shop {
   height: 5.5rem;
   line-height: 5.5rem;
-  padding-left: 1.875rem;
-  padding-right: 1.875rem;
+  padding: 0 1.875rem;
   background: #ffffff; }
 .coupondetail-top .coupondetail-text p {
   display: inline-block; }
@@ -289,9 +291,19 @@ body, html {
 
 .coupondetail-explain {
   background: #ffffff; }
-  .coupondetail-explain h4 {
+
+.coupondetail-article {
+  padding-bottom: 1.875rem; }
+  .coupondetail-article h1 {
     height: 5.5rem;
     line-height: 5.5rem;
     margin-left: 1.25rem; }
+
+.coupondetail-article-cont {
+  padding: 0 1.875rem; }
+  .coupondetail-article-cont h2 {
+    padding: 0.625rem 0 0.3125rem 0; }
+  .coupondetail-article-cont p {
+    line-height: 1.5; }
 
 /*# sourceMappingURL=page.css.map */
