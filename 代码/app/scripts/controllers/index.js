@@ -5,5 +5,6 @@ controllers
     .controller('homeCtrl', require('./homeCtrl'))
     .controller('integralMallCtrl', require('./integralMallCtrl'))
     .controller('couponCtrl', require('./couponCtrl'))
+    .controller('couponDetailCtrl', require('./couponDetailCtrl'))
 ;
 module.exports = controllers;

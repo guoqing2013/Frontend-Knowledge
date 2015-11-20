@@ -28,10 +28,10 @@ module.exports = ['$routeProvider', '$httpProvider',
                 templateUrl: 'partials/coupon.html',      //”≈ª›»Ø
                 controller: 'couponCtrl'
             })
-            //.when('/couponDetail', {
-            //    templateUrl: 'partials/couponDetail.html',      //”≈ª›»ØœÍ«È
-            //    controller: 'couponDetailCtrl'
-            //})
+            .when('/couponDetail', {
+                templateUrl: 'partials/couponDetail.html',      //”≈ª›»ØœÍ«È
+                controller: 'couponDetailCtrl'
+            })
             //.when('/register', {
             //    templateUrl: 'partials/register.html',      //◊¢≤·
             //    controller: 'registerCtrl'
