@@ -203,9 +203,8 @@ body, html {
   margin: 0.25rem 0 0.25rem 0; }
 .interalmall-listitem-cont label, .coupon-listitem-cont label {
   color: #ffffff;
-  height: 1.75rem;
-  width: 5.125rem;
-  line-height: 1.75rem; }
+  line-height: 0;
+  padding: 0.125rem 0.1875rem; }
 .interalmall-listitem-cont .label-vip, .coupon-listitem-cont .label-vip {
   background: #FF735C; }
 .interalmall-listitem-cont .label-coupon, .coupon-listitem-cont .label-coupon {
@@ -229,8 +228,5 @@ body, html {
   color: #ffffff; }
 .interalmall-other button:active {
   background-color: #f60 !important; }
-
-.coupon-order > div {
-  width: 33.3333333%; }
 
 /*# sourceMappingURL=page.css.map */

@@ -258,8 +258,10 @@ html {
 
   label {
     color: #ffffff;
-    @include size(rem(82) rem(28) );
-    line-height: rem(28);
+    //@include size(rem(82) rem(28) );
+    //line-height: rem(28);
+    line-height: 0;
+    padding: rem(2) rem(3);
   }
   .label-vip {
     background: #FF735C;
@@ -321,13 +323,6 @@ html {
 }
 
 
-// =======================================================================
-// ÓÅ»ÝÈ¯
-// =======================================================================
-
-.coupon-order > div {
-  width:33.3333333%;
-}
 
 
 
