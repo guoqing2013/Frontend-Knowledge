@@ -20,7 +20,6 @@ module.exports = ['$rootScope', '$window', '$route', '$http', '$templateCache', 
                     $location.path('/busOrderList').replace();
                     break;
                 default:
-                    $location.path('/').replace();
             }
         }*/
 
