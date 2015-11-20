@@ -1,0 +1,461 @@
+@import 'bourbon/bourbon';
+
+body, html {
+  font-family: sans-serif;
+  //font-size: 75%;
+  //font-size: 50%;
+  //font-size: 100%;
+}
+
+html {
+  //font-size: 62.5%!important   //10px
+  //font-size: 75%;               //12px
+  //font-size: 87.5%;               //14px
+}
+
+.scroll-content {
+  background: #e8ecf0;
+  @include position(absolute, rem(60) 0 0 0);
+  overflow-y:auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+
+
+.font-20 {
+  font-size: rem(20);
+}
+
+// =======================================================================
+// 首页
+// =======================================================================
+.home {
+  width: 100%;
+  height: 100%;
+  background: url('../images/home_bg.png') no-repeat 100% 100%;
+  background-size: 100% 100%;
+}
+
+.home-top {
+  padding: rem(15);
+
+  .home-search-wrap {
+    width: 100%;
+    height: rem(48);
+    line-height: rem(48);
+    border: 1px solid #4F6773;
+    border-radius: rem(24);
+    text-align: center;
+    background: #214C8E;
+  }
+
+  .home-search {
+    display: inline-block;
+    height: 100%;
+    border: none;
+    border-radius: rem(24);
+    margin: 0 auto;
+    color: #ffffff;
+    font-size: rem(20);
+    padding-left: rem(10);
+
+    background: url(http://img1.40017.cn/cn/s/touch/2014/67469/searchSign.jpg) no-repeat 0px center;
+    background-size: 15px 15px;
+
+  }
+
+  > p {
+    padding: rem(15) 0;
+    text-align: center;
+  }
+
+  .top-logo {
+    width: rem(187);
+  }
+}
+
+.home-nav {
+  white-space: nowrap;
+  overflow-x: scroll;
+
+  li {
+    float: left;
+    color: #ffc108;
+    text-align: center;
+    margin: 0 rem(5) 0 0;
+    font-size: rem(24);
+
+    > div {
+      @include size(rem(88) rem(88));
+      line-height: rem(88);
+      margin-bottom: rem(5);
+    }
+  }
+}
+
+.home-list {
+  background: #ffffff;
+  margin-top: rem(15);
+}
+.home-list dt {
+  @include size(100% rem(48));
+  line-height: rem(48);
+  color: #ffc108;
+  font: rem(24rem);
+}
+
+// =======================================================================
+// 首页 -> banner
+// =======================================================================
+.slideBox {
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 0px !important;
+  max-width: rem(640);
+}
+
+.slideBox ul {
+  border: none;
+}
+
+.slideBox .btn-container {
+  position: absolute;
+  height: rem(28);
+  line-height: rem(28);
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.slideBox .btn-container li {
+  padding: 0;
+  display: inline-block;
+  @include size(rem(10) rem(10));
+  border-radius: rem(10);
+  background: #999;
+  text-indent: -9999px;
+  overflow: hidden;
+  margin: 0 rem(6);
+  border: none;
+}
+
+.slideBox .btn-container li.on {
+  background: #FEE662;
+}
+
+.slideBox .pic-container {
+  position: relative;
+  z-index: 0; /* height:0; */
+}
+
+.slideBox .pic-container li {
+  padding: 0;
+  position: relative;
+  text-align: center;
+}
+
+.slideBox .pic-container li img {
+  vertical-align: top;
+  width: 100%;
+}
+
+.slideBox .pic-container li a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.ani-banner {
+  -webkit-transition: height .4s ease-out;
+  transition: height .4s ease-out;
+}
+
+
+// =======================================================================
+// 积分商城
+// =======================================================================
+
+.interalmall-content {
+  //font-size: 8px!important;
+}
+
+.interalmall-order {
+  background: #ffffff;
+  @include size(100% rem(80) );
+  line-height: rem(80);
+}
+.intermall-order-section {
+
+  p {
+    width: 50%;
+    float: left;
+    text-align: center;
+    font-size: rem(28);
+    //height: rem(40);
+    //margin-top: rem(20);
+    position: relative;
+
+    .line {
+      @include size(0 rem(40) );
+      @include position(absolute, rem(20) 0 null null);
+    }
+  }
+
+
+
+}
+.interalmall-order-more {
+  @include size(rem(80) null);
+}
+
+.interalmall-list {
+  background: #ffffff;
+}
+.interalmall-listitem {
+  padding:rem(20);
+}
+
+
+.interalmall-img-wrap {
+  @include size(rem(220) rem(166) );
+  //@include size(rem(120) rem(120) );
+  border: 1px solid #e4e5e6;
+  margin-right: rem(20);
+
+  img {
+    @include size(100% 100%);
+  }
+}
+
+.intermall-order-section {
+  margin-right: rem(2);
+}
+
+.interalmall-listitem-cont {
+  h3 {
+    font-size: rem(28);
+    color: #000000;
+    margin:rem(6) 0 rem(10) 0;
+  }
+
+  .color-orange {
+    font-size: rem(36);
+  }
+
+  .vip {
+    font-size: rem(20);
+    color: #ffffff;
+    background: #FF735C;
+    padding: rem(2) rem(3);
+  }
+
+
+}
+
+.interalmall-other {
+  margin-top: rem(10);
+
+  p {
+    float: left;
+
+    span {
+      display: block;
+    }
+
+    span:first-child {
+      margin-bottom: rem(10);
+    }
+
+  }
+
+  button {
+    float: right;
+    font-size: rem(28);
+    background: #ff8400;
+    border-radius: rem(4);
+    @include size(rem(120) rem(50) );
+    color: #ffffff;
+    margin-top: rem(5);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
