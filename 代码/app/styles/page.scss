@@ -278,13 +278,18 @@ html {
 
   button {
     float: right;
-    //font-size: rem(28);
     background: #ff8400;
     border-radius: rem(4);
     @include size(rem(120) rem(50) );
     color: #ffffff;
     margin-top: rem(5);
+
+
   }
+  button:active {
+    background-color: #f60!important;
+  }
+
 }
 
 

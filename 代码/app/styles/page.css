@@ -210,5 +210,7 @@ body, html {
     width: 7.5rem;
     color: #ffffff;
     margin-top: 0.3125rem; }
+  .interalmall-other button:active {
+    background-color: #f60 !important; }
 
 /*# sourceMappingURL=page.css.map */
