@@ -256,14 +256,14 @@ html {
     //font-size: rem(20);
     color: #ffffff;
     background: #FF735C;
-    padding: rem(2) rem(3);
+    //padding: rem(2) rem(3);
+    @include size(rem(82) rem(28) );
+    line-height: rem(28);
   }
-
-
 }
 
 .interalmall-other {
-  margin-top: rem(10);
+  margin-top: rem(6);
 
   p {
     float: left;
@@ -273,7 +273,7 @@ html {
     }
 
     span:first-child {
-      margin-bottom: rem(10);
+      margin-bottom: rem(6);
     }
 
   }

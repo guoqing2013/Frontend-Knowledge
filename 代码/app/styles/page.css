@@ -187,16 +187,18 @@ body, html {
 .interalmall-listitem-cont .vip {
   color: #ffffff;
   background: #FF735C;
-  padding: 0.125rem 0.1875rem; }
+  height: 1.75rem;
+  width: 5.125rem;
+  line-height: 1.75rem; }
 
 .interalmall-other {
-  margin-top: 0.625rem; }
+  margin-top: 0.375rem; }
   .interalmall-other p {
     float: left; }
     .interalmall-other p span {
       display: block; }
     .interalmall-other p span:first-child {
-      margin-bottom: 0.625rem; }
+      margin-bottom: 0.375rem; }
   .interalmall-other button {
     float: right;
     background: #ff8400;
