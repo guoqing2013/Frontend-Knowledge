@@ -218,20 +218,16 @@ body, html {
 .intermall-order-section {
   margin-right: 0.125rem; }
 
-.interalmall-other {
-  margin-top: 0.25rem; }
-  .interalmall-other p span {
-    display: block; }
-  .interalmall-other p span:first-child {
-    margin-bottom: 0.25rem; }
-  .interalmall-other button {
-    background: #ff8400;
-    border-radius: 0.25rem;
-    height: 3.125rem;
-    width: 7.5rem;
-    color: #ffffff; }
-  .interalmall-other button:active {
-    background-color: #f60 !important; }
+.interalmall-other p span {
+  display: block; }
+.interalmall-other button {
+  background: #ff8400;
+  border-radius: 0.25rem;
+  height: 3.125rem;
+  width: 7.5rem;
+  color: #ffffff; }
+.interalmall-other button:active {
+  background-color: #f60 !important; }
 
 .coupon-order > div {
   width: 33.3333333%; }
