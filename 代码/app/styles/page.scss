@@ -35,7 +35,9 @@ html {
 .font-11 {
   font-size: rem(22);
 }
-
+.line-height0 {
+  line-height: 0;
+}
 
 // =======================================================================
 // Ê×Ò³
@@ -245,12 +247,8 @@ html {
   h3 {
     //font-size: rem(32);
     color: #000000;
-    margin:rem(6) 0 rem(6) 0;
+    margin:rem(6) 0 rem(2) 0;
   }
-
-  //.color-orange {
-  //  font-size: rem(36);
-  //}
 
   .vip {
     //font-size: rem(20);
@@ -263,7 +261,7 @@ html {
 }
 
 .interalmall-other {
-  margin-top: rem(6);
+  margin-top: rem(4);
 
   p {
     float: left;
@@ -273,7 +271,7 @@ html {
     }
 
     span:first-child {
-      margin-bottom: rem(6);
+      margin-bottom: rem(4);
     }
 
   }
