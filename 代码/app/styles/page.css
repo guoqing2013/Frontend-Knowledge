@@ -37,6 +37,21 @@ body, html {
 .width33 {
   width: 33%; }
 
+.margintop10 {
+  margin-top: 1.25rem; }
+
+.margintop8 {
+  margin-top: 1rem; }
+
+.margintop6 {
+  margin-top: 0.75rem; }
+
+.margintop4 {
+  margin-top: 0.5rem; }
+
+.margintop2 {
+  margin-top: 0.25rem; }
+
 .home {
   width: 100%;
   height: 100%;
@@ -168,23 +183,23 @@ body, html {
     top: 1.25rem;
     right: 0; }
 
-.interalmall-order-more {
-  width: 5rem; }
-
-.interalmall-list {
+.interalmall-list, .coupon-list {
   background: #ffffff; }
 
-.interalmall-listitem {
+.interalmall-listitem, .coupon-list {
   padding: 1.25rem; }
 
-.interalmall-img-wrap {
+.interalmall-img-wrap, .coupon-img-wrap {
   height: 10.375rem;
   width: 13.75rem;
   border: 1px solid #e4e5e6;
   margin-right: 1.25rem; }
-  .interalmall-img-wrap img {
+  .interalmall-img-wrap img, .coupon-img-wrap img {
     height: 100%;
     width: 100%; }
+
+.interalmall-order-more {
+  width: 5rem; }
 
 .intermall-order-section {
   margin-right: 0.125rem; }
@@ -192,29 +207,30 @@ body, html {
 .interalmall-listitem-cont h3 {
   color: #000000;
   margin: 0.125rem 0 0.125rem 0; }
-.interalmall-listitem-cont .vip {
+.interalmall-listitem-cont label {
   color: #ffffff;
-  background: #FF735C;
   height: 1.75rem;
   width: 5.125rem;
   line-height: 1.75rem; }
+.interalmall-listitem-cont .label-vip {
+  background: #FF735C; }
+.interalmall-listitem-cont .label-coupon {
+  background: #FF8400; }
+.interalmall-listitem-cont .label-discount {
+  background: #4CA4FF; }
 
 .interalmall-other {
   margin-top: 0.25rem; }
-  .interalmall-other p {
-    float: left; }
-    .interalmall-other p span {
-      display: block; }
-    .interalmall-other p span:first-child {
-      margin-bottom: 0.25rem; }
+  .interalmall-other p span {
+    display: block; }
+  .interalmall-other p span:first-child {
+    margin-bottom: 0.25rem; }
   .interalmall-other button {
-    float: right;
     background: #ff8400;
     border-radius: 0.25rem;
     height: 3.125rem;
     width: 7.5rem;
-    color: #ffffff;
-    margin-top: 0.3125rem; }
+    color: #ffffff; }
   .interalmall-other button:active {
     background-color: #f60 !important; }
 

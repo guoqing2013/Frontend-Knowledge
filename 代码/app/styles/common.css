@@ -49,17 +49,25 @@ textarea:focus, input:focus, button:focus { outline: none; }
 }
 
 
+.fl-left {
+    float: left;
+}
+.fl-right {
+    float: right;
+}
 
 
 
-
-.color-black {
+.color-333 {
     color: #333;
 }
 .color-666 {
     color: #666;
 }
 .color-c5 {
+    color: #999;
+}
+.color-999 {
     color: #999;
 }
 .color-orange {
