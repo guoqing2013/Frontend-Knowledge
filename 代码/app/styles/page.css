@@ -49,8 +49,17 @@ body, html {
 .margintop4 {
   margin-top: 0.5rem; }
 
+.margintop3 {
+  margin-top: 0.1875rem; }
+
 .margintop2 {
   margin-top: 0.25rem; }
+
+.button-background {
+  background: #ff8400; }
+
+.button-touched:active {
+  background-color: #f60 !important; }
 
 .home {
   width: 100%;
@@ -221,12 +230,9 @@ body, html {
 .interalmall-other p span {
   display: block; }
 .interalmall-other button {
-  background: #ff8400;
   border-radius: 0.25rem;
   height: 3.125rem;
   width: 7.5rem;
   color: #ffffff; }
-.interalmall-other button:active {
-  background-color: #f60 !important; }
 
 /*# sourceMappingURL=page.css.map */
