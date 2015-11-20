@@ -3,7 +3,7 @@ body, html {
   font-size: 50%; }
 
 .content {
-  font-size: 0.875rem; }
+  font-size: 100%; }
 
 .scroll-content {
   background: #e8ecf0;
