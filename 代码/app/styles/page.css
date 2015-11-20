@@ -1,6 +1,5 @@
 body, html {
-  font-family: sans-serif;
-  font-size: 50%; }
+  font-family: sans-serif; }
 
 .scroll-content {
   background: #e8ecf0;
@@ -198,26 +197,26 @@ body, html {
     height: 100%;
     width: 100%; }
 
+.interalmall-listitem-cont h3, .coupon-listitem-cont h3 {
+  color: #000000;
+  margin: 0.125rem 0 0.125rem 0; }
+.interalmall-listitem-cont label, .coupon-listitem-cont label {
+  color: #ffffff;
+  height: 1.75rem;
+  width: 5.125rem;
+  line-height: 1.75rem; }
+.interalmall-listitem-cont .label-vip, .coupon-listitem-cont .label-vip {
+  background: #FF735C; }
+.interalmall-listitem-cont .label-coupon, .coupon-listitem-cont .label-coupon {
+  background: #FF8400; }
+.interalmall-listitem-cont .label-discount, .coupon-listitem-cont .label-discount {
+  background: #4CA4FF; }
+
 .interalmall-order-more {
   width: 5rem; }
 
 .intermall-order-section {
   margin-right: 0.125rem; }
-
-.interalmall-listitem-cont h3 {
-  color: #000000;
-  margin: 0.125rem 0 0.125rem 0; }
-.interalmall-listitem-cont label {
-  color: #ffffff;
-  height: 1.75rem;
-  width: 5.125rem;
-  line-height: 1.75rem; }
-.interalmall-listitem-cont .label-vip {
-  background: #FF735C; }
-.interalmall-listitem-cont .label-coupon {
-  background: #FF8400; }
-.interalmall-listitem-cont .label-discount {
-  background: #4CA4FF; }
 
 .interalmall-other {
   margin-top: 0.25rem; }

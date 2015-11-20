@@ -2,7 +2,7 @@
 
 body, html {
   font-family: sans-serif;
-  font-size: 50%;
+  //font-size: 50%;
   //font-size: 50%;
   //font-size: 100%;
 }
@@ -250,26 +250,7 @@ html {
   }
 }
 
-// =======================================================================
-// 积分商城
-// =======================================================================
-
-.interalmall-content {
-  //font-size: 8px!important;
-}
-
-.interalmall-order-more {
-  @include size(rem(80) null);
-}
-
-
-
-
-.intermall-order-section {
-  margin-right: rem(2);
-}
-
-.interalmall-listitem-cont {
+.interalmall-listitem-cont, .coupon-listitem-cont {
   h3 {
     color: #000000;
     margin:rem(2) 0 rem(2) 0;
@@ -292,6 +273,26 @@ html {
   }
 
 }
+
+// =======================================================================
+// 积分商城
+// =======================================================================
+
+.interalmall-content {
+  //font-size: 8px!important;
+}
+
+.interalmall-order-more {
+  @include size(rem(80) null);
+}
+
+
+
+.intermall-order-section {
+  margin-right: rem(2);
+}
+
+
 
 .interalmall-other {
   margin-top: rem(4);
