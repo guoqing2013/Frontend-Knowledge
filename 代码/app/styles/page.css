@@ -31,8 +31,11 @@ body, html {
 .font-10 {
   font-size: 1.25rem; }
 
-.line-height0 {
-  line-height: 0; }
+.width50 {
+  width: 50%; }
+
+.width33 {
+  width: 33%; }
 
 .home {
   width: 100%;
@@ -147,19 +150,18 @@ body, html {
   -webkit-transition: height .4s ease-out;
   transition: height .4s ease-out; }
 
-.interalmall-order {
+.interalmall-order, .coupon-order {
   background: #ffffff;
   height: 5rem;
   width: 100%;
   line-height: 5rem; }
 
-.intermall-order-section p {
-  width: 50%;
+.intermall-order-section p, .coupon-order p {
   float: left;
   text-align: center;
   font-size: 1.75rem;
   position: relative; }
-  .intermall-order-section p .line {
+  .intermall-order-section p .line, .coupon-order p .line {
     height: 2.5rem;
     width: 0;
     position: absolute;
@@ -215,5 +217,8 @@ body, html {
     margin-top: 0.3125rem; }
   .interalmall-other button:active {
     background-color: #f60 !important; }
+
+.coupon-order > div {
+  width: 33.3333333%; }
 
 /*# sourceMappingURL=page.css.map */

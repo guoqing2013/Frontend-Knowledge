@@ -24,21 +24,21 @@ module.exports = ['$routeProvider', '$httpProvider',
                 templateUrl: 'partials/integralMall.html',      //积分商城
                 controller: 'integralMallCtrl'
             })
-            //.when('/coupon', {
-            //    templateUrl: 'partials/coupon.html',      //优惠券
-            //    controller: 'coupon'
-            //})
+            .when('/coupon', {
+                templateUrl: 'partials/coupon.html',      //优惠券
+                controller: 'couponCtrl'
+            })
             //.when('/couponDetail', {
             //    templateUrl: 'partials/couponDetail.html',      //优惠券详情
-            //    controller: 'couponDetail'
+            //    controller: 'couponDetailCtrl'
             //})
             //.when('/register', {
             //    templateUrl: 'partials/register.html',      //注册
-            //    controller: 'register'
+            //    controller: 'registerCtrl'
             //})
             //.when('/personalCenter', {
             //    templateUrl: 'partials/personalCenter.html',      //个人中心（会员）
-            //    controller: 'personalCenter'
+            //    controller: 'personalCenterCtrl'
             //})
 
             .otherwise({

@@ -38,8 +38,11 @@ html {
 .font-10 {
   font-size: rem(20);
 }
-.line-height0 {
-  line-height: 0;
+.width50 {
+  width: 50%;
+}
+.width33 {
+  width: 33%;
 }
 
 // =======================================================================
@@ -186,6 +189,34 @@ html {
 }
 
 
+
+// =======================================================================
+// 积分商城 和 优惠券 公共样式
+// =======================================================================
+
+.interalmall-order, .coupon-order {
+  background: #ffffff;
+  @include size(100% rem(80) );
+  line-height: rem(80);
+}
+
+.intermall-order-section, .coupon-order {
+  p {
+    //width: 50%;
+    float: left;
+    text-align: center;
+    font-size: rem(28);
+    position: relative;
+
+    .line {
+      @include size(0 rem(40) );
+      @include position(absolute, rem(20) 0 null null);
+    }
+  }
+}
+
+
+
 // =======================================================================
 // 积分商城
 // =======================================================================
@@ -194,31 +225,6 @@ html {
   //font-size: 8px!important;
 }
 
-.interalmall-order {
-  background: #ffffff;
-  @include size(100% rem(80) );
-  line-height: rem(80);
-}
-.intermall-order-section {
-
-  p {
-    width: 50%;
-    float: left;
-    text-align: center;
-    font-size: rem(28);
-    //height: rem(40);
-    //margin-top: rem(20);
-    position: relative;
-
-    .line {
-      @include size(0 rem(40) );
-      @include position(absolute, rem(20) 0 null null);
-    }
-  }
-
-
-
-}
 .interalmall-order-more {
   @include size(rem(80) null);
 }
@@ -296,6 +302,13 @@ html {
 }
 
 
+// =======================================================================
+// 优惠券
+// =======================================================================
+
+.coupon-order > div {
+  width:33.3333333%;
+}
 
 
 
