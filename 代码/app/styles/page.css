@@ -2,6 +2,9 @@ body, html {
   font-family: sans-serif;
   font-size: 50%; }
 
+.content {
+  font-size: 0.875rem; }
+
 .scroll-content {
   background: #e8ecf0;
   position: absolute;
@@ -259,9 +262,6 @@ body, html {
   color: #ffffff;
   margin-top: 0.25rem; }
 
-.coupondetail-content {
-  font-size: 0.875rem; }
-
 .coupondetail-top .coupondetail-img-wrap {
   line-height: 0; }
 .coupondetail-top img {
@@ -284,9 +284,11 @@ body, html {
   border-radius: 0.25rem;
   margin-top: 0.875rem; }
 
-.coupondetail-explain h4 {
-  height: 5.5rem;
-  line-height: 5.5rem;
-  margin-left: 0.625rem; }
+.coupondetail-explain {
+  backgrond: #ffffff; }
+  .coupondetail-explain h4 {
+    height: 5.5rem;
+    line-height: 5.5rem;
+    margin-left: 0.625rem; }
 
 /*# sourceMappingURL=page.css.map */

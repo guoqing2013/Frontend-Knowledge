@@ -12,7 +12,9 @@ html {
   //font-size: 75%;               //12px
   //font-size: 87.5%;               //14px
 }
-
+.content {
+  font-size: rem(14);
+}
 .scroll-content {
   background: #e8ecf0;
   @include position(absolute, rem(90) 0 0 0);
@@ -350,9 +352,6 @@ html {
 // =======================================================================
 // ”≈ª›»ØœÍ«È
 // =======================================================================
-.coupondetail-content {
-  font-size: rem(14);
-}
 .coupondetail-top {
 
   .coupondetail-img-wrap {
@@ -392,6 +391,7 @@ html {
 }
 
 .coupondetail-explain {
+  backgrond: #ffffff;
   h4 {
     @include height-and-lineheight-88;
     margin-left: rem(10);
