@@ -65,6 +65,9 @@ html {
 .margintop2 {
   margin-top: rem(4);
 }
+.marginleft5 {
+  margin-top: rem(10);
+}
 .button-background {
   background: #ff8400;
 }
@@ -74,16 +77,16 @@ html {
 
 //高度和行高都为88，
 //-------------------------------
-@mixin height-and-lineheight-88 {
+@mixin height-and-lineheight-44 {
   height: rem(88);
   line-height: rem(88);
 }
 
-@mixin padding-left-right-20 {
+@mixin padding-left-right-10 {
   padding-left: rem(20);
   padding-right: rem(20);
 }
-@mixin padding-left-right-30 {
+@mixin padding-left-right-15 {
   padding-left: rem(30);
   padding-right: rem(30);
 }
@@ -367,8 +370,8 @@ html {
     width: 100%;
   }
   h3,.coupondetail-text, .coupondetail-validity, .coupondetail-shop {
-    @include height-and-lineheight-88;
-    @include padding-left-right-30;
+    @include height-and-lineheight-44;
+    @include padding-left-right-15;
     background: #ffffff;
   }
   .coupondetail-text {
@@ -396,9 +399,9 @@ html {
 }
 
 .coupondetail-explain {
-  backgrond: #ffffff;
+  background: #ffffff;
   h4 {
-    @include height-and-lineheight-88;
+    @include height-and-lineheight-44;
     margin-left: rem(20);
   }
 }

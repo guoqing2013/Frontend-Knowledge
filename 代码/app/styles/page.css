@@ -58,6 +58,9 @@ body, html {
 .margintop2 {
   margin-top: 0.25rem; }
 
+.marginleft5 {
+  margin-top: 0.625rem; }
+
 .button-background {
   background: #ff8400; }
 
@@ -285,7 +288,7 @@ body, html {
   margin-top: 0.875rem; }
 
 .coupondetail-explain {
-  backgrond: #ffffff; }
+  background: #ffffff; }
   .coupondetail-explain h4 {
     height: 5.5rem;
     line-height: 5.5rem;
