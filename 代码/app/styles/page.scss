@@ -2,7 +2,7 @@
 
 body, html {
   font-family: sans-serif;
-  //font-size: 75%;
+  font-size: 50%;
   //font-size: 50%;
   //font-size: 100%;
 }
@@ -15,18 +15,27 @@ html {
 
 .scroll-content {
   background: #e8ecf0;
-  @include position(absolute, rem(60) 0 0 0);
+  @include position(absolute, rem(90) 0 0 0);
   overflow-y:auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
 }
-
-
-
-
-.font-20 {
-  font-size: rem(20);
+.font-18 {
+  font-size: rem(36);
 }
+.font-16 {
+  font-size: rem(32);
+}
+.font-14 {
+  font-size: rem(28);
+}
+.font-12 {
+  font-size: rem(24);
+}
+.font-11 {
+  font-size: rem(22);
+}
+
 
 // =======================================================================
 // Ê×Ò³
@@ -234,17 +243,17 @@ html {
 
 .interalmall-listitem-cont {
   h3 {
-    font-size: rem(28);
+    //font-size: rem(32);
     color: #000000;
     margin:rem(6) 0 rem(10) 0;
   }
 
-  .color-orange {
-    font-size: rem(36);
-  }
+  //.color-orange {
+  //  font-size: rem(36);
+  //}
 
   .vip {
-    font-size: rem(20);
+    //font-size: rem(20);
     color: #ffffff;
     background: #FF735C;
     padding: rem(2) rem(3);
@@ -271,7 +280,7 @@ html {
 
   button {
     float: right;
-    font-size: rem(28);
+    //font-size: rem(28);
     background: #ff8400;
     border-radius: rem(4);
     @include size(rem(120) rem(50) );
@@ -279,149 +288,6 @@ html {
     margin-top: rem(5);
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

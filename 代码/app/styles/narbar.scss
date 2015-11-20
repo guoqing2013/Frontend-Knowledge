@@ -9,7 +9,7 @@
     background: #F5F5F5;
 }
 .navbar {
-    height: rem(60);
+    height: rem(90);
     width: 100%;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -67,8 +67,8 @@
     //transform: translate3d(0, 0, 0);
 }
 .navbar a.link {
-    line-height: 44px;
-    height: 44px;
+    //line-height: 44px;
+    //height: 44px;
     color: #007aff;
     text-decoration: none;
     position: relative;
@@ -112,7 +112,7 @@
     /*-ms-flex-align: center;*/
     /*-webkit-align-items: center;*/
     /*align-items: center;*/
-    line-height: rem(60);
+    line-height: rem(90);
     font-size: rem(40);
     font-weight: 400;
 }
