@@ -79,9 +79,13 @@ html {
   line-height: rem(88);
 }
 
-@mixin padding-left-right-10 {
-  padding-left: rem(10);
-  padding-right: rem(10);
+@mixin padding-left-right-20 {
+  padding-left: rem(20);
+  padding-right: rem(20);
+}
+@mixin padding-left-right-30 {
+  padding-left: rem(30);
+  padding-right: rem(30);
 }
 
 
@@ -364,7 +368,7 @@ html {
   }
   h3,.coupondetail-text, .coupondetail-validity, .coupondetail-shop {
     @include height-and-lineheight-88;
-    @include padding-left-right-10;
+    @include padding-left-right-30;
     background: #ffffff;
   }
   .coupondetail-text {
@@ -395,7 +399,7 @@ html {
   backgrond: #ffffff;
   h4 {
     @include height-and-lineheight-88;
-    margin-left: rem(10);
+    margin-left: rem(20);
   }
 }
 
