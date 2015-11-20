@@ -220,6 +220,10 @@ body, html {
 .interalmall-listitem-cont .label-discount, .coupon-listitem-cont .label-discount {
   background: #4CA4FF; }
 
+.coupon-listitem-cont .po-absolute {
+  right: 0;
+  bottom: 0; }
+
 .interalmall-order-more {
   width: 5rem; }
 
