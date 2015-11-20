@@ -185,7 +185,7 @@ body, html {
 .interalmall-list, .coupon-list {
   background: #ffffff; }
 
-.interalmall-listitem, .coupon-list {
+.interalmall-listitem, .coupon-listitem {
   padding: 1.25rem; }
 
 .interalmall-img-wrap, .coupon-img-wrap {
@@ -199,7 +199,7 @@ body, html {
 
 .interalmall-listitem-cont h3, .coupon-listitem-cont h3 {
   color: #000000;
-  margin: 0.125rem 0 0.125rem 0; }
+  margin: 0.25rem 0 0.25rem 0; }
 .interalmall-listitem-cont label, .coupon-listitem-cont label {
   color: #ffffff;
   height: 1.75rem;
