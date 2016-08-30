@@ -9,7 +9,7 @@ http://www.open-open.com/lib/view/open1450681593198.html
 
 
 # 前端模块化工具-Webpack
-- - - 
+<!--- - - -->
 
 ## 一、webpack是什么
 
@@ -250,10 +250,10 @@ path.isAbsolute(entryDir) ? entryDir : path.join(currentBase, entryDir);
 ## webpack常用命令
 
 
-webpack 最基本的启动webpack命令
-webpack -w 提供watch方法，实时进行打包更新
-webpack -p 对打包后的文件进行压缩
-webpack -d 提供SourceMaps，方便调试
-webpack --colors 输出结果带彩色，比如：会用红色显示耗时较长的步骤
-webpack --profile 输出性能数据，可以看到每一步的耗时
-webpack --display-modules 默认情况下 node_modules 下的模块会被隐藏，加上这个参数可以显示这些被隐藏的模块
+ * webpack 最基本的启动webpack命令
+ * webpack -w 提供watch方法，实时进行打包更新
+ * webpack -p 对打包后的文件进行压缩
+ * webpack -d 提供SourceMaps，方便调试
+ * webpack --colors 输出结果带彩色，比如：会用红色显示耗时较长的步骤
+ * webpack --profile 输出性能数据，可以看到每一步的耗时
+ * webpack --display-modules 默认情况下 node_modules 下的模块会被隐藏，加上这个参数可以显示这些被隐藏的模块
