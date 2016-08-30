@@ -4,6 +4,7 @@
 
 <!-- 
 http://www.ido321.com/1646.html 
+http://www.open-open.com/lib/view/open1450681593198.html
 -->
 
 
@@ -69,7 +70,7 @@ module.exports = {
 
 
 
-1. **entry**
+#### 1. **entry**
 
 entry参数定义了打包后的入口文件，可以是个字符串或数组或者是对象；如果是数组，数组中的所有文件会打包生成一个filename文件；如果是对象，可以将不同的文件构建成不同的文件:
 
@@ -92,7 +93,7 @@ entry参数定义了打包后的入口文件，可以是个字符串或数组或
 该段代码最终会生成一个 page1.bundle.js 和 page2.bundle.js，并存放到 ./dist/js/page 文件夹下
 
 
-2. **output**
+#### 2. **output**
 
 output参数是个对象，定义了输出文件的位置及名字：
 
@@ -110,7 +111,7 @@ filename:打包后的文件名
 当我们在entry中定义构建多个文件时，filename可以对应的更改为[name].js用于定义不同文件构建后的名字
 
 
-3. **module**
+#### 3. **module**
 
 在webpack中JavaScript，CSS，LESS，TypeScript，JSX，CoffeeScript，图片等静态文件都是模块，不同模块的加载是通过模块加载器（webpack-loader）来统一管理的。loaders之间是可以串联的，一个加载器的输出可以作为下一个加载器的输入，最终返回到JavaScript上：
 
@@ -164,7 +165,7 @@ require("!style!css!less!bootstrap/less/bootstrap.less");
 require()时指定的loader会覆盖配置文件里对应的loader配置项。
 
 
-4. **resolve**
+#### 4. **resolve**
 
 webpack在构建包的时候会按目录的进行文件的查找，resolve属性中的extensions数组中用于配置程序可以自行补全哪些文件后缀：
 
@@ -188,7 +189,7 @@ webpack在构建包的时候会按目录的进行文件的查找，resolve属性
 注意一下, extensions 第一个是空字符串! 对应不需要后缀的情况.
 
 
-5. **plugin**
+#### 5. **plugin**
 
 webpack提供了[丰富的组件]用来满足不同的需求，当然我们也可以自行实现一个组件来满足自己的需求：
 
@@ -210,7 +211,7 @@ plugins: [
 ]
 ```
 
-6. **externals**
+#### 6. **externals**
 
 当我们想在项目中require一些其他的类库或者API，而又不想让这些类库的源码被构建到运行时文件中，这在实际开发中很有必要。此时我们就可以通过配置externals参数来解决这个问题：
 
@@ -223,7 +224,7 @@ externals: {
 这样我们就可以放心的在项目中使用这些API了：var jQuery = require("jquery");
 
 
-7. **context**
+#### 7. **context**
 
 当我们在require一个模块的时候，如果在require中包含变量，像这样：
 
@@ -233,7 +234,7 @@ require("./mods/" + name + ".js");
 
 那么在编译的时候我们是不能知道具体的模块的。但这个时候，webpack也会为我们做些分析工作：
 
-(1)分析目录：’./mods’； 
+(1)分析目录：’./mods’；   
 (2)提取正则表达式：’/^.*.js$/’；
 
 ```javascript
@@ -243,3 +244,16 @@ path.isAbsolute(entryDir) ? entryDir : path.join(currentBase, entryDir);
 ```
 
 关于 webpack.config.js 更详尽的配置可以参考[这里](http://webpack.github.io/docs/configuration.html)
+
+
+
+## webpack常用命令
+
+
+webpack 最基本的启动webpack命令
+webpack -w 提供watch方法，实时进行打包更新
+webpack -p 对打包后的文件进行压缩
+webpack -d 提供SourceMaps，方便调试
+webpack --colors 输出结果带彩色，比如：会用红色显示耗时较长的步骤
+webpack --profile 输出性能数据，可以看到每一步的耗时
+webpack --display-modules 默认情况下 node_modules 下的模块会被隐藏，加上这个参数可以显示这些被隐藏的模块
