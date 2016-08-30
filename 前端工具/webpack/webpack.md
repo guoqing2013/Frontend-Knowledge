@@ -247,7 +247,7 @@ path.isAbsolute(entryDir) ? entryDir : path.join(currentBase, entryDir);
 
 
 
-## webpack常用命令
+## 四、webpack常用命令
 
 
  * webpack 最基本的启动webpack命令
@@ -259,7 +259,7 @@ path.isAbsolute(entryDir) ? entryDir : path.join(currentBase, entryDir);
  * webpack --display-modules 默认情况下 node_modules 下的模块会被隐藏，加上这个参数可以显示这些被隐藏的模块
 
 
-## webpack-dev-server
+## 五、webpack-dev-server
 
 在开发的过程中个，我们肯定不希望，每次修改完都手动执行webpack命令来调试程序。所以我们可以用webpack-dev-server这个模块来取代烦人的执行命令。它会监听文件，在文件修改后，自动编译、刷新浏览器的页面。另外，编译的结果是保存在内存中的，而不是实体的文件，所以是看不到的，因为这样会编译的更快。它就想到与一个轻量的express服务器。
 
@@ -300,4 +300,4 @@ var config = {
 
 默认访问地址： http://localhost :3000/index.html(根据配置会不一样)
 
-详细文档点击[这个](http://webpack.github.io/docs/webpack-dev-server.html)
+详细文档点击[这里](http://webpack.github.io/docs/webpack-dev-server.html)
