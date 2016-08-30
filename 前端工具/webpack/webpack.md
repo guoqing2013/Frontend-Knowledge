@@ -257,3 +257,47 @@ path.isAbsolute(entryDir) ? entryDir : path.join(currentBase, entryDir);
  * webpack --colors 输出结果带彩色，比如：会用红色显示耗时较长的步骤
  * webpack --profile 输出性能数据，可以看到每一步的耗时
  * webpack --display-modules 默认情况下 node_modules 下的模块会被隐藏，加上这个参数可以显示这些被隐藏的模块
+
+
+## webpack-dev-server
+
+在开发的过程中个，我们肯定不希望，每次修改完都手动执行webpack命令来调试程序。所以我们可以用webpack-dev-server这个模块来取代烦人的执行命令。它会监听文件，在文件修改后，自动编译、刷新浏览器的页面。另外，编译的结果是保存在内存中的，而不是实体的文件，所以是看不到的，因为这样会编译的更快。它就想到与一个轻量的express服务器。
+
+
+```npm install webpack-dev-server --save -dev```
+
+config配置：
+
+```javascript
+var config = {
+    entry:path.resolve(__dirname,'src/main.js'),
+    resolve:{
+        extentions:["","js"]
+    },
+    //Server Configuration options
+    devServer:{
+        contentBase: '',  //静态资源的目录 相对路径,相对于当前路径 默认为当前config所在的目录
+        devtool: 'eval',
+        hot: true,        //自动刷新
+        inline: true,    
+        port: 3005        
+    },
+    devtool: 'eval',
+    output:{
+        path:buildPath,
+        filename:"app.js"
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),//这个好像也是必须的，虽然我还没搞懂它的作用
+        new webpack.NoErrorsPlugin()
+    ]
+}
+```
+
+执行命令：
+
+```webpack-dev-server --config webpack-dev-config.js  --inline --colors```
+
+默认访问地址： http://localhost :3000/index.html(根据配置会不一样)
+
+详细文档点击[这个](http://webpack.github.io/docs/webpack-dev-server.html)
