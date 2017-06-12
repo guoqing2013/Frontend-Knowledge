@@ -1,0 +1,510 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>webpack</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+<base href='file:\\\E:\github-guoqing2013\Frontend-Knowledge\前端工具\webpack\'/>
+</head>
+<body>
+<p><link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
+<script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
+<script >hljs.initHighlightingOnLoad();</script> </p>
+<!-- 
+http://www.ido321.com/1646.html 
+http://www.open-open.com/lib/view/open1450681593198.html
+-->
+<h1>Webpack</h1>
+<!--- - - -->
+<h2>一、webpack是什么</h2>
+<p>web开发中常用到的静态资源主要有JavaScript、CSS、图片、Jade等文件，webpack中将静态资源文件称之为模块。webpack是一个module bundler(模块打包工具)，其可以兼容多种js书写规范，且可以处理模块间的依赖关系，具有更强大的js模块化的功能。</p>
+<p>Webpack对它们进行统一的管理以及打包发布，其官方主页用下面这张图来说明Webpack的作用：
+<img src="https://webpack.github.io/assets/what-is-webpack.png" alt="webpack" title=""></p>
+<h2>二、webpack特性</h2>
+<p>webpack具有requireJs和browserify的功能，但仍有很多自己的新特性：</p>
+<ol>
+<li>对 CommonJS 、 AMD 、ES6的语法做了兼容</li>
+<li>对js、css、图片等资源文件都支持打包</li>
+<li>串联式模块加载器以及插件机制，让其具有更好的灵活性和扩展性，例如提供对CoffeeScript、ES6的支持</li>
+<li>有独立的配置文件webpack.config.js</li>
+<li>可以将代码切割成不同的chunk，实现按需加载，降低了初始化时间</li>
+<li>支持 SourceUrls 和 SourceMaps，易于调试</li>
+<li>具有强大的Plugin接口，大多是内部插件，使用起来比较灵活</li>
+<li>webpack 使用异步 IO 并具有多级缓存。这使得 webpack 很快且在增量编译上更加快</li>
+</ol>
+<h2>三、Webpack安装和配置</h2>
+<h3>安装</h3>
+<p>webpack 可以作为全局的npm模块安装，也可以在当前项目中安装  </p>
+<p><code>npm install -g webpack</code><br />
+<code>npm install --save-dev webpack</code></p>
+<h3>配置</h3>
+<p>每个项目下都必须配置有一个 <strong>webpack.config.js</strong>, webpack.config.js文件通常放在项目的根目录中，它本身也是一个标准的Commonjs规范的模块：</p>
+<p><code>javascript
+var path = require('path');
+module.exports = {
+    entry: path.resolve(__dirname, './src/entry.js'),
+    output: {
+        path: path.resolve(__dirname, './assets'),
+        filename: 'bundle.js'
+    },
+    module: {
+        loaders: [
+            { test: /\.js?$/, loaders: ['babel'], exclude: /node_modules/ },
+            { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/}
+        ]
+    },
+    resolve:{
+        extensions:['','.js','.json']
+    },
+};</code></p>
+<h4>1. <strong>entry</strong></h4>
+<p>entry参数定义了打包后的入口文件，可以是个字符串或数组或者是对象；如果是数组，数组中的所有文件会打包生成一个filename文件；如果是对象，可以将不同的文件构建成不同的文件:</p>
+<p>```javascript
+{
+    entry: {
+        page1: &quot;./page1&quot;,</p>
+<pre><code>    //支持数组形式，将加载数组中的所有模块，但以最后一个模块作为输出
+    page2: [&quot;./entry1&quot;, &quot;./entry2&quot;]
+},
+output: {
+    path: &quot;dist/js/page&quot;,
+    publicPath: &quot;/output/&quot;,
+    filename: &quot;[name].bundle.js&quot;
+}
+</code></pre>
+
+<p>}
+```</p>
+<p>该段代码最终会生成一个 page1.bundle.js 和 page2.bundle.js，并存放到 ./dist/js/page 文件夹下</p>
+<h4>2. <strong>output</strong></h4>
+<p>output参数是个对象，定义了输出文件的位置及名字：</p>
+<p><code>javascript
+output: {
+        path: &quot;dist/js/page&quot;,
+        publicPath: &quot;/output/&quot;,
+        filename: &quot;[name].bundle.js&quot;
+}</code>
+path: 打包文件存放的绝对路径
+publicPath: 网站运行时的访问路径
+filename:打包后的文件名</p>
+<p>当我们在entry中定义构建多个文件时，filename可以对应的更改为[name].js用于定义不同文件构建后的名字</p>
+<h4>3. <strong>module</strong></h4>
+<p>在webpack中JavaScript，CSS，LESS，TypeScript，JSX，CoffeeScript，图片等静态文件都是模块，不同模块的加载是通过模块加载器（webpack-loader）来统一管理的。loaders之间是可以串联的，一个加载器的输出可以作为下一个加载器的输入，最终返回到JavaScript上：</p>
+<p>```javascript
+module: {
+        //加载器配置
+        loaders: [
+            //.css 文件使用 style-loader 和 css-loader 来处理
+            { test: /.css$/, loader: 'style-loader!css-loader' },</p>
+<pre><code>        //.js 文件使用 jsx-loader 来编译处理
+        { test: /\.js$/, loader: 'jsx-loader?harmony' },
+
+        //.scss 文件使用 style-loader、css-loader 和 sass-loader 来编译处理
+        { test: /\.scss$/, loader: 'style!css!sass?sourceMap'},
+
+        //图片文件使用 url-loader 来处理，小于8kb的直接转为base64
+        { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'}
+    ]
+}
+</code></pre>
+
+<p>```</p>
+<p><strong>test</strong>项表示匹配的资源类型，<strong>loader<strong>或</strong>loaders</strong>项表示用来加载这种类型的资源的loader，loader的使用可以参考 <a href="http://webpack.github.io/docs/using-loaders.html">using loaders</a>，更多的loader可以参考 <a href="http://webpack.github.io/docs/list-of-loaders.html">list of loaders</a>。</p>
+<p><strong>！</strong>用来定义loader的串联关系，”-loader”是可以省略不写的，多个loader之间用“!”连接起来，但所有的加载器都需要通过npm来加载。</p>
+<p>此外，还可以添加用来定义png、jpg这样的图片资源在小于10k时自动处理为base64图片的加载器：</p>
+<p><code>javascript
+{ test: /\.(png|jpg)$/,loader: 'url-loader?limit=10000'}</code></p>
+<p>给css和less还有图片添加了loader之后，我们不仅可以像在node中那样require js文件了，我们还可以require css、less甚至图片文件：</p>
+<p><code>javascript
+require('./bootstrap.css');
+require('./myapp.less');
+var img = document.createElement('img');
+img.src = require('./glyph.png');</code></p>
+<p>注意，require()还支持在资源path前面指定loader，即require(![loaders list]![source path])形式：</p>
+<p><code>javascript
+require(&quot;!style!css!less!bootstrap/less/bootstrap.less&quot;);
+// “bootstrap.less”这个资源会先被&quot;less-loader&quot;处理，
+// 其结果又会被&quot;css-loader&quot;处理，接着是&quot;style-loader&quot;
+// 可类比pipe操作</code></p>
+<p>require()时指定的loader会覆盖配置文件里对应的loader配置项。</p>
+<h4>4. <strong>resolve</strong></h4>
+<p>webpack在构建包的时候会按目录的进行文件的查找，resolve属性中的extensions数组中用于配置程序可以自行补全哪些文件后缀：</p>
+<p><code>javascript
+ resolve: {
+        //查找module的话从这里开始查找
+        root: '/pomy/github/flux-example/src', //绝对路径
+        //自动扩展文件后缀名，意味着我们require模块可以省略不写后缀名
+        extensions: ['', '.js', '.json', '.scss'],
+        //模块别名定义，方便后续直接引用别名，无须多写长长的地址
+        alias: {
+            AppStore : 'js/stores/AppStores.js',//后续直接 require('AppStore') 即可
+            ActionType : 'js/actions/ActionType.js',
+            AppAction : 'js/actions/AppAction.js'
+        }
+    }</code></p>
+<p>然后我们想要加载一个js文件时，只要require(‘common’)就可以加载common.js文件了。</p>
+<p>注意一下, extensions 第一个是空字符串! 对应不需要后缀的情况.</p>
+<h4>5. <strong>plugin</strong></h4>
+<p>webpack提供了[丰富的组件]用来满足不同的需求，当然我们也可以自行实现一个组件来满足自己的需求：</p>
+<p><code>javascript
+plugins: [
+     //your plugins list
+ ]</code></p>
+<p>在webpack中编写js文件时，可以通过require的方式引入其他的静态资源，可通过loader对文件自动解析并打包文件。通常会将js文件打包合并，css文件会在页面的header中嵌入style的方式载入页面。但开发过程中我们并不想将样式打在脚本中，最好可以独立生成css文件，以外链的形式加载。这时extract-text-webpack-plugin插件可以帮我们达到想要的效果。需要使用npm的方式加载插件，然后参见下面的配置，就可以将js中的css文件提取，并以指定的文件名来进行加载。</p>
+<p><code>npm install extract-text-webpack-plugin –save-dev</code></p>
+<p><code>javascript
+plugins: [
+    new ExtractTextPlugin('styles.css')
+]</code></p>
+<h4>6. <strong>externals</strong></h4>
+<p>当我们想在项目中require一些其他的类库或者API，而又不想让这些类库的源码被构建到运行时文件中，这在实际开发中很有必要。此时我们就可以通过配置externals参数来解决这个问题：</p>
+<p><code>javascript
+externals: {
+     &quot;jquery&quot;: &quot;jQuery&quot;
+}</code></p>
+<p>这样我们就可以放心的在项目中使用这些API了：var jQuery = require(&quot;jquery&quot;);</p>
+<h4>7. <strong>context</strong></h4>
+<p>当我们在require一个模块的时候，如果在require中包含变量，像这样：</p>
+<p><code>javascript
+require(&quot;./mods/&quot; + name + &quot;.js&quot;);</code></p>
+<p>那么在编译的时候我们是不能知道具体的模块的。但这个时候，webpack也会为我们做些分析工作：</p>
+<p>(1)分析目录：’./mods’； <br />
+(2)提取正则表达式：’/^.*.js$/’；</p>
+<p><code>javascript
+var currentBase = process.cwd();
+var context = abcOptions.options.context ? abcOptions.options.context : 
+path.isAbsolute(entryDir) ? entryDir : path.join(currentBase, entryDir);</code></p>
+<p>关于 webpack.config.js 更详尽的配置可以参考<a href="http://webpack.github.io/docs/configuration.html">这里</a></p>
+<h2>四、webpack常用命令</h2>
+<ul>
+<li>webpack 最基本的启动webpack命令</li>
+<li>webpack -w 提供watch方法，实时进行打包更新</li>
+<li>webpack -p 对打包后的文件进行压缩</li>
+<li>webpack -d 提供SourceMaps，方便调试</li>
+<li>webpack --colors 输出结果带彩色，比如：会用红色显示耗时较长的步骤</li>
+<li>webpack --profile 输出性能数据，可以看到每一步的耗时</li>
+<li>webpack --display-modules 默认情况下 node_modules 下的模块会被隐藏，加上这个参数可以显示这些被隐藏的模块</li>
+</ul>
+<h2>五、webpack-dev-server</h2>
+<p>在开发的过程中个，我们肯定不希望，每次修改完都手动执行webpack命令来调试程序。所以我们可以用webpack-dev-server这个模块来取代烦人的执行命令。它会监听文件，在文件修改后，自动编译、刷新浏览器的页面。另外，编译的结果是保存在内存中的，而不是实体的文件，所以是看不到的，因为这样会编译的更快。它就想到与一个轻量的express服务器。</p>
+<p><code>npm install webpack-dev-server --save -dev</code></p>
+<p>config配置：</p>
+<p><code>javascript
+var config = {
+    entry:path.resolve(__dirname,'src/main.js'),
+    resolve:{
+        extentions:[&quot;&quot;,&quot;js&quot;]
+    },
+    //Server Configuration options
+    devServer:{
+        contentBase: '',  //静态资源的目录 相对路径,相对于当前路径 默认为当前config所在的目录
+        devtool: 'eval',
+        hot: true,        //自动刷新
+        inline: true,    
+        port: 3005        
+    },
+    devtool: 'eval',
+    output:{
+        path:buildPath,
+        filename:&quot;app.js&quot;
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),//这个好像也是必须的，虽然我还没搞懂它的作用
+        new webpack.NoErrorsPlugin()
+    ]
+}</code></p>
+<p>执行命令：</p>
+<p><code>webpack-dev-server --config webpack-dev-config.js  --inline --colors</code></p>
+<p>默认访问地址： http://localhost :3000/index.html(根据配置会不一样)</p>
+<p>详细文档点击<a href="http://webpack.github.io/docs/webpack-dev-server.html">这里</a></p>
+<p><a href="http://www.imooc.com/learn/802">视频教程</a></p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

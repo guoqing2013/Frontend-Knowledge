@@ -8,7 +8,7 @@ http://www.open-open.com/lib/view/open1450681593198.html
 -->
 
 
-# 前端模块化工具-Webpack
+# Webpack
 <!--- - - -->
 
 ## 一、webpack是什么
@@ -301,3 +301,5 @@ var config = {
 默认访问地址： http://localhost :3000/index.html(根据配置会不一样)
 
 详细文档点击[这里](http://webpack.github.io/docs/webpack-dev-server.html)
+
+[视频教程](http://www.imooc.com/learn/802)
