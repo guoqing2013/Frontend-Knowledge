@@ -105,7 +105,9 @@ output: {
 }
 ```
 path: 打包文件存放的绝对路径
+
 publicPath: 网站运行时的访问路径
+
 filename:打包后的文件名
 
 当我们在entry中定义构建多个文件时，filename可以对应的更改为[name].js用于定义不同文件构建后的名字
@@ -123,7 +125,7 @@ module: {
             { test: /\.css$/, loader: 'style-loader!css-loader' },
             
             //.js 文件使用 jsx-loader 来编译处理
-            { test: /\.js$/, loader: 'jsx-loader?harmony' },
+            { test: /\.js$/, exclude: /node_modules/, loader: 'jsx-loader?harmony' },
             
             //.scss 文件使用 style-loader、css-loader 和 sass-loader 来编译处理
             { test: /\.scss$/, loader: 'style!css!sass?sourceMap'},
