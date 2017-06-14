@@ -99,7 +99,7 @@ store.dispatch({ type: 'CHANGE_B', payload: 'Modified b' });
 unsubscribe();
 ```
 
-### Redux Flow
+## 二、Redux流程
 
 ![](react-redux-introduction.jpg)
 
