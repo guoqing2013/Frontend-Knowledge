@@ -101,7 +101,7 @@ unsubscribe();
 
 ## 二、Redux流程
 
-![](react-redux-introduction.jpg)
+![](./img/react-redux-introduction.jpg)
 
 首先，用户发出 Action。
 
@@ -130,3 +130,34 @@ function listerner() {
   component.setState(newState);   
 }
 ```
+
+## 三、 Exapmle
+
+**action**:
+
+action/index.js
+
+![](./img/action.png)
+
+创建两个动作，一个新增内容，要给我传回新增的内容，一个是删除文本，给我传回一个id过来
+
+
+**reducer**: 
+
+reducers/todo.js
+
+![](./img/reducer.png)
+
+
+reducers/index.js
+
+![](./img/combileReducer.png)
+
+主要是将多个reducer整合为一个
+
+
+**store**
+
+store/configureStore.js
+
+![](./img/store.png)
