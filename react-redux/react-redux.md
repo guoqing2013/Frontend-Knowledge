@@ -1,3 +1,9 @@
+http://www.jianshu.com/p/94c988cf11f3
+
+http://react-china.org/t/redux/2687
+
+http://www.cnblogs.com/xianyulaodi/p/5399264.html
+
 # react-redux
 
 > React-Redux是官方提供的一个库，用来结合redux和react的模块。
