@@ -1,4 +1,4 @@
-# React Props 和 State 
+# React 组件的Props 和 State 
 
 props和state都是用于描述component状态的，
 
