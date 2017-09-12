@@ -71,9 +71,9 @@ module.exports = 2; ;
 
 浏览器中运行ensure/index.html，控制台输出：
 
-aaa
-module2
-bbb
-module1
+aaa  
+module2  
+bbb  
+module1  
 
 
