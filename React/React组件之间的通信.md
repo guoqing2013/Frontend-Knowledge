@@ -386,7 +386,7 @@ B.contextTypes = {
 组件 A 仍是 消息的发送者，组件 B 是接收者， 中间者是 Context 公有 Container 组件。context是官方(文档)[https://facebook.github.io/react/docs/context.html]的一个 API ，通过 getChildContext 函数定义 context 中的值，并且还要求 childContextTypes 是必需的。这样属于这个 Container 组件的子组件，通过 ```this.context``` 就可以取到定义的值，并且起到跟 state 同样的效果。中间者其实还是 Container，只不过利用了上下文这样的 API ，省去了 props 的传递。另外：这个功能是实验性的，未来可能会有所改动。
 
 
-### 发布订阅
+### 发布订阅(全局事件)
 
 这种一个地方发送消息，另一个地方接收做出变化的需求，很容易想到的就是观察者模式了。
 
@@ -506,6 +506,8 @@ class B extends Component {
 ```
 
 仍然是组件 A 用于分发消息，组件 B 去接收消息。这里的中间者其实就是 event 对象。需要接收消息的 B 去订阅 dispatch 事件，并把回调函数 valueChange 传入，另外 B 定义了自己的 state，方便得到 value 值的时候自动渲染。组件 A 其实就是把内部的表单 value 在点击的时候分发，发布事件，从而 B 中的 valueChange 执行，改变 state。这种方式比较方便，也更直观，不需要借助 Container 组件去实现，省去了很多逻辑。
+
+官网已经声明 Context 是一个比较高级的实验性的特性，在以后可能变动这个API。慎用。所以一般的不要使用。
 
 
 ### Redux || Mobx
