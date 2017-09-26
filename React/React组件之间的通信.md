@@ -386,7 +386,7 @@ B.contextTypes = {
 组件 A 仍是 消息的发送者，组件 B 是接收者， 中间者是 Context 公有 Container 组件。context是官方(文档)[https://facebook.github.io/react/docs/context.html]的一个 API ，通过 getChildContext 函数定义 context 中的值，并且还要求 childContextTypes 是必需的。这样属于这个 Container 组件的子组件，通过 ```this.context``` 就可以取到定义的值，并且起到跟 state 同样的效果。中间者其实还是 Container，只不过利用了上下文这样的 API ，省去了 props 的传递。另外：这个功能是实验性的，未来可能会有所改动。
 
 
-### 发布订阅(全局事件)
+### 发布订阅(pub/sub模式)
 
 这种一个地方发送消息，另一个地方接收做出变化的需求，很容易想到的就是观察者模式了。
 
