@@ -1,8 +1,3 @@
-http://www.jianshu.com/p/94c988cf11f3
-
-http://react-china.org/t/redux/2687
-
-http://www.cnblogs.com/xianyulaodi/p/5399264.html
 
 # react-redux
 
