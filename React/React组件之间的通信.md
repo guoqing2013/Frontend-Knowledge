@@ -390,6 +390,9 @@ B.contextTypes = {
 
 这种一个地方发送消息，另一个地方接收做出变化的需求，很容易想到的就是观察者模式了。
 
+如果你想使用 Publish/Subscribe 模型，可以使用：(PubSubJS)[https://github.com/mroderick/PubSubJS]
+
+React 团队使用的是：(js-signals)[http://millermedeiros.github.io/js-signals/] 它基于 Signals 模式，用起来相当不错。
 
 ```javascript
 // 发布订阅类
