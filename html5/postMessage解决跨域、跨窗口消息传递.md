@@ -1,16 +1,12 @@
 # postMessage处理iframe 跨域问题
 
-window.postMessage() 方法可以安全地实现跨源通信。
-
-otherWindow.postMessage(message, targetOrigin, [transfer]);
-
 
 > 背景：由于同源策略存在，javascript的跨域一直都是一个棘手的问题。**父页面无法直接获取iframe内部的跨域资源；同时，iframe内部的跨域资源也无法将信息直接传递给父页面。**
 
 
 ## Window.postMessage()
 
-Window.postMessage 提供了一种安全的跨域通讯方案
+window.postMessage() 方法可以安全地实现跨源通信。
 
 
 ### 发送
