@@ -1,1 +1,1 @@
-git add . & git commit -m node & git push origin gh-pages
+git add . & git commit -m note & git push origin gh-pages
